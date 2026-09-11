@@ -1,17 +1,22 @@
 # Catan Research Lab
 
-A playable four-player Catan engine, card-belief tracker, opening-search prototype, and source-backed AI research workspace. The same Python engine runs natively and in a browser worker. Open the private website at [Play & simulate](https://catan-research-lab-cheekywnl.founders622811.chatgpt.site/#engine).
+A playable four-player Catan engine with hidden-card beliefs, turn-aware opening economics, continuation search, and winning forecasts. The same Python engine runs natively and in a browser worker. Open [Play & simulate](https://catan-research-lab-cheekywnl.founders622811.chatgpt.site/#engine).
 
 ## Implemented
 
 - Legal full games with setup, production, robber/discards, building, development cards, ports, player trades, awards, and victory.
 - Interactive SVG board, legal-action selection, manual trading, bot simulation, viewpoints, undo, and deterministic replay import/export.
 - Joint resource beliefs with explicit exact, modeled, sampled, and conservative-bound states.
-- Observation-only heuristic policy and Monte Carlo evaluation of remaining opening settlement drafts.
+- Strategic policy with resource plans, reachable road destinations, and port conversion economics.
+- Exact opening pips, dice coverage, starting cards, and snake-draft order shown in the interface.
+- Belief-aware root Monte Carlo search through legal continuations, including full-game attempts.
+- Winning forecasts with sampling intervals; fixed-board resource probabilities before the next turn; exchangeable-model development-card estimates.
 - Native simulation and observation/action/outcome JSONL export for future training.
 - Twelve research chapters, 37 sources, project comparison, architecture, roadmap, search, and an exact theft-probability explainer.
 
-Engine 0.1 is a tested foundation. **No trained model, full-game MCTS, competitive-strength result, or game-theoretic optimality is claimed.** See [implementation and limitations](research/implementation.md), the [research report](research/catan-ai-research.md), and [engine provenance](engine/UPSTREAM.md).
+Engine 0.2's fast strategic policy won **85/200 games (42.5%)** against three original bots on 50 held-out boards across all seats; the board-bootstrap 95% interval is 35–50%. This measures that policy against our baseline, not human or equilibrium strength. **No neural training, full information-set tree, or GTO guarantee is claimed.** See [solver mathematics](research/solver-mathematics.md), [implementation](research/implementation.md), [research](research/catan-ai-research.md), and [provenance](engine/UPSTREAM.md).
+
+Use **Analyze this decision** to compare moves. Select **Win objective** for full-game attempts, or **Estimate win chances** for a forecast conditional on simulated opponents. Autoplay supports the fast strategic bot, the frozen baseline, and an experimental slower win-search policy. Short-horizon scores are labeled as heuristic values, not probabilities.
 
 ## Run locally
 
@@ -33,12 +38,13 @@ pip install -r engine/requirements.txt
 python -m pytest -q
 python -m engine.simulate --games 100 --output research/engine-validation.json
 python -m engine.simulate --games 5 --trajectories work/teacher.jsonl
+python -m engine.evaluate --boards 50 --seed 2000 --output research/strength-v2.json
 python scripts/build-engine.py
 ```
 
-`engine/session.py` owns transitions, observations, events, replay, and invariants. `engine/policy.py` consumes player observations only. `engine/beliefs.py` updates correlated resource possibilities. `engine/vendor/catanatron` is the pinned and locally corrected rules core. Build the browser bundle after changing any engine source.
+`engine/session.py` owns transitions, observations, events, replay, and invariants. `engine/policy.py` preserves the v1 baseline; `strategy.py` and `opening.py` implement v2. `planning.py` reconstructs sampled worlds and searches continuations; `forecast.py` computes dice exposure and winning forecasts. `beliefs.py` updates correlated resource possibilities. `engine/vendor/catanatron` is the pinned rules core. Build the browser bundle after changing engine source. Version 0.1 replay files remain compatible.
 
-The committed [validation run](research/engine-validation.json) completed 100/100 seeded heuristic games with conservation checks after every action. The 126-test Python suite includes inherited and local regressions. These establish tested behavior, not a proof that every rule edge case is correct.
+The [historical validation run](research/engine-validation.json) completed 100/100 baseline games; the [v2 evaluation](research/strength-v2.json) records 200 completed opponent games with policy hashes, seeds, seats, and replay checksums. The Python suite includes rules, information boundaries, replay, probability, and search regressions. These establish tested behavior, not a proof of rule completeness or optimality.
 
 ## Website checks and editing
 

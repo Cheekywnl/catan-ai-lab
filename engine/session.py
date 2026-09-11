@@ -6,7 +6,7 @@ import json
 import math
 from enum import Enum
 
-from engine import ENGINE_VERSION, RULESET
+from engine import ENGINE_VERSION, RULESET, REPLAY_VERSIONS
 from engine.beliefs import ResourceBelief
 from engine.policy import rank_actions, draft_search
 from catanatron.game import Game
@@ -82,6 +82,7 @@ class Session:
         if type(seed) is not int or not 0 <= seed < 2**32:
             raise ValueError("Seed must be a whole number from 0 to 4294967295.")
         self.seed = seed
+        self.replay_version = ENGINE_VERSION
         self.game = Game([SimplePlayer(color) for color in Color], seed=seed)
         self.intents = []
         self.events = []
@@ -168,11 +169,24 @@ class Session:
             else []
         )
 
-    def observation(self, viewer="RED", include_history=True, include_belief=True):
+    def observation(
+        self,
+        viewer="RED",
+        include_history=True,
+        include_belief=True,
+        compact=False,
+        simulation=False,
+    ):
         viewer = Color(viewer)
         state = self.game.state
         board = state.board
         players = []
+        bought = {color: 0 for color in state.colors}
+        for record in reversed(state.action_records):
+            if record.action.action_type == ActionType.END_TURN:
+                break
+            if record.action.action_type == ActionType.BUY_DEVELOPMENT_CARD:
+                bought[record.action.color] += 1
         for color in state.colors:
             key = player_key(state, color)
             p = state.player_state
@@ -190,6 +204,14 @@ class Session:
                 "longest_road": p[f"{key}_LONGEST_ROAD_LENGTH"],
                 "has_road": p[f"{key}_HAS_ROAD"],
                 "has_army": p[f"{key}_HAS_ARMY"],
+                "played_development": {
+                    card: p[f"{key}_PLAYED_{card}"] for card in DEVELOPMENT_CARDS
+                },
+                "has_rolled": bool(p[f"{key}_HAS_ROLLED"]),
+                "has_played_development": bool(
+                    p[f"{key}_HAS_PLAYED_DEVELOPMENT_CARD_IN_TURN"]
+                ),
+                "development_bought_this_turn": bought[color],
             }
             if color == viewer:
                 row["own_points"] = p[f"{key}_ACTUAL_VICTORY_POINTS"]
@@ -201,7 +223,7 @@ class Session:
                 value = action_value(action)
                 legal.append({**value, "id": i, "label": action_label(value)})
         public_board = {
-            **copy.deepcopy(self._geometry),
+            **(self._geometry if compact else copy.deepcopy(self._geometry)),
             "buildings": [
                 {"node": node, "color": color.value, "type": kind}
                 for node, (color, kind) in sorted(board.buildings.items())
@@ -231,6 +253,18 @@ class Session:
                 card: state.player_state[f"{key}_{card}_IN_HAND"]
                 for card in DEVELOPMENT_CARDS
             },
+            "own_dev_playable_age": {
+                card: bool(state.player_state[f"{key}_{card}_OWNED_AT_START"])
+                for card in DEVELOPMENT_CARDS
+                if card != "VICTORY_POINT"
+            },
+            "has_rolled": bool(state.player_state[f"{key}_HAS_ROLLED"]),
+            "has_played_development": bool(
+                state.player_state[f"{key}_HAS_PLAYED_DEVELOPMENT_CARD_IN_TURN"]
+            ),
+            "free_roads_available": (
+                state.free_roads_available if state.is_road_building else 0
+            ),
             "legal_actions": legal,
             "development_bank_count": len(state.development_listdeck),
             "trade": (
@@ -249,6 +283,32 @@ class Session:
             ]
         if include_belief and viewer.value in self.trackers:
             out["belief"] = self.trackers[viewer.value].summary()
+        if simulation:
+            # Only public board/cache/phase fields. No full-state serialization or RNG.
+            from catanatron.serialization import map_to_json, board_to_json
+
+            out["simulation"] = {
+                "map": map_to_json(board.map),
+                "board": board_to_json(board),
+                "num_turns": state.num_turns,
+                "buildings_by_color": plain(state.buildings_by_color),
+                "discard_counts": list(state.discard_counts),
+                "is_discarding": state.is_discarding,
+                "is_moving_knight": state.is_moving_knight,
+                "is_road_building": state.is_road_building,
+                "is_resolving_trade": state.is_resolving_trade,
+                "current_trade": plain(state.current_trade),
+                "acceptees": list(state.acceptees),
+            }
+            tracker = self.trackers.get(viewer.value)
+            out["joint_belief"] = (
+                [
+                    {"hands": list(world), "weight": weight}
+                    for world, weight in tracker.worlds.items()
+                ]
+                if tracker
+                else []
+            )
         return out
 
     def event_view(self, event, viewer):
@@ -345,8 +405,10 @@ class Session:
             revision,
         )
 
-    def auto(self, count=1, stop_at_viewer=None):
+    def auto(self, count=1, stop_at_viewer=None, policy="baseline"):
         count = max(1, min(200, int(count)))
+        if policy == "search":
+            count = 1  # Keep browser batches interruptible between decisions.
         for _ in range(count):
             if self.game.winning_color() is not None:
                 break
@@ -354,9 +416,28 @@ class Session:
             if stop_at_viewer == actor:
                 break
             observation = self.observation(
-                actor, include_history=False, include_belief=False
+                actor, include_history=False, include_belief=False, compact=True
             )
-            ranked = rank_actions(observation)
+            if policy == "search":
+                if len(observation["legal_actions"]) == 1:
+                    ranked = observation["legal_actions"]
+                else:
+                    from engine.planning import search
+
+                    ranked = search(
+                        self.observation(actor, simulation=True),
+                        budget=12,
+                        horizon=1600,
+                        max_candidates=4,
+                    )["candidates"]
+            elif policy == "strategic":
+                from engine.strategy import rank_actions as strategic_rank
+
+                ranked = strategic_rank(observation)
+            elif policy == "baseline":
+                ranked = rank_actions(observation)
+            else:
+                raise ValueError("Unknown policy.")
             if not ranked:
                 raise RuntimeError("No legal move in a nonterminal game.")
             self.apply(ranked[0]["id"], len(self.intents))
@@ -401,7 +482,7 @@ class Session:
     def export(self):
         return {
             "format": "catan-lab-replay-v1",
-            "engine_version": ENGINE_VERSION,
+            "engine_version": self.replay_version,
             "ruleset": RULESET,
             "scope": "research-replay-includes-hidden-information",
             "seed": self.seed,
@@ -415,7 +496,7 @@ class Session:
             not isinstance(replay, dict)
             or replay.get("format") != "catan-lab-replay-v1"
             or replay.get("ruleset") != RULESET
-            or replay.get("engine_version") != ENGINE_VERSION
+            or replay.get("engine_version") not in REPLAY_VERSIONS
         ):
             raise ValueError("Unsupported replay format, engine version, or ruleset.")
         if (
@@ -424,6 +505,7 @@ class Session:
         ):
             raise ValueError("Replay must contain at most 20,000 actions.")
         session = cls(replay["seed"], track_beliefs=track_beliefs)
+        session.replay_version = replay["engine_version"]
         for value in replay["intents"]:
             session.execute(decode_action(value))
         if session.chain != replay.get("checksum"):
@@ -436,6 +518,7 @@ class Session:
         if not self.intents:
             return self
         fresh = Session(self.seed, track_beliefs=self.track_beliefs)
+        fresh.replay_version = self.replay_version
         for intent in self.intents[:-1]:
             fresh.execute(decode_action(intent))
         return fresh
@@ -444,7 +527,7 @@ class Session:
 _session = None
 
 
-def dispatch(message):
+def dispatch(message, progress=None):
     global _session
     request = json.loads(message)
     command = request.get("command")
@@ -458,7 +541,11 @@ def dispatch(message):
     elif command == "act":
         _session.apply(request["action"], request["revision"])
     elif command == "auto":
-        _session.auto(request.get("count", 1), request.get("stop_at_viewer"))
+        _session.auto(
+            request.get("count", 1),
+            request.get("stop_at_viewer"),
+            request.get("policy", "strategic"),
+        )
     elif command == "offer":
         _session.offer(request["give"], request["receive"], request["revision"])
     elif command == "undo":
@@ -469,8 +556,42 @@ def dispatch(message):
         return json.dumps(
             draft_search(_session.observation(viewer), request.get("trials", 24))
         )
+    elif command == "plan":
+        from engine.planning import search
+
+        return json.dumps(
+            search(
+                _session.observation(viewer, simulation=True),
+                budget=request.get("budget", 24),
+                horizon=request.get("horizon", 48),
+                progress=progress,
+            )
+        )
+    elif command == "forecast":
+        from engine.forecast import forecast
+
+        return json.dumps(
+            forecast(
+                _session.observation(viewer, simulation=True),
+                samples=request.get("samples", 12),
+                horizon=request.get("horizon", 1600),
+                progress=progress,
+            )
+        )
     elif command != "observe":
         raise ValueError("Unknown engine command.")
     result = _session.observation(viewer)
-    result["recommendations"] = rank_actions(result)[:8]
+    from engine.strategy import rank_actions as strategic_rank, analyze
+    from engine.planning import development_beliefs
+
+    result["analysis"] = analyze(result)
+    result["development_belief"] = development_beliefs(result)
+    from engine.opening import report as opening_report
+    from engine.forecast import dice_exposure
+
+    result["opening"] = opening_report(result)
+    result["dice_exposure"] = dice_exposure(result)
+    result["recommendations"] = (
+        rank_actions if request.get("policy") == "baseline" else strategic_rank
+    )(result)[:8]
     return json.dumps(result)

@@ -1,0 +1,1836 @@
+{
+  "engine_version": "0.2.0",
+  "ruleset": "catan-base-4p-2025-v1",
+  "challenger": "strategic-v2",
+  "opponents": [
+    "frozen-heuristic-v1",
+    "frozen-heuristic-v1",
+    "frozen-heuristic-v1"
+  ],
+  "protocol": "Four starting seats per board, held-out seeds. All policies receive their own observations only. No adaptive tuning during this evaluation.",
+  "first_seed": 2000,
+  "boards": 50,
+  "games": 200,
+  "completed": 200,
+  "wins": 85,
+  "win_rate": 0.425,
+  "board_bootstrap_95_interval": [
+    0.35,
+    0.5
+  ],
+  "seat_win_rates": [
+    0.42,
+    0.44,
+    0.48,
+    0.36
+  ],
+  "elapsed_seconds": 53.61,
+  "policy_sha256": {
+    "policy.py": "b1f4217e377fe75c2918bed8cba24c31e5161900fe3e06d328acc16fff971d3e",
+    "strategy.py": "6496b870b3afeb2b3a2048122cf3ba4db61c9c9a869798964fabde3a542766de",
+    "opening.py": "9f26dd9e1dd3eab2250ed20934aab45d3c94f8bf29b9fd736439877af6f33aae"
+  },
+  "interpretation": "Strength against the original project bot only. Confidence interval resamples whole boards to retain seat correlation. This is not a human, external-agent, or GTO benchmark.",
+  "results": [
+    {
+      "seed": 2000,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 311,
+      "checksum": "8e1a7bb8e913948808fb27f5075abad0d50339dd1b0131eb50c80a0290670e5d"
+    },
+    {
+      "seed": 2000,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 411,
+      "checksum": "bf8de7641a21e46764070d8bff58a8b0997674093110c921527698e0e9557805"
+    },
+    {
+      "seed": 2000,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 338,
+      "checksum": "c34d4e2027ed8e183bab31d5f18feab957cdd2c95d440b22acfd44ed35ea9978"
+    },
+    {
+      "seed": 2000,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 310,
+      "checksum": "21a969c9bc3e2107b135493555bc14c7ceb572348bfb07221b79905917bd90f8"
+    },
+    {
+      "seed": 2001,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 325,
+      "checksum": "92826a37e1e8262ed7f9cb34cb238f003d9adc0ca316c67a64d193fe521a998c"
+    },
+    {
+      "seed": 2001,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 252,
+      "checksum": "6124ab51b5fc5a25a16133fe129947dc2237e09c9960512714187146fc29940b"
+    },
+    {
+      "seed": 2001,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 460,
+      "checksum": "b71d8d0e1653f8a9268c90aaf7e2279707c9dbbac01dbecefae1a67ccbd81c0a"
+    },
+    {
+      "seed": 2001,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 407,
+      "checksum": "d8768cf9ff61c32ba34a001680252549c5f8085350a76d02ddb3815fbab75410"
+    },
+    {
+      "seed": 2002,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 207,
+      "checksum": "4367d51555eec54dbb7e11975ffb3dbcf2f068d2136b6385c3756c5ec9e0bd22"
+    },
+    {
+      "seed": 2002,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 334,
+      "checksum": "2656f24d585e9e0e64c4a80f2c1dce5be561b41700803a54283b0a1349f2a1ea"
+    },
+    {
+      "seed": 2002,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 339,
+      "checksum": "f0a1646bedeccee5ca305a3e72f948ae2d5f04c0ec830a3c8e95009ce4230b8d"
+    },
+    {
+      "seed": 2002,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 194,
+      "checksum": "a4d41feacd28567afdb983585aaf73122098952d4692b84aed1017a0b258e037"
+    },
+    {
+      "seed": 2003,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 348,
+      "checksum": "e65edcbb328a28df6fcd57713c7618d52891fb7f1526709ee378c16145f07e86"
+    },
+    {
+      "seed": 2003,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 264,
+      "checksum": "1fa2ac558fab08fb021be0e216be92db0463cea4cd254977b3dedb1c7cb9bb12"
+    },
+    {
+      "seed": 2003,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 474,
+      "checksum": "cf70df648892d8962c5b7aacc2f0de8973fce4457232a8085c29c3befe1e735d"
+    },
+    {
+      "seed": 2003,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 431,
+      "checksum": "3b6932cb1399a082302152f9247cbd3e5cb286c1140277275304ae199463cbd2"
+    },
+    {
+      "seed": 2004,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 253,
+      "checksum": "334bfa02a517dc091ee0c6e2b3d1f1278535a41af7b715f7140f82e51a42cbc4"
+    },
+    {
+      "seed": 2004,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 323,
+      "checksum": "54c5c6c2adc6074e457d4264511215482c261f9fc5227c6b06a291c193c7bb58"
+    },
+    {
+      "seed": 2004,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 502,
+      "checksum": "7db13315d632d32e2695ca02865e8a2bf4caeefe3c868019759a83bdc9910f2a"
+    },
+    {
+      "seed": 2004,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 294,
+      "checksum": "bb1a74dcc88d69701be89b2a9d248a54088ffc8b093c75f9ee7340a8f703dfb7"
+    },
+    {
+      "seed": 2005,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 345,
+      "checksum": "ed74f9e0ff696ce89db0c0c37ada7d5d2740bd01186a07d4fda1bed8604dc5b3"
+    },
+    {
+      "seed": 2005,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 390,
+      "checksum": "163886f7c472b7866209731fa723389a63b7984f708d1c04910b2252e5e2dedf"
+    },
+    {
+      "seed": 2005,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 480,
+      "checksum": "ddfcaa1a6622e33af2feededb267ac4488c742e36c3bf20ee2f3f9cc69fdfee0"
+    },
+    {
+      "seed": 2005,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 396,
+      "checksum": "d24bcd5a250a361916a21075c2c161d91aa4684b8225e6bb573f46feec9467e9"
+    },
+    {
+      "seed": 2006,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 156,
+      "checksum": "3acc51975210d465449f7906a7201c59c1f584e23ef1b023c065fe6033e90fff"
+    },
+    {
+      "seed": 2006,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 269,
+      "checksum": "31ce4a78ccbfff46182a7a71878f3a14f5befa387e12d9dd590322edfce5e8f6"
+    },
+    {
+      "seed": 2006,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 258,
+      "checksum": "599f6ec06f13c3ceabb8ea3953b72596dd8f1e04418e84353ceb0cff4a12b408"
+    },
+    {
+      "seed": 2006,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 309,
+      "checksum": "6cd37819f5f404f86a87b7835c49045eff6f658e9085ecc8d8a812f886d2b048"
+    },
+    {
+      "seed": 2007,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 347,
+      "checksum": "25e40feb036d6f316877a3c1f6329ab0356338a7f86f25fb2701d406502de76f"
+    },
+    {
+      "seed": 2007,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 488,
+      "checksum": "c8224a6f4ccd3032828614b249b8eaf1164b846ba245ed5716435830c5550bc8"
+    },
+    {
+      "seed": 2007,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 428,
+      "checksum": "8d8cc23c6b069fb199faf77881fe21dc058295b6bfd40e7e8b77d936ee78894e"
+    },
+    {
+      "seed": 2007,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 380,
+      "checksum": "798686361093f406a4161c40dfd93e07828cf0d591a12fc9d0d271d42bde5373"
+    },
+    {
+      "seed": 2008,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 574,
+      "checksum": "56c10cd2fd4120056d6b48efead35c92d93d8f570b58cb599ed04b621519cce1"
+    },
+    {
+      "seed": 2008,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 384,
+      "checksum": "1a1011563d0a4e6880dbefbb41b679cd2948399a7a94aaa8b33bfc254a41d6b2"
+    },
+    {
+      "seed": 2008,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 268,
+      "checksum": "2c435828f1596421cdb2102969f0d801856b6e3d9d132c09476ebe2516d40c6c"
+    },
+    {
+      "seed": 2008,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 220,
+      "checksum": "a4b8a03603cad8c4f2dcc5b71975f68e588de5a15b1ea8bda63eb31c3ae8b8ab"
+    },
+    {
+      "seed": 2009,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 484,
+      "checksum": "869673f63f693485346513938e8dbc5876cb3b706382c464de85bd6caa7d00a8"
+    },
+    {
+      "seed": 2009,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 351,
+      "checksum": "708e459862fdda38b8846441f508fa43c8dc4464fe1b845fc9625d1e90897732"
+    },
+    {
+      "seed": 2009,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 361,
+      "checksum": "2c6ee4e6357cde322d69aad08557281eda51d248640a4022d0fe38e54e41967a"
+    },
+    {
+      "seed": 2009,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 419,
+      "checksum": "eebe068c096ba5615ae8bd8472dc1d6c0535aac81b4df02b9221dc770e5a7b86"
+    },
+    {
+      "seed": 2010,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 267,
+      "checksum": "91ac932929169dcd2e58ae6599196ae0c7f68a7d0a42ebed8e6cfbf1466a41e3"
+    },
+    {
+      "seed": 2010,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 243,
+      "checksum": "8e1235be983debfb0d18ee528250de969d20779e8f7071d662ca6bd6ba777027"
+    },
+    {
+      "seed": 2010,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 395,
+      "checksum": "acdb62d9a8de0b72d296b661c422d70bcbefe304ba092d25838eaa2bfb27a58d"
+    },
+    {
+      "seed": 2010,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 292,
+      "checksum": "8238cb40a2bf2aba2030000f6ed6bae403a12d9ca7abe5c7342946ed43e1acc2"
+    },
+    {
+      "seed": 2011,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 380,
+      "checksum": "73e3ce71c3367ac589c7e7cebf34182df6e4284714ccb6f9a7a89a0131697a50"
+    },
+    {
+      "seed": 2011,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 303,
+      "checksum": "1252bacc8d4d754136b7c08978d304eaea12050fbe5009cdfba7254c0287d8e9"
+    },
+    {
+      "seed": 2011,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 375,
+      "checksum": "9931ab0adb8c22624e6a895a2bf359458203a7936ef373e9420156e5a71348fc"
+    },
+    {
+      "seed": 2011,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 450,
+      "checksum": "b98fcd7f20a9485b2754ebe6e39bc15f6a22ecba95a59f8dac43efa1809f15ab"
+    },
+    {
+      "seed": 2012,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 448,
+      "checksum": "5a8e0b55a42e7d2f21ebd65a92d361e6ae1db79661ade1a5f8e866bc669ca5fe"
+    },
+    {
+      "seed": 2012,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 431,
+      "checksum": "2421b0dac8839ff950637d253524a1339d0ba31fa38b1aa917d4396ff3ae866a"
+    },
+    {
+      "seed": 2012,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 313,
+      "checksum": "e1b21d2f3b59a7916c672638d41f5b83682abff75259a41bdd64b563784df2fb"
+    },
+    {
+      "seed": 2012,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 405,
+      "checksum": "f152136e80df8f6cd59beb64c9f52953f3314ac7d79b5d04dda772d4ae4765e1"
+    },
+    {
+      "seed": 2013,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 225,
+      "checksum": "41759f6a665725de19251774e3f59f4e0770a0866db2134b8315b80b9ab24d48"
+    },
+    {
+      "seed": 2013,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 482,
+      "checksum": "e3f0cd042341d21785a629abb21543b00c32cc614a2138aa914b0768d2a39574"
+    },
+    {
+      "seed": 2013,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 450,
+      "checksum": "b1af457c201e026dea54722d3fa976416355d31c46bce668d39d51a867c6bcd2"
+    },
+    {
+      "seed": 2013,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 369,
+      "checksum": "96fa0b80ed2bb2f9eb5b2ce6a210bf9e82245b71eabd1ce0b938dc66989ce671"
+    },
+    {
+      "seed": 2014,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 326,
+      "checksum": "3bdf118753c73b1709a584962566642e993e0be2e1381508d8ad0342a7b9c794"
+    },
+    {
+      "seed": 2014,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 434,
+      "checksum": "f7558113e73b64fd3240c2720e1db2edd6cd4d2ecd4f64054ca32c804cf57492"
+    },
+    {
+      "seed": 2014,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 328,
+      "checksum": "ac649da3a0886b75b75edd393a5053a18dc09a5c405d31793747255f5eccf0de"
+    },
+    {
+      "seed": 2014,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 331,
+      "checksum": "330fd00907f808322edb89498922529b6f3aaf7326064a23f321b402aabd6afe"
+    },
+    {
+      "seed": 2015,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 365,
+      "checksum": "ddeb75652f631162144457d02bc21aa9211829f00c79732ad6abc15e329ebc8b"
+    },
+    {
+      "seed": 2015,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 390,
+      "checksum": "7f067423aab31f9f8eee2cb94a84a2d0ff5455045c76e25920d5dc00771dd224"
+    },
+    {
+      "seed": 2015,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 444,
+      "checksum": "d92ed2f344c04201def3925b99f5069e2ec75de8438cf7de6921e4a7e2316578"
+    },
+    {
+      "seed": 2015,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 476,
+      "checksum": "81c98e2361cb5e8b01e5a7c4ed682b5ee4a39b169b1b9953716cc09a60042035"
+    },
+    {
+      "seed": 2016,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 436,
+      "checksum": "ae9d349c18afa9a0ddbcc2f212117dbfb1ae0f9f1b560038fdf4b48c3488e809"
+    },
+    {
+      "seed": 2016,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 276,
+      "checksum": "ebe3254dd20b9b299283e863b7efd16387b08adc93ba2a21ee996a6a105329e6"
+    },
+    {
+      "seed": 2016,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 382,
+      "checksum": "0e7da6800f2d935405701d65ff0b4cc6afc05e99e9be1ea637428319a26dfa69"
+    },
+    {
+      "seed": 2016,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 351,
+      "checksum": "746732ca472f39b6b9a380a7f99e7a324bef82974a056bc5da1708227c620c53"
+    },
+    {
+      "seed": 2017,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 327,
+      "checksum": "4185356106aca4f2b42a0d028223df52b1ab977be1005ed0e5833d47dc170956"
+    },
+    {
+      "seed": 2017,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 278,
+      "checksum": "b515d12a9ebd50f7fbe1cc005a2a95fe3d1c5b0eebeaeddacbe14ed304e7d652"
+    },
+    {
+      "seed": 2017,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 377,
+      "checksum": "3d08dc9567dd8fe9830b2237f79ced7ed0ac6a01dce44e889a7e2687342f9ffb"
+    },
+    {
+      "seed": 2017,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 287,
+      "checksum": "c9e620d3881cb2b57797b4d1a46be3496aff77bd52b16147d477644557bd07e3"
+    },
+    {
+      "seed": 2018,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 198,
+      "checksum": "6ea068ff5c2efa4f3da8ba75cd106553680429d42cb673eb475c88a4df123e92"
+    },
+    {
+      "seed": 2018,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 363,
+      "checksum": "c5ec22336a5ea044370b631c98623734b4261bb7f5a913a256c6f7547e0a6460"
+    },
+    {
+      "seed": 2018,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 280,
+      "checksum": "ac453d0d040aa671fe34e7e5dea88bfffa2b8dfd9430caad5fc9278434cc185c"
+    },
+    {
+      "seed": 2018,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 345,
+      "checksum": "cd126946e3ecfaee0d530c5bef4fed49ecf2e8f1bf97d0cf772c81db71587b89"
+    },
+    {
+      "seed": 2019,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 251,
+      "checksum": "4fc713461ebc74549d0c41c4afe8315e49b29911f60abbeb68333ad6662556e2"
+    },
+    {
+      "seed": 2019,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 378,
+      "checksum": "6cc50aab0156c33cdf81a3768718e310621fc8b947000f3e433ce5f0e4ba8b17"
+    },
+    {
+      "seed": 2019,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 457,
+      "checksum": "89d34d2543e5595ee3c518057ac373bfa03fb41e83c54cc46b4324bdb3927fdc"
+    },
+    {
+      "seed": 2019,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 457,
+      "checksum": "3d34086b74183154ed3e0b35ac7c157b0de7668ae157303e5ace30dc26528739"
+    },
+    {
+      "seed": 2020,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 394,
+      "checksum": "8950661a33ead9740d0b2daef8ead38e2b3de8355fe2ac2a2a1b17c96c2ddff7"
+    },
+    {
+      "seed": 2020,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 395,
+      "checksum": "91a1ef4bd58a76832e70aa60553837a7a69432a9c6bde836269857c7aa74259f"
+    },
+    {
+      "seed": 2020,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 390,
+      "checksum": "8fd03c036757c1880962ca04042bdad2d29cc4afc24cd2e339ccc4d5e42dcdbc"
+    },
+    {
+      "seed": 2020,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 364,
+      "checksum": "b4d712aa48daf704ce77c892303f2a2199b378217a65c772bd45146409987d84"
+    },
+    {
+      "seed": 2021,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 466,
+      "checksum": "dff28e156b03ebb8837d811204b1928a7fde3c278cee2293db97880325e6db19"
+    },
+    {
+      "seed": 2021,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 281,
+      "checksum": "c1e79247833164ca815a566dd54a94544ad5003b85f07f519fe1eb2351913b02"
+    },
+    {
+      "seed": 2021,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 442,
+      "checksum": "6ce93687e68fc87304404235db050d93a30ed225da21f4585ffab357ddb6f97c"
+    },
+    {
+      "seed": 2021,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 386,
+      "checksum": "9fe4e6d23839508db6d515876c3a4d85792202fe67e26bebf31c6b30087bcdc3"
+    },
+    {
+      "seed": 2022,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 353,
+      "checksum": "1c581d70928693af12a6da500694b5bfe6029f725c397f7752e2f4ca87944d87"
+    },
+    {
+      "seed": 2022,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 327,
+      "checksum": "2f535dcade1ac2c133a2e4eef86e34849bac2e6c6145f9725e52332e68942ee0"
+    },
+    {
+      "seed": 2022,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 218,
+      "checksum": "c1194fded5abc273b136a8d5a07b5214ad50318777a8b7149e3214aed6488570"
+    },
+    {
+      "seed": 2022,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 382,
+      "checksum": "b7dcfd32086448783dfbb2a1fd5c330d52660a4c9a02e04888c4041a4c8a4cf9"
+    },
+    {
+      "seed": 2023,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 407,
+      "checksum": "35443cb2b5ef568c380a3e88bda3dbc8d140bc8d66f9246d19a3563c8833abfa"
+    },
+    {
+      "seed": 2023,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 285,
+      "checksum": "fc1deb717fa8c9ecd7e82cb060c3be7c1fda08737e03d35f4436d7c4b516a570"
+    },
+    {
+      "seed": 2023,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 509,
+      "checksum": "ef66f916de91beaba7b87d6e925c67174a568fa39bb970116b4302a6daee7f22"
+    },
+    {
+      "seed": 2023,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 332,
+      "checksum": "09e287fe228ceb3501b9c4f05c99713e3fe5a8634c933269a7654575ce15c4f5"
+    },
+    {
+      "seed": 2024,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 487,
+      "checksum": "a57b9786c427c155e74a9e7ff1828a2f83cab977badde7ad29ff7d76f2ffe2ff"
+    },
+    {
+      "seed": 2024,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 386,
+      "checksum": "330ffaa0527aaa7111d2da86f3400cee4330cb36cb82690114fda5b424aaa4ef"
+    },
+    {
+      "seed": 2024,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 436,
+      "checksum": "6a0d2e18b1cfc83ccd4eaeefeeb4349bb55e70f25efbbbb478f46db88974e50e"
+    },
+    {
+      "seed": 2024,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 416,
+      "checksum": "ccebeeacb200f5ba7a10ee91e9f0229021200761a3639d486706c9ca9e96d24a"
+    },
+    {
+      "seed": 2025,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 274,
+      "checksum": "3bf70c0c89ce6a39112564631509a95ba0570a358e9354ab57d43d14b5536be9"
+    },
+    {
+      "seed": 2025,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 265,
+      "checksum": "6a03c17d54094c16ce590df8864b8914d99ac8374df587740f9bfc56983a5400"
+    },
+    {
+      "seed": 2025,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 357,
+      "checksum": "37104ac75ececea6bfe9c3b219a08129c53bf321612c7714199e044784cd4615"
+    },
+    {
+      "seed": 2025,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 295,
+      "checksum": "78c21bd473f34732a6d0d5575a54229ff4d18934cebc4aa24ab21bb3d10a0bd3"
+    },
+    {
+      "seed": 2026,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 301,
+      "checksum": "520ac7bc1a1b9e2858869a2ccfe8555fae7b1aa40573840139c0fd3ec1a1e81e"
+    },
+    {
+      "seed": 2026,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 216,
+      "checksum": "9d27968db8f73beb3fdb00ed7bb9635273f9edecbe308c7d470b6b199cb20fce"
+    },
+    {
+      "seed": 2026,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 371,
+      "checksum": "0f2ddba38627d17b9e7e71de79c9e159c5c54005667a8fd8e756ebdad1347ec3"
+    },
+    {
+      "seed": 2026,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 344,
+      "checksum": "0248786a3bebb0b88bba0174d590fbe2f283d20df835cc3b57662d858a85a9db"
+    },
+    {
+      "seed": 2027,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 298,
+      "checksum": "68ca466daedebc1db731563dc7a07787e842543880e4cafaddd47048b21eab49"
+    },
+    {
+      "seed": 2027,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 412,
+      "checksum": "3ec4de48a511963bc1f6fcd7ca3462f5a619dc0e46bec0cea4d1ed8f0afb992e"
+    },
+    {
+      "seed": 2027,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 335,
+      "checksum": "9b908f2ea7f0afc084501c3fe268f75cb2cb693ae68c9364775ab7145039eafd"
+    },
+    {
+      "seed": 2027,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 408,
+      "checksum": "29854c3a8ea33f209858bfb492e45400c1132df438ebf36bf4de88766f740cb0"
+    },
+    {
+      "seed": 2028,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 256,
+      "checksum": "f17492bd12ae79bed22e4862227d6a4abae165564c52a602cb88e45da477b9a5"
+    },
+    {
+      "seed": 2028,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 272,
+      "checksum": "178d86c2d93e989614e7ff11c00f62f394248b25432c97ff60c325bccbfef2c5"
+    },
+    {
+      "seed": 2028,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 424,
+      "checksum": "d693194a14505a1056c8a0dba12251bd0a4a1351ad19faabead5d9aebcb6eaa5"
+    },
+    {
+      "seed": 2028,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 329,
+      "checksum": "12f7881194c6d04b5ee7093101e9460aed92665a168e15b2ec7b117ef4deddcd"
+    },
+    {
+      "seed": 2029,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 347,
+      "checksum": "d8f2cb2e35b2fde2ad3fcac484618d4a5f09eef27263974ee4af826c251aba7e"
+    },
+    {
+      "seed": 2029,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 251,
+      "checksum": "3731a623b357f9675b2ba707ecfb1b8fad7f5ac7303a5ebc0d0df61725c79257"
+    },
+    {
+      "seed": 2029,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 394,
+      "checksum": "384bd96d776202c4b0d24b95d23f0da3b3a7b6228587d7ffd9b0b89abe0fd5e6"
+    },
+    {
+      "seed": 2029,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 396,
+      "checksum": "03b1531f31c337bbe5e701b51bf4e94ec896a2e5506e33041e9fe3b21b611773"
+    },
+    {
+      "seed": 2030,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 398,
+      "checksum": "5c8feb51881d9ae8e67808ace56bf36446b94ae5cafdc51c75411694be4b8646"
+    },
+    {
+      "seed": 2030,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 458,
+      "checksum": "12a116ce4ece0204849efcd2d381781c7b671d6075b412de0dc929f937396cde"
+    },
+    {
+      "seed": 2030,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 360,
+      "checksum": "1eaae42805bc8654b5b491f222f300b5d6b10da5f4690ba69c17fc5a5278ad47"
+    },
+    {
+      "seed": 2030,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 421,
+      "checksum": "197492c2caeb063c763315a869f2eccdeac4bb6136a00ba39d691809454aa0ef"
+    },
+    {
+      "seed": 2031,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 466,
+      "checksum": "c80dfee7be38980cd2d7658b242a91ca6e439028705d2436b38c85b8f2d4c790"
+    },
+    {
+      "seed": 2031,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 442,
+      "checksum": "555db475a07c2b85340e70879e05906516835e18242ad1ff19447f787abc132c"
+    },
+    {
+      "seed": 2031,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 283,
+      "checksum": "14722ff56ebab4f5f2aefaf127f356b0f482319e28886f2799ed9d5ce6d53b43"
+    },
+    {
+      "seed": 2031,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 269,
+      "checksum": "b383ac2228ea4a09a501a7c23ab916de78031beeb755fc71ff4d7af35736f6a3"
+    },
+    {
+      "seed": 2032,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 436,
+      "checksum": "5785ba5956a4d290cf0772d720457c9c88fd2ad5213fe150aba72b3b04651472"
+    },
+    {
+      "seed": 2032,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 332,
+      "checksum": "315e22476e3786c6a99a39ef10b94dfad6935a1328a2a9c160fe9971ce369b77"
+    },
+    {
+      "seed": 2032,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 359,
+      "checksum": "3379c40b19eed9499ccf7a8aaa43a9c846552040bce572f41e5608a6c48542c1"
+    },
+    {
+      "seed": 2032,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 448,
+      "checksum": "940a37166d3261a4a4fc8df20c5e0d97b8b83ccaf89ef0f3d66ef3b1115a6b5e"
+    },
+    {
+      "seed": 2033,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 260,
+      "checksum": "04962e757e63b1ab1283d210db00c97b059f8631eac47aad52067d4254b8d2a1"
+    },
+    {
+      "seed": 2033,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 336,
+      "checksum": "cb105dba4a64ffec06fdf1b99bf3377c092bf1a9d49c208494c97f6a6de46dc0"
+    },
+    {
+      "seed": 2033,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 328,
+      "checksum": "e488c1c7b3a739fc424a3d2f5b34362d204b028ea75880c8ac2b0088597751e4"
+    },
+    {
+      "seed": 2033,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 415,
+      "checksum": "514f6ac9a4c2a18873c81e66caeb88f72a7285149147aec0c9c71e38d5a56c8b"
+    },
+    {
+      "seed": 2034,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 376,
+      "checksum": "2b65d6019d2b89fd5ebd67940be0a2a07b6515bfe50e712013ad5bf2b0e7f9bd"
+    },
+    {
+      "seed": 2034,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 385,
+      "checksum": "470bb16ad241dd19dcedc8807af54a97a010e601f4d1e80142c44a38fb522b23"
+    },
+    {
+      "seed": 2034,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 382,
+      "checksum": "c89405a01e48b64c4f3827408c09387b3996b6f4abd397d6c79082193b0eb8fb"
+    },
+    {
+      "seed": 2034,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 375,
+      "checksum": "b5f3fab20f220eee27e97832458fb0ce7bd9adb7892e70c47014975e2ea25966"
+    },
+    {
+      "seed": 2035,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 335,
+      "checksum": "afe926a4ad424908ae40d79bc001a7963b956ee6ab3a079a2ddd0c4958107fee"
+    },
+    {
+      "seed": 2035,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 440,
+      "checksum": "d4e2594478c8db9ef231b13404fc1361b4459c4f50e40e62c1720a8e10b6178c"
+    },
+    {
+      "seed": 2035,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 304,
+      "checksum": "528fb1d3501f76e9a831b0aae697ee703b1c701b459f14f85b0c1b74342b5261"
+    },
+    {
+      "seed": 2035,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 495,
+      "checksum": "6ac2394388ab937059a720a170a1e8a973fcab17db978e6f1d3f4e78d17ace36"
+    },
+    {
+      "seed": 2036,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 283,
+      "checksum": "11482fc66ca5e222f116ce528a95dadea67f41255a955a7cd543396dbfd8cb6f"
+    },
+    {
+      "seed": 2036,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 555,
+      "checksum": "09b46024bc167814c4277b298d7ca54a518bcf10f2c515204779d77e56e2ca70"
+    },
+    {
+      "seed": 2036,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 436,
+      "checksum": "9a380af359361aaf5d5eb9272a4ad49d5ed2974bdb3345172547c039eefe1727"
+    },
+    {
+      "seed": 2036,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 367,
+      "checksum": "7d4c7fa6c9b91eb89c57e032e071604bd9f9849f06fba9ab9a1289ec1a89dcb1"
+    },
+    {
+      "seed": 2037,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 254,
+      "checksum": "8bdc8d1bfc9827bd50dec8431825637897f7b659870998fda4423eaeec8e25a5"
+    },
+    {
+      "seed": 2037,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 242,
+      "checksum": "88ccf92dbc847e0d594889ff4da124c5026e155fc4da9a97e3e5f3df572cfa5c"
+    },
+    {
+      "seed": 2037,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 372,
+      "checksum": "b5532378cd8d733036d688bd3d235cbf840490fdc62324717559e5a7a92cd69e"
+    },
+    {
+      "seed": 2037,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 384,
+      "checksum": "6f2751ac7268dca1214bbcb970ad45f18e3aed6138f3856022d7f4306e0ad0e0"
+    },
+    {
+      "seed": 2038,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 287,
+      "checksum": "06663f22d57701eb0d28039d59a422fa2b0741fc44f7e49aba222b9a6e316313"
+    },
+    {
+      "seed": 2038,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 464,
+      "checksum": "fb200aa95669de885e54d7c8b551bdb73f354cf40949eb331ba8ac5f6bdc468a"
+    },
+    {
+      "seed": 2038,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 353,
+      "checksum": "d30aa2471f67775039f97962693edb748cfbc8f0286a035aafcbf5cb15682d9b"
+    },
+    {
+      "seed": 2038,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 234,
+      "checksum": "baee12f1aa558882ded40de787b9223648dd2f176be4a2835cbb6bc7f898d0bc"
+    },
+    {
+      "seed": 2039,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 412,
+      "checksum": "77e2635bff9c57ab943782cef66330940ab249c2e7ebe96329cde6663497e86f"
+    },
+    {
+      "seed": 2039,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 386,
+      "checksum": "0560e35475e145192cc03b2a9f5b3bc6bb2e184b0cd8df29236fe438cc6d254e"
+    },
+    {
+      "seed": 2039,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 297,
+      "checksum": "0762bf942027cc14d7ef8f0c2e2308bb760eff6b528bf4ca7a559cf7b2e79817"
+    },
+    {
+      "seed": 2039,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 504,
+      "checksum": "ab39736a71343c0c46e14b969ee9b652960e92f9bfa31a7e93b07ae95ae2fea8"
+    },
+    {
+      "seed": 2040,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 260,
+      "checksum": "59a48f6a5176d042ac8fe84a9254576e4e94c66036bbc6080f701b20345c5982"
+    },
+    {
+      "seed": 2040,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 321,
+      "checksum": "da56f10bf6972e53ceab9b9c859a1ee36037ec3caef599999f5a60f29edb764b"
+    },
+    {
+      "seed": 2040,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 317,
+      "checksum": "78328b858994f9b8478d405bf16bc0476586907f675763874f05606c0b85b0c7"
+    },
+    {
+      "seed": 2040,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 324,
+      "checksum": "baa6f50bd7cf9e6275660f413d7c7767c8193822704ec21cbe6250af471f3341"
+    },
+    {
+      "seed": 2041,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 448,
+      "checksum": "35b214858b2cd377bfa979d79ce13683829cd54fdbfab2d2adb3e562c11fdf46"
+    },
+    {
+      "seed": 2041,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 436,
+      "checksum": "372530ebb6758e8c8c0fb0b686d94f34e1d077536fe7795a308440516865f6ab"
+    },
+    {
+      "seed": 2041,
+      "seat": 2,
+      "challenger": "ORANGE",
+      "winner": "RED",
+      "win": false,
+      "actions": 372,
+      "checksum": "0c6a82766d58da214c75a70ae7e59aaf323732e5c9fc06a69ed61c5aafe86835"
+    },
+    {
+      "seed": 2041,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 302,
+      "checksum": "4191b6a3ad0edea50bc0edbfa82f287288d0daef07e7bdb9ad80b80ea7193733"
+    },
+    {
+      "seed": 2042,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 340,
+      "checksum": "2c34383db025c109866ec645f84b503b03d59a04c3109eae47d3acc63badcd77"
+    },
+    {
+      "seed": 2042,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 516,
+      "checksum": "d79c69876d5d96ef2a4072efa10105abdba6b9cafd9a70e58a366b62ea2ceb36"
+    },
+    {
+      "seed": 2042,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 410,
+      "checksum": "4151b41a5e5aebd7402cff09683614230efbf39db82b2eec12614b04a4328765"
+    },
+    {
+      "seed": 2042,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 473,
+      "checksum": "8d779792249aa6cecd7518462b27e45365fca24333f1511053a678a6e3ec36ad"
+    },
+    {
+      "seed": 2043,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 260,
+      "checksum": "897481b62249181b1f22c6e15fd42388fa254dd402744eef41e58672114fc03b"
+    },
+    {
+      "seed": 2043,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 309,
+      "checksum": "549d18854656f34a89347920f340516e46cc3f342e56f3f2d9a13712d6fa3a5b"
+    },
+    {
+      "seed": 2043,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 395,
+      "checksum": "6881fc1ead37bd607896651fd05ac52fd2df517f06a5edeffde4d6b713a8dcc9"
+    },
+    {
+      "seed": 2043,
+      "seat": 3,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 266,
+      "checksum": "1f23a7e9dfa0639cb6ad870a354c541b8d44328806f45dbe445b2d6c8bd7b238"
+    },
+    {
+      "seed": 2044,
+      "seat": 0,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 451,
+      "checksum": "07bf59437974d54a973fad77f3c3c445f5504a82a1c46a7fbaa2c985770e7a1a"
+    },
+    {
+      "seed": 2044,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 494,
+      "checksum": "9acf23e979eed4c34ffa0824a728b1e56e8ea660caa43d7bed2914be4c79a1f5"
+    },
+    {
+      "seed": 2044,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 434,
+      "checksum": "d617bae670b1912bba33709bf7d1fe4aa9595a78e1193377b84a2718a7b3b0c6"
+    },
+    {
+      "seed": 2044,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 574,
+      "checksum": "d2b2a1a908fe7fb0e022e691a48d699943f34f06d14d8a6002ad1693ab0f3787"
+    },
+    {
+      "seed": 2045,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 397,
+      "checksum": "019bea52d7276e98e1bdba76f070bd7cd18dd94886b635a2d748d2cc78587338"
+    },
+    {
+      "seed": 2045,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 240,
+      "checksum": "fcb22f5fe821f0798fcb0908bc5da3cfd7818738850f82c96bed7f50760f617c"
+    },
+    {
+      "seed": 2045,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 386,
+      "checksum": "171902313179c1ad985ad226f05cfafc8285ea121dc49e22264037d0b03152d6"
+    },
+    {
+      "seed": 2045,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 409,
+      "checksum": "b6893f15786bda92761d906c0ac9e7e4435089d4661f8eb3809227408f84bdf2"
+    },
+    {
+      "seed": 2046,
+      "seat": 0,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 439,
+      "checksum": "33f30e2a423a4bf1eeacc17d023ae1d23be90750c2dd7c1bac756c52c0266231"
+    },
+    {
+      "seed": 2046,
+      "seat": 1,
+      "challenger": "ORANGE",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 414,
+      "checksum": "93c65e431d677e77e013d143404245eb84084fe5991a550cf17259ae9b4c8221"
+    },
+    {
+      "seed": 2046,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 255,
+      "checksum": "97a962539e3c53298491869c40c1c52855b539d07dab5717b0fdc1a504a07bf0"
+    },
+    {
+      "seed": 2046,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 467,
+      "checksum": "d372025b6577f4c3760b6f47bef0cc427af8a8d6983a5dd0c1a31c7722e003c7"
+    },
+    {
+      "seed": 2047,
+      "seat": 0,
+      "challenger": "BLUE",
+      "winner": "BLUE",
+      "win": true,
+      "actions": 307,
+      "checksum": "bacc1df313773e504582c7410d0b3b195f5bf29c529a0205b8910da80ec36034"
+    },
+    {
+      "seed": 2047,
+      "seat": 1,
+      "challenger": "WHITE",
+      "winner": "WHITE",
+      "win": true,
+      "actions": 326,
+      "checksum": "ef0de4026b0f913d660ca0c7fa2fdec3d8acad36369adac961a2a045cab71202"
+    },
+    {
+      "seed": 2047,
+      "seat": 2,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 460,
+      "checksum": "0980ba4413e4c00cc2641bb4224a02df58e868dbb379f51f18ea7ddb01feba4b"
+    },
+    {
+      "seed": 2047,
+      "seat": 3,
+      "challenger": "ORANGE",
+      "winner": "BLUE",
+      "win": false,
+      "actions": 297,
+      "checksum": "554a76e58578f93c6f2b4aa98e9413ab45080121ce40869b9048af65de0ab604"
+    },
+    {
+      "seed": 2048,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 373,
+      "checksum": "9c13e2d0e2dff3df1d56387b4279011c4a3f57cb26eef96ff13c23be3a3290f2"
+    },
+    {
+      "seed": 2048,
+      "seat": 1,
+      "challenger": "BLUE",
+      "winner": "RED",
+      "win": false,
+      "actions": 460,
+      "checksum": "f56afe355441f98881de80072a616fe9a4561ec0d6214aa3b100eaaa780b57d1"
+    },
+    {
+      "seed": 2048,
+      "seat": 2,
+      "challenger": "WHITE",
+      "winner": "RED",
+      "win": false,
+      "actions": 320,
+      "checksum": "f8fea31826d1e41b902880b68b8f604f80664e524cd73f1f8e4db0c35bb39d2c"
+    },
+    {
+      "seed": 2048,
+      "seat": 3,
+      "challenger": "RED",
+      "winner": "WHITE",
+      "win": false,
+      "actions": 361,
+      "checksum": "a582a534abf354c73768c2d5e319b55dac5aa29188694d91120832d94cf34576"
+    },
+    {
+      "seed": 2049,
+      "seat": 0,
+      "challenger": "ORANGE",
+      "winner": "ORANGE",
+      "win": true,
+      "actions": 337,
+      "checksum": "aa83c99775a15a0183cfe3117f1e7618bd2f699bfab86d1614d3fef8d1ee8dca"
+    },
+    {
+      "seed": 2049,
+      "seat": 1,
+      "challenger": "RED",
+      "winner": "RED",
+      "win": true,
+      "actions": 272,
+      "checksum": "5f5f008075457376ce6f5b8829f2be9bd5de3d21d6c75c99424eb057392bd0c4"
+    },
+    {
+      "seed": 2049,
+      "seat": 2,
+      "challenger": "BLUE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 379,
+      "checksum": "d650840af1b2b29bfefeea684905f5f08fb64c354fcdb4d92b9f748bbc295ed7"
+    },
+    {
+      "seed": 2049,
+      "seat": 3,
+      "challenger": "WHITE",
+      "winner": "ORANGE",
+      "win": false,
+      "actions": 367,
+      "checksum": "5350a96a3e3de6053c82abca5469710ba38154dc46f80c2a9af745340231f6bb"
+    }
+  ]
+}

@@ -66,6 +66,14 @@ class ResourceBelief:
             for candidate, probability in candidates:
                 if min(candidate) < 0:
                     continue
+                if kind == "PLAY_MONOPOLY":
+                    resource = RESOURCES.index(event["value"])
+                    if any(
+                        candidate[i * 5 + resource]
+                        for i, c in enumerate(self.colors)
+                        if c != event["color"]
+                    ):
+                        continue
                 if any(
                     sum(candidate[i * 5 : i * 5 + 5]) != totals[c]
                     for i, c in enumerate(self.colors)
@@ -164,6 +172,19 @@ class ResourceBelief:
             for pair, change in zip(self.bounds[color], delta):
                 pair[0] = max(0, pair[0] + change)
                 pair[1] = max(0, pair[1] + change)
+        if event["type"] == "PLAY_MONOPOLY":
+            resource = RESOURCES.index(event["value"])
+            for color in self.colors:
+                if color != event["color"]:
+                    self.bounds[color][resource] = [0, 0]
+        if event["type"] in ("OFFER_TRADE", "ACCEPT_TRADE"):
+            need = (
+                event["value"][:5]
+                if event["type"] == "OFFER_TRADE"
+                else event["value"][5:10]
+            )
+            for pair, count in zip(self.bounds[event["color"]], need):
+                pair[0] = max(pair[0], count)
         if event["type"] in ("MOVE_ROBBER", "DISCARD_RESOURCE"):
             source = (
                 event.get("victim")

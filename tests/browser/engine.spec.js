@@ -74,13 +74,11 @@ test("native Python replays import identically in browser Python; bad replays ar
       "utf8",
     ),
   );
-  await page
-    .getByLabel("Import replay file")
-    .setInputFiles({
-      name: "native.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify(fixture)),
-    });
+  await page.getByLabel("Import replay file").setInputFiles({
+    name: "native.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(fixture)),
+  });
   await expect(page.locator("#engine-status")).toContainText(
     "200 moves recorded",
     { timeout: 30000 },
@@ -93,13 +91,11 @@ test("native Python replays import identically in browser Python; bad replays ar
   const exported = JSON.parse(await readFile(await file.path(), "utf8"));
   expect(exported).toEqual(fixture);
   const before = await page.locator(".board-topline").innerText();
-  await page
-    .getByLabel("Import replay file")
-    .setInputFiles({
-      name: "bad.json",
-      mimeType: "application/json",
-      buffer: Buffer.from(JSON.stringify({ ...fixture, checksum: "bad" })),
-    });
+  await page.getByLabel("Import replay file").setInputFiles({
+    name: "bad.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify({ ...fixture, checksum: "bad" })),
+  });
   await expect(page.locator("#engine-status")).toContainText(
     "checksum mismatch",
     { timeout: 30000 },
@@ -107,6 +103,53 @@ test("native Python replays import identically in browser Python; bad replays ar
   expect(await page.locator(".board-topline").innerText()).toBe(before);
   await page.getByLabel("View as", { exact: true }).selectOption("BLUE");
   await expect(page.locator(".hand-panel")).toContainText("BLUE");
+  await page
+    .getByRole("button", { name: "Estimate win chances", exact: true })
+    .click();
+  await expect(page.locator(".forecast-row")).toHaveCount(4, {
+    timeout: 60000,
+  });
+  await expect(page.locator(".forecast-result")).toContainText("12/12");
+  await expect(page.locator(".forecast-result")).toContainText(
+    "95% sampling interval",
+  );
+  await expect(page.locator(".forecast-result")).toContainText(
+    "model-based forecasts",
+  );
+});
+
+test("solver exposes opening order, production and general decision analysis", async ({
+  page,
+}) => {
+  await ready(page);
+  await expect(page.locator(".draft-sequence .current-pick")).toHaveText(
+    "1. Red",
+  );
+  await expect(page.locator(".opening-audit")).toContainText(
+    "6 rival settlement picks",
+  );
+  await expect(page.locator(".resource-projection")).toContainText(
+    "cards / 36 rolls",
+  );
+  await page
+    .getByRole("button", { name: "Analyze this decision", exact: true })
+    .click();
+  await expect(page.locator(".search-choice")).toHaveCount(6, {
+    timeout: 60000,
+  });
+  await expect(page.locator("#plan-results")).toContainText(
+    "not calibrated win probabilities",
+  );
+  await page.locator(".search-choice").first().click();
+  await page
+    .getByRole("button", { name: "Play selected move", exact: true })
+    .click();
+  await expect(page.locator("#engine-status")).toContainText(
+    "1 moves recorded",
+  );
+  await expect(page.locator(".move-recommendations")).toContainText("roads");
+  await page.getByLabel("Bot policy", { exact: true }).selectOption("baseline");
+  await expect(page.locator("#bot-policy")).toHaveValue("baseline");
 });
 
 test("engine controls and populated board remain accessible and fit small screens", async ({

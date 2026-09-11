@@ -24,7 +24,14 @@ self.onmessage = (event) => {
       ready ||= initialize();
       const py = await ready;
       py.globals.set("request_json", JSON.stringify(request));
-      const result = JSON.parse(py.runPython("dispatch(request_json)"));
+      py.globals.set("engine_progress", (done, total) =>
+        self.postMessage({
+          status: `Evaluating simulations: ${done} of ${total}…`,
+        }),
+      );
+      const result = JSON.parse(
+        py.runPython("dispatch(request_json, engine_progress)"),
+      );
       self.postMessage({ id, result });
     } catch (error) {
       self.postMessage({ id, error: String(error.message || error) });

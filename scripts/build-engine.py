@@ -5,9 +5,13 @@ import hashlib
 import json
 import shutil
 import zipfile
+import sys
 import networkx
 
 root = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(root))
+from engine import ENGINE_VERSION
+
 target = root / "dist/runtime"
 target.mkdir(parents=True, exist_ok=True)
 for name in [
@@ -45,7 +49,7 @@ with zipfile.ZipFile(
         info.external_attr = 0o644 << 16
         z.writestr(info, content)
 metadata = {
-    "engine_version": "0.1.0",
+    "engine_version": ENGINE_VERSION,
     "ruleset": "catan-base-4p-2025-v1",
     "upstream_revision": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
     "networkx": networkx.__version__,
@@ -58,6 +62,8 @@ metadata = {
 for source, destination in [
     ("research/engine-validation.json", "dist/engine-validation.json"),
     ("research/implementation.md", "dist/implementation.md"),
+    ("research/strength-v2.json", "dist/strength-v2.json"),
+    ("research/solver-mathematics.md", "dist/solver-mathematics.md"),
 ]:
     shutil.copyfile(root / source, root / destination)
 print(

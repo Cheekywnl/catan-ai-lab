@@ -1,3 +1,4 @@
+import { insights, planMarkup, forecastMarkup } from "./engine-insights.js";
 const colors = {
   RED: "#ac4c39",
   BLUE: "#3f6f9a",
@@ -44,7 +45,8 @@ let worker,
   requestId = 0,
   snapshot,
   viewer = "RED",
-  seed = 42;
+  seed = 42,
+  policy = "strategic";
 const pending = new Map();
 let statusListener = () => {};
 function call(command, args = {}) {
@@ -76,7 +78,7 @@ function call(command, args = {}) {
   const id = ++requestId;
   return new Promise((resolve, reject) => {
     pending.set(id, { resolve, reject });
-    worker.postMessage({ id, command, viewer, ...args });
+    worker.postMessage({ id, command, viewer, policy, ...args });
   });
 }
 
@@ -178,14 +180,16 @@ export function mountEngine(root) {
     busy = false,
     running = false,
     selected = null,
-    search = null;
-  root.innerHTML = `<div class="page-heading engine-heading"><div><div class="eyebrow">ENGINE 0.1 · FOUR-PLAYER BASE CATAN</div><h1>Play. Inspect. Simulate.</h1><p class="lede">A real rules engine, a transparent baseline, and opening draft search.</p></div><span class="pill green">Heuristic bot · No trained model</span></div><div class="engine-toolbar"><div class="field"><label for="game-seed">Game seed</label><input id="game-seed" type="number" min="0" max="4294967295" step="1" value="${seed}"></div><button class="button" id="new-game">New game</button><div class="field"><label for="game-viewer">View as</label><select id="game-viewer">${Object.keys(
+    search = null,
+    plan = null,
+    forecast = null;
+  root.innerHTML = `<div class="page-heading engine-heading"><div><div class="eyebrow">ENGINE 0.2 · FOUR-PLAYER BASE CATAN</div><h1>Play. Inspect. Simulate.</h1><p class="lede">Resource planning, hidden-world search, and turn-by-turn winning forecasts.</p></div><span class="pill green">Strategic policy + search</span></div><div class="engine-toolbar"><div class="field"><label for="game-seed">Game seed</label><input id="game-seed" type="number" min="0" max="4294967295" step="1" value="${seed}"></div><button class="button" id="new-game">New game</button><div class="field"><label for="game-viewer">View as</label><select id="game-viewer">${Object.keys(
     colors,
   )
     .map((c) => `<option ${c === viewer ? "selected" : ""}>${c}</option>`)
     .join(
       "",
-    )}</select></div><button class="button" id="undo-game">Undo move</button><button class="button" id="export-game">Export replay ↓</button><label class="button import-replay">Import replay<input id="import-game" type="file" accept=".json,application/json" aria-label="Import replay file"></label></div><p class="engine-status" role="status" id="engine-status">Loading the game engine…</p><div id="engine-position"><div class="engine-loading"><span class="loading-orbit" aria-hidden="true">⬡</span><h2>Preparing the board</h2><p>The engine runs on your device. The first load downloads the Python runtime.</p></div></div><section class="card engine-validation"><span class="eyebrow">VALIDATION · ENGINE 0.1</span><h2>Built to be inspected.</h2><p>126 Python tests cover rules, replay, information boundaries, and conservation. The recorded 100-game simulation suite completed every game with resource and piece checks after every move. This measures engine behavior, not playing strength.</p><div class="detail-links"><a href="engine-validation.json" download>Download simulation results ↓</a><a href="implementation.md" target="_blank" rel="noopener noreferrer">Implementation & limitations ↗</a><a href="https://github.com/Cheekywnl/catan-ai-lab" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div></section><div class="engine-footnote"><a href="engine-source.zip" download>Python engine source ↓</a><a href="THIRD_PARTY.md" target="_blank" rel="noopener noreferrer">Runtime & license notices ↗</a><span>Research sandbox · Replay exports include hidden information.</span></div>`;
+    )}</select></div><div class="field"><label for="bot-policy">Bot policy</label><select id="bot-policy"><option value="strategic">Strategic v2</option><option value="baseline">Original baseline</option><option value="search">Win search · experimental / slow</option></select></div><button class="button" id="undo-game">Undo move</button><button class="button" id="export-game">Export replay ↓</button><label class="button import-replay">Import replay<input id="import-game" type="file" accept=".json,application/json" aria-label="Import replay file"></label></div><p class="engine-status" role="status" id="engine-status">Loading the game engine…</p><div id="engine-position"><div class="engine-loading"><span class="loading-orbit" aria-hidden="true">⬡</span><h2>Preparing the board</h2><p>The engine runs on your device. The first load downloads the Python runtime.</p></div></div><section class="card engine-validation"><span class="eyebrow">VALIDATION · ENGINE 0.2</span><h2>Built to be inspected.</h2><p>The final strategic policy won 85 of 200 games (42.5%) against three copies of the original bot, across all four seats on 50 held-out boards. The board-bootstrap 95% interval is 35–50%. This measures strength against our original bot, not humans or GTO. The rules, sampling, probability, and replay tests run in GitHub CI.</p><div class="detail-links"><a href="strength-v2.json" download>Download opponent benchmark ↓</a><a href="solver-mathematics.md" target="_blank" rel="noopener noreferrer">Math & solver assumptions ↗</a><a href="implementation.md" target="_blank" rel="noopener noreferrer">Implementation & limitations ↗</a><a href="https://github.com/Cheekywnl/catan-ai-lab" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div></section><div class="engine-footnote"><a href="engine-source.zip" download>Python engine source ↓</a><a href="THIRD_PARTY.md" target="_blank" rel="noopener noreferrer">Runtime & license notices ↗</a><span>Research sandbox · Replay exports include hidden information.</span></div>`;
   const $ = (sel) => root.querySelector(sel);
   const status = (text) => {
     if (!disposed) $("#engine-status").textContent = text;
@@ -211,6 +215,7 @@ export function mountEngine(root) {
       "#game-viewer",
       "#import-game",
       "#export-game",
+      "#bot-policy",
     ])
       disable(id, running);
     disable("#undo-game", !snapshot.revision || running);
@@ -232,6 +237,14 @@ export function mountEngine(root) {
     for (const id of ["#bot-step", "#bot-batch", "#auto-game"])
       disable(id, !!snapshot.winner || running);
     disable("#stop-auto", !running);
+    disable(
+      "#plan-move",
+      running ||
+        snapshot.actor !== viewer ||
+        snapshot.legal_actions.length < 2 ||
+        !!snapshot.winner,
+    );
+    disable("#forecast-win", running || !!snapshot.winner);
   }
   function draw() {
     if (disposed || !snapshot) return;
@@ -249,7 +262,7 @@ export function mountEngine(root) {
           .filter(([, n]) => n)
           .map(([c, n]) => `${title(c)} × ${n}`)
           .join(" · ") || "None"
-      }</p></div></div></section><aside class="move-panel"><span class="eyebrow">${esc(title(s.actor))} TO ACT</span><h2>${s.winner ? "Game finished" : myTurn ? "Choose a move" : "Observe this turn"}</h2>${s.trade ? `<div class="active-trade"><strong>${title(s.turn_owner)} offers</strong><p>${tradeCounts(s.trade.slice(0, 5))} for ${tradeCounts(s.trade.slice(5, 10))}</p></div>` : ""}${s.discard_remaining ? `<p>Discard ${s.discard_remaining} more card${s.discard_remaining === 1 ? "" : "s"} from your hand.</p>` : ""}<div class="field"><label for="legal-moves">Legal moves (${s.legal_actions.length})</label><select id="legal-moves" size="7" ${!s.legal_actions.length ? "disabled" : ""}>${s.legal_actions.map((a) => `<option value="${a.id}" ${a.id === selected ? "selected" : ""}>${esc(a.label)}</option>`).join("")}</select></div><button class="button primary" id="apply-move" ${!chosen ? "disabled" : ""}>Play selected move</button><div class="bot-controls"><button class="button" id="bot-step" ${s.winner ? "disabled" : ""}>Bot: next move</button><button class="button" id="bot-batch" ${s.winner ? "disabled" : ""}>Run 50 moves</button><button class="button" id="auto-game" ${s.winner ? "disabled" : ""}>Run to a winner</button><button class="button" id="stop-auto" ${!running ? "disabled" : ""}>Pause</button></div><div class="move-recommendations"><div class="section-heading"><h3>Baseline suggestions</h3></div>${
+      }</p></div></div></section><aside class="move-panel"><span class="eyebrow">${esc(title(s.actor))} TO ACT</span><h2>${s.winner ? "Game finished" : myTurn ? "Choose a move" : "Observe this turn"}</h2>${s.trade ? `<div class="active-trade"><strong>${title(s.turn_owner)} offers</strong><p>${tradeCounts(s.trade.slice(0, 5))} for ${tradeCounts(s.trade.slice(5, 10))}</p></div>` : ""}${s.discard_remaining ? `<p>Discard ${s.discard_remaining} more card${s.discard_remaining === 1 ? "" : "s"} from your hand.</p>` : ""}<div class="field"><label for="legal-moves">Legal moves (${s.legal_actions.length})</label><select id="legal-moves" size="7" ${!s.legal_actions.length ? "disabled" : ""}>${s.legal_actions.map((a) => `<option value="${a.id}" ${a.id === selected ? "selected" : ""}>${esc(a.label)}</option>`).join("")}</select></div><button class="button primary" id="apply-move" ${!chosen ? "disabled" : ""}>Play selected move</button><div class="bot-controls"><button class="button" id="bot-step" ${s.winner ? "disabled" : ""}>Bot: next move</button><button class="button" id="bot-batch" ${s.winner ? "disabled" : ""}>${policy === "search" ? "Search one move" : "Run 50 moves"}</button><button class="button" id="auto-game" ${s.winner ? "disabled" : ""}>Run to a winner</button><button class="button" id="stop-auto" ${!running ? "disabled" : ""}>Pause</button></div><div class="move-recommendations"><div class="section-heading"><h3>Policy suggestions</h3></div>${
         s.recommendations
           .slice(0, 3)
           .map(
@@ -266,6 +279,51 @@ export function mountEngine(root) {
           .join("") ||
         "<li>The board is ready. Place the first settlement to begin.</li>"
       }</ol></section></div>`;
+    $("#engine-position").insertAdjacentHTML(
+      "beforeend",
+      '<div id="solver-insights">' +
+        insights(s, selected, plan, forecast) +
+        "</div>",
+    );
+    bindPlanned();
+    $("#plan-move").onclick = async () => {
+      const depth = $("#search-depth").value;
+      const settings =
+        depth === "full"
+          ? { budget: 32, horizon: 1600 }
+          : depth === "deep"
+            ? { budget: 48, horizon: 128 }
+            : { budget: 24, horizon: 48 };
+      setBusy(true);
+      status("Comparing hidden-card worlds and legal continuations…");
+      try {
+        plan = await call("plan", settings);
+        $("#plan-results").innerHTML = planMarkup(plan);
+        bindPlanned();
+        status(
+          "Decision comparison ready. Review the sample counts and assumptions.",
+        );
+      } catch (e) {
+        showError(e);
+      } finally {
+        setBusy(false);
+      }
+    };
+    $("#forecast-win").onclick = async () => {
+      setBusy(true);
+      status(
+        "Playing sampled games to estimate each player’s winning chances…",
+      );
+      try {
+        forecast = await call("forecast", { samples: 12 });
+        $("#win-forecast").innerHTML = forecastMarkup(forecast);
+        status("Winning forecast ready. Intervals show sampling uncertainty.");
+      } catch (e) {
+        showError(e);
+      } finally {
+        setBusy(false);
+      }
+    };
     $("#legal-moves").onchange = (e) => choose(Number(e.target.value));
     root.querySelectorAll("[data-action]").forEach((el) => {
       const activate = () => choose(Number(el.dataset.action));
@@ -280,12 +338,13 @@ export function mountEngine(root) {
     $("#apply-move").onclick = () =>
       run("act", { action: selected, revision: snapshot.revision });
     $("#bot-step").onclick = () => run("auto", { count: 1 });
-    $("#bot-batch").onclick = () => run("auto", { count: 50 });
+    $("#bot-batch").onclick = () =>
+      run("auto", { count: policy === "search" ? 1 : 50 });
     $("#auto-game").onclick = async () => {
       running = true;
       let batches = 0;
-      while (running && !disposed && !snapshot.winner && batches++ < 200) {
-        await run("auto", { count: 25 });
+      while (running && !disposed && !snapshot.winner && batches++ < 4000) {
+        await run("auto", { count: policy === "search" ? 1 : 25 });
         await new Promise((r) => setTimeout(r, 0));
       }
       running = false;
@@ -306,10 +365,10 @@ export function mountEngine(root) {
       setBusy(true);
       status("Comparing public opening drafts…");
       try {
-        search = await call("search", { trials: 32 });
+        search = await call("plan", { budget: 30, horizon: 48 });
         showSearch();
         status(
-          "Opening comparison ready. These are resource-economy scores, not win probabilities.",
+          "Opening continuations compared in the real snake-draft order. Short-horizon scores are not win probabilities.",
         );
       } catch (e) {
         showError(e);
@@ -327,6 +386,11 @@ export function mountEngine(root) {
     showSearch();
     applyDisabled();
   }
+  function bindPlanned() {
+    root
+      .querySelectorAll("[data-planned]")
+      .forEach((el) => (el.onclick = () => choose(Number(el.dataset.planned))));
+  }
   function choose(id) {
     if (busy || running) return;
     selected = id;
@@ -339,11 +403,11 @@ export function mountEngine(root) {
         .slice(0, 5)
         .map(
           (a) =>
-            `<li><button class="draft-choice" data-draft="${a.id}"><strong>Intersection ${a.value}</strong><span>${a.draft_score.toFixed(1)} <small>± ${a.standard_error.toFixed(1)} SE</small></span></button></li>`,
+            `<li><button class="draft-choice" data-draft="${a.id}"><strong>Intersection ${a.value}</strong><span>${(a.search_score ?? a.draft_score).toFixed(3)} <small>± ${a.standard_error.toFixed(1)} SE</small></span></button></li>`,
         )
         .join(
           "",
-        )}</ol><p class="micro">${search.trials_per_candidate} drafts per candidate · 10 screened candidates</p>`;
+        )}</ol><p class="micro">${search.budget ?? search.trials_per_candidate} total samples · ${search.candidates.length} screened candidates</p>`;
     root
       .querySelectorAll("[data-draft]")
       .forEach((el) => (el.onclick = () => choose(Number(el.dataset.draft))));
@@ -365,6 +429,8 @@ export function mountEngine(root) {
       snapshot = await call(command, args);
       selected = null;
       search = null;
+      plan = null;
+      forecast = null;
       draw();
       status(
         snapshot.winner
@@ -388,6 +454,11 @@ export function mountEngine(root) {
     }
     seed = value;
     run("new", { seed });
+  };
+  $("#bot-policy").value = policy;
+  $("#bot-policy").onchange = (e) => {
+    policy = e.target.value;
+    run("observe");
   };
   $("#game-viewer").onchange = (e) => {
     viewer = e.target.value;

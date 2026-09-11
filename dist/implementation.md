@@ -1,4 +1,18 @@
-# Catan Lab engine 0.1 — implementation log
+# Catan Lab engine — implementation log
+
+## Engine 0.2 — 12 September 2026
+
+The new strategic policy evaluates resource plans, reachable road destinations, exact opening pips and dice coverage, second-settlement cards, actual port conversion rates, and snake-draft order. The browser exposes an opening audit, resource plans, turn-order exposure, and development-card probabilities.
+
+The decision laboratory now reconstructs sampled hidden worlds from player observations and compares legal continuations with adaptive root Monte Carlo search. Quick search uses bounded heuristic leaf scores. Win-objective search attempts full games and labels winning rates only when all samples finish. The separate forecast control returns each player's modeled winning frequency with sampling intervals, or censoring bounds when continuations truncate. Every simulated player receives only its own observation.
+
+Autoplay can use the original baseline, the faster strategic policy, or experimental win-search. The latter starts with 12 full-game attempts per decision, increasing that minimum when needed to sample every screened candidate twice. It can be slow; manual analysis provides additional budgets. Search is screened and approximate, not a certified GTO solution. No neural model is trained.
+
+The final fast strategic policy won 85/200 games against three original bots, across all seats on 50 held-out boards. The board-bootstrap interval is 35–50%. All 200 games completed. This is evidence about the strategic policy against that opponent; search strength has not yet been established. Source hashes and every game result are published in `strength-v2.json`.
+
+The 158 passing Python tests include regressions for sampled-world reconstruction, hidden-information independence, immediate winning moves, port economics, opening order, dice exposure, development beliefs, truncated forecasts, and old replay compatibility. Full derivations, assumptions, and limitations are in [solver-mathematics.md](solver-mathematics.md).
+
+## Historical engine 0.1 release
 
 11 September 2026. The original research report remains a dated research snapshot; this log records the implementation that followed it.
 
