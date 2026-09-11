@@ -1,32 +1,135 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#172321">
-  <meta name="description" content="An evidence-led blueprint for Catan AI. Explore card tracking, search, reinforcement learning, and the research behind a shared decision engine.">
-  <title>Catan Research Lab</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23172321' d='M32 2 59 17v30L32 62 5 47V17Z'/%3E%3Cpath fill='%23dfff8e' d='m32 15 15 9v16l-15 9-15-9V24Z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="workspace.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <aside class="sidebar" aria-label="Workspace navigation">
-    <a class="brand" href="#overview"><span class="brand-mark" aria-hidden="true">⬡</span><span>CATAN<span class="brand-sub">RESEARCH LAB</span></span></a>
-    <span class="nav-label">WORKSPACE</span>
-    <nav id="navigation" aria-label="Main"><a class="nav-item active" href="#overview"><span aria-hidden="true">◈</span>Overview</a><a class="nav-item" href="#research/1"><span aria-hidden="true">▤</span>Full research</a><a class="nav-item" href="#projects"><span aria-hidden="true">▦</span>Project landscape</a><a class="nav-item" href="#architecture"><span aria-hidden="true">⌘</span>Architecture</a><a class="nav-item" href="#belief"><span aria-hidden="true">◉</span>Belief lab</a><a class="nav-item" href="#roadmap"><span aria-hidden="true">↗</span>Build roadmap</a><a class="nav-item" href="#sources"><span aria-hidden="true">⌕</span>Sources<span class="nav-count">37</span></a></nav>
-    <div class="sidebar-foot"><span class="status-dot"></span>Research snapshot<span>11 September 2026</span></div>
-  </aside>
-  <div class="workspace">
-    <header class="topbar"><div class="breadcrumb">Workspace <span>/</span> <strong id="breadcrumb">Overview</strong></div><div class="top-actions"><form class="global-search" role="search" id="global-search"><label class="sr-only" for="global-query">Search all research</label><span aria-hidden="true">⌕</span><input id="global-query" name="q" type="search" placeholder="Search research…" maxlength="200" autocomplete="off"><button type="submit" aria-label="Run research search">↵</button></form><a class="text-link github-link" href="https://github.com/Cheekywnl/catan-ai-lab" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a><a class="text-link download-link" href="catan-ai-research.md" download>Download report <span aria-hidden="true">↓</span></a></div></header>
-    <main id="main" tabindex="-1"><div class="page-heading"><div><div class="eyebrow">THE RESEARCH WORKSPACE</div><h1>A smarter way to play.</h1><p class="lede">The blueprint for a Catan engine that remembers, reasons, and learns.</p></div><span class="pill green">Research complete · Build proposed</span></div>
-    <section class="hero-panel"><div class="eyebrow">THE RECOMMENDATION</div><h2>One engine.<br>Three ways to use it.</h2><p>Combine probabilistic card tracking, learned policy and value models, and search over plausible futures.</p><div class="product-row"><span>Full-game bot</span><span>Game companion</span><span>Research workbench</span></div><a class="button light" href="catan-ai-research.md">Read the research <span aria-hidden="true">↗</span></a></section>
-    <div class="stats"><div><strong>37</strong><span>Sources examined</span></div><div><strong>12</strong><span>Research chapters</span></div><div><strong>4</strong><span>Players · base game</span></div><div><strong>3</strong><span>Connected products</span></div></div>
-    <section class="card"><span class="eyebrow">THE IMPORTANT DISTINCTION</span><h2>Strong play is a measurable goal.</h2><p>Four-player Catan is not solved. This research proposes an engine we can evaluate honestly; it does not claim an unbeatable strategy or a trained model.</p></section>
-    </main>
-    <footer><span>Independent research project · Unaffiliated with CATAN</span><a href="catan-ai-research.md" download>Download the full report ↓</a><span>Evidence before confidence.</span></footer>
-  </div>
-  <script type="module" src="app.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#172321" />
+    <meta
+      name="description"
+      content="An evidence-led blueprint for Catan AI. Explore card tracking, search, reinforcement learning, and the research behind a shared decision engine."
+    />
+    <title>Catan Research Lab</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23172321' d='M32 2 59 17v30L32 62 5 47V17Z'/%3E%3Cpath fill='%23dfff8e' d='m32 15 15 9v16l-15 9-15-9V24Z'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="workspace.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <aside class="sidebar" aria-label="Workspace navigation">
+      <a class="brand" href="#overview"
+        ><span class="brand-mark" aria-hidden="true">⬡</span
+        ><span>CATAN<span class="brand-sub">RESEARCH LAB</span></span></a
+      >
+      <span class="nav-label">WORKSPACE</span>
+      <nav id="navigation" aria-label="Main">
+        <a class="nav-item active" href="#overview"
+          ><span aria-hidden="true">◈</span>Overview</a
+        ><a class="nav-item" href="#research/1"
+          ><span aria-hidden="true">▤</span>Full research</a
+        ><a class="nav-item" href="#projects"
+          ><span aria-hidden="true">▦</span>Project landscape</a
+        ><a class="nav-item" href="#architecture"
+          ><span aria-hidden="true">⌘</span>Architecture</a
+        ><a class="nav-item" href="#belief"
+          ><span aria-hidden="true">◉</span>Belief lab</a
+        ><a class="nav-item" href="#roadmap"
+          ><span aria-hidden="true">↗</span>Build roadmap</a
+        ><a class="nav-item" href="#sources"
+          ><span aria-hidden="true">⌕</span>Sources<span class="nav-count"
+            >37</span
+          ></a
+        >
+      </nav>
+      <div class="sidebar-foot">
+        <span class="status-dot"></span>Research snapshot<span
+          >11 September 2026</span
+        >
+      </div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="breadcrumb">
+          Workspace <span>/</span> <strong id="breadcrumb">Overview</strong>
+        </div>
+        <div class="top-actions">
+          <form class="global-search" role="search" id="global-search">
+            <label class="sr-only" for="global-query">Search all research</label
+            ><span aria-hidden="true">⌕</span
+            ><input
+              id="global-query"
+              name="q"
+              type="search"
+              placeholder="Search research…"
+              maxlength="200"
+              autocomplete="off"
+            /><button type="submit" aria-label="Run research search">↵</button>
+          </form>
+          <a
+            class="text-link github-link"
+            href="https://github.com/Cheekywnl/catan-ai-lab"
+            target="_blank"
+            rel="noopener noreferrer"
+            >GitHub <span aria-hidden="true">↗</span></a
+          ><a
+            class="text-link download-link"
+            href="catan-ai-research.md"
+            download
+            >Download report <span aria-hidden="true">↓</span></a
+          >
+        </div>
+      </header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading">
+          <div>
+            <div class="eyebrow">THE RESEARCH WORKSPACE</div>
+            <h1>A smarter way to play.</h1>
+            <p class="lede">
+              The blueprint for a Catan engine that remembers, reasons, and
+              learns.
+            </p>
+          </div>
+          <span class="pill green">Research complete · Build proposed</span>
+        </div>
+        <section class="hero-panel">
+          <div class="eyebrow">THE RECOMMENDATION</div>
+          <h2>One engine.<br />Three ways to use it.</h2>
+          <p>
+            Combine probabilistic card tracking, learned policy and value
+            models, and search over plausible futures.
+          </p>
+          <div class="product-row">
+            <span>Full-game bot</span><span>Game companion</span
+            ><span>Research workbench</span>
+          </div>
+          <a class="button light" href="catan-ai-research.md"
+            >Read the research <span aria-hidden="true">↗</span></a
+          >
+        </section>
+        <div class="stats">
+          <div><strong>37</strong><span>Sources examined</span></div>
+          <div><strong>12</strong><span>Research chapters</span></div>
+          <div><strong>4</strong><span>Players · base game</span></div>
+          <div><strong>3</strong><span>Connected products</span></div>
+        </div>
+        <section class="card">
+          <span class="eyebrow">THE IMPORTANT DISTINCTION</span>
+          <h2>Strong play is a measurable goal.</h2>
+          <p>
+            Four-player Catan is not solved. This research proposes an engine we
+            can evaluate honestly; it does not claim an unbeatable strategy or a
+            trained model.
+          </p>
+        </section>
+      </main>
+      <footer>
+        <span>Independent research project · Unaffiliated with CATAN</span
+        ><a href="catan-ai-research.md" download>Download the full report ↓</a
+        ><span>Evidence before confidence.</span>
+      </footer>
+    </div>
+    <script type="module" src="app.js"></script>
+  </body>
 </html>

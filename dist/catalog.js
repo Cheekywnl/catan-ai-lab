@@ -1,30 +1,311 @@
 export const projects = [
-  { name:'Catanatron', owner:'bcollazo', kind:'Engine', role:'Prototype foundation', tag:'Start here', license:'GPL-3.0', refs:[12,13,14,15], strength:'Python simulator, bot interfaces, web UI, Gymnasium, and trajectory generation.', limit:'The full-state bot API needs an observation boundary. Domestic trading exists in the engine, but the inspected Gym action encoding omits it.', inspection:'Source inspected · 8 Sep 2026 revision', chapters:[3,9] },
-  { name:'MCTS / CatanWithBelief', owner:'sorinMD', kind:'Search', role:'Primary search reference', tag:'Closest research fit', license:'MIT', refs:[5,6], strength:'Catan-specific beliefs, resource tracking, POMCP, ISMCTS, trade configuration, and learned action-type preferences.', limit:'Older Java stack. Published results use a single observer, factored beliefs, and a cap of three trade offers per turn.', inspection:'Published paper + repository', chapters:[3,6] },
-  { name:'Settlers of Catan RL', owner:'henrycharlesworth', kind:'Learning', role:'Policy and rollout reference', license:'Unresolved', refs:[7,8], strength:'Four-player PPO with action masks, structured heads, pretrained weights, and forward-simulation search.', limit:'Author reports sub-expert strength. Dependencies are from 2021–2022; no recognized repository license was returned.', inspection:'Author write-up + repository', chapters:[3,7] },
-  { name:'STACSettlers', owner:'sorinMD', kind:'Data', role:'Dialogue and replay reference', license:'Component review needed', refs:[16,33], strength:'Trading agents, replay infrastructure, database tooling, and a strategic dialogue research corpus.', limit:'Older dependencies; some agent configurations require full observability. Database presence does not establish replay quality or reuse permissions.', inspection:'Repository + corpus paper', chapters:[7,8] },
-  { name:'JSettlers2', owner:'jdmonin', kind:'Engine', role:'Independent comparison target', license:'GPL-3.0', refs:[17], strength:'Established client/server implementation with heuristic robots, extensive game mechanics, and documentation.', limit:'Not primarily designed as a high-throughput Python training environment.', inspection:'Repository documentation', chapters:[3,10] },
-  { name:'Monte Catano', owner:'Algorhythm-sxv', kind:'Search', role:'Performance ideas', license:'AGPL-3.0', refs:[18,19,20], strength:'Compact Rust engine, MCTS, and a command-line protocol.', limit:'Inspected code has material rules gaps, no domestic trade action, automatic discard choices, and a full-state search path containing hidden hands.', inspection:'Source inspected · 12 Jun 2026 revision', chapters:[3,6] },
-  { name:'CatanBot', owner:'NoahLaforet', kind:'Companion', role:'Interaction design reference', license:'GPL-3.0', refs:[21], strength:'Visual companion, event tracking, and opening placement recommendations.', limit:'README describes handcrafted heuristics and one-ply evaluation, with no machine learning. Strength is not independently reproduced.', inspection:'Repository documentation', chapters:[3,5] },
-  { name:'Catan Counter', owner:'nickincardone', kind:'Companion', role:'Event and belief design', license:'Unresolved', refs:[22], strength:'Event parsing, possible-hand variants, and filtering using hand-count constraints.', limit:'No recognized repository license returned. Tracking claims need independent correctness and calibration tests.', inspection:'Repository documentation', chapters:[3,4] },
-  { name:'Cocaco', owner:'Lolligerhans', kind:'Companion', role:'Correlated belief reference', license:'AGPL-3.0', refs:[23], strength:'Bayesian card tracking and displays of correlated resource possibilities.', limit:'Browser integration does not imply permission to use assistance on an external platform. Study the representation in an authorized environment.', inspection:'Repository + instructions', chapters:[3,4] },
-  { name:'Catanatron 1v1', owner:'PeterLP123', kind:'Learning', role:'Training-pipeline reference', license:'GPL-3.0', refs:[24], strength:'Teacher data, imitation, DAgger, action masks, evaluation, and optional PPO.', limit:'Two-player variant: 15 points, balanced dice, friendly robber, and a nine-card threshold. Its benchmark is separate from the target game.', inspection:'Repository documentation', chapters:[3,7] },
-  { name:'catan_rl', owner:'BenjaminL1', kind:'Learning', role:'Additional experiment', license:'Review before reuse', refs:[25], strength:'Maintainer-described custom PPO implementation.', limit:'Targets 1v1. Playing strength has not been independently reproduced in this research.', inspection:'Repository documentation', chapters:[3,7] },
-  { name:'RLCatan', owner:'AlgoCatan', kind:'Learning', role:'Additional experiment', license:'Review before reuse', refs:[26], strength:'A reinforcement-learning capstone implementation from 2025–2026.', limit:'Availability does not establish a common benchmark or strongest public four-player policy.', inspection:'Repository documentation', chapters:[3,7] }
+  {
+    name: "Catanatron",
+    owner: "bcollazo",
+    kind: "Engine",
+    role: "Prototype foundation",
+    tag: "Start here",
+    license: "GPL-3.0",
+    refs: [12, 13, 14, 15],
+    strength:
+      "Python simulator, bot interfaces, web UI, Gymnasium, and trajectory generation.",
+    limit:
+      "The full-state bot API needs an observation boundary. Domestic trading exists in the engine, but the inspected Gym action encoding omits it.",
+    inspection: "Source inspected · 8 Sep 2026 revision",
+    chapters: [3, 9],
+  },
+  {
+    name: "MCTS / CatanWithBelief",
+    owner: "sorinMD",
+    kind: "Search",
+    role: "Primary search reference",
+    tag: "Closest research fit",
+    license: "MIT",
+    refs: [5, 6],
+    strength:
+      "Catan-specific beliefs, resource tracking, POMCP, ISMCTS, trade configuration, and learned action-type preferences.",
+    limit:
+      "Older Java stack. Published results use a single observer, factored beliefs, and a cap of three trade offers per turn.",
+    inspection: "Published paper + repository",
+    chapters: [3, 6],
+  },
+  {
+    name: "Settlers of Catan RL",
+    owner: "henrycharlesworth",
+    kind: "Learning",
+    role: "Policy and rollout reference",
+    license: "Unresolved",
+    refs: [7, 8],
+    strength:
+      "Four-player PPO with action masks, structured heads, pretrained weights, and forward-simulation search.",
+    limit:
+      "Author reports sub-expert strength. Dependencies are from 2021–2022; no recognized repository license was returned.",
+    inspection: "Author write-up + repository",
+    chapters: [3, 7],
+  },
+  {
+    name: "STACSettlers",
+    owner: "sorinMD",
+    kind: "Data",
+    role: "Dialogue and replay reference",
+    license: "Component review needed",
+    refs: [16, 33],
+    strength:
+      "Trading agents, replay infrastructure, database tooling, and a strategic dialogue research corpus.",
+    limit:
+      "Older dependencies; some agent configurations require full observability. Database presence does not establish replay quality or reuse permissions.",
+    inspection: "Repository + corpus paper",
+    chapters: [7, 8],
+  },
+  {
+    name: "JSettlers2",
+    owner: "jdmonin",
+    kind: "Engine",
+    role: "Independent comparison target",
+    license: "GPL-3.0",
+    refs: [17],
+    strength:
+      "Established client/server implementation with heuristic robots, extensive game mechanics, and documentation.",
+    limit:
+      "Not primarily designed as a high-throughput Python training environment.",
+    inspection: "Repository documentation",
+    chapters: [3, 10],
+  },
+  {
+    name: "Monte Catano",
+    owner: "Algorhythm-sxv",
+    kind: "Search",
+    role: "Performance ideas",
+    license: "AGPL-3.0",
+    refs: [18, 19, 20],
+    strength: "Compact Rust engine, MCTS, and a command-line protocol.",
+    limit:
+      "Inspected code has material rules gaps, no domestic trade action, automatic discard choices, and a full-state search path containing hidden hands.",
+    inspection: "Source inspected · 12 Jun 2026 revision",
+    chapters: [3, 6],
+  },
+  {
+    name: "CatanBot",
+    owner: "NoahLaforet",
+    kind: "Companion",
+    role: "Interaction design reference",
+    license: "GPL-3.0",
+    refs: [21],
+    strength:
+      "Visual companion, event tracking, and opening placement recommendations.",
+    limit:
+      "README describes handcrafted heuristics and one-ply evaluation, with no machine learning. Strength is not independently reproduced.",
+    inspection: "Repository documentation",
+    chapters: [3, 5],
+  },
+  {
+    name: "Catan Counter",
+    owner: "nickincardone",
+    kind: "Companion",
+    role: "Event and belief design",
+    license: "Unresolved",
+    refs: [22],
+    strength:
+      "Event parsing, possible-hand variants, and filtering using hand-count constraints.",
+    limit:
+      "No recognized repository license returned. Tracking claims need independent correctness and calibration tests.",
+    inspection: "Repository documentation",
+    chapters: [3, 4],
+  },
+  {
+    name: "Cocaco",
+    owner: "Lolligerhans",
+    kind: "Companion",
+    role: "Correlated belief reference",
+    license: "AGPL-3.0",
+    refs: [23],
+    strength:
+      "Bayesian card tracking and displays of correlated resource possibilities.",
+    limit:
+      "Browser integration does not imply permission to use assistance on an external platform. Study the representation in an authorized environment.",
+    inspection: "Repository + instructions",
+    chapters: [3, 4],
+  },
+  {
+    name: "Catanatron 1v1",
+    owner: "PeterLP123",
+    kind: "Learning",
+    role: "Training-pipeline reference",
+    license: "GPL-3.0",
+    refs: [24],
+    strength:
+      "Teacher data, imitation, DAgger, action masks, evaluation, and optional PPO.",
+    limit:
+      "Two-player variant: 15 points, balanced dice, friendly robber, and a nine-card threshold. Its benchmark is separate from the target game.",
+    inspection: "Repository documentation",
+    chapters: [3, 7],
+  },
+  {
+    name: "catan_rl",
+    owner: "BenjaminL1",
+    kind: "Learning",
+    role: "Additional experiment",
+    license: "Review before reuse",
+    refs: [25],
+    strength: "Maintainer-described custom PPO implementation.",
+    limit:
+      "Targets 1v1. Playing strength has not been independently reproduced in this research.",
+    inspection: "Repository documentation",
+    chapters: [3, 7],
+  },
+  {
+    name: "RLCatan",
+    owner: "AlgoCatan",
+    kind: "Learning",
+    role: "Additional experiment",
+    license: "Review before reuse",
+    refs: [26],
+    strength:
+      "A reinforcement-learning capstone implementation from 2025–2026.",
+    limit:
+      "Availability does not establish a common benchmark or strongest public four-player policy.",
+    inspection: "Repository documentation",
+    chapters: [3, 7],
+  },
 ];
 
 export const components = [
-  { id:'observe', label:'Observe', subtitle:'Rules + event history', glyph:'01', heading:'A strict boundary around what a player can know.', body:'The simulator owns the full game state. Each agent receives only its board, public status, own private cards, observed history, and legal-action context. A correction is an event, so replay remains deterministic.', points:['Version the ruleset and event schema.','Keep private payloads scoped to each player.','Test indistinguishable worlds for information leakage.'], chapter:9, refs:[1,13,15] },
-  { id:'believe', label:'Infer', subtitle:'Joint resource beliefs', glyph:'02', heading:'Keep possible hands, with probabilities.', body:'Public production and spending constrain the state. An unseen random theft branches possible hands and creates a correlation between victim and thief. A weighted joint belief preserves this information; independent per-player estimates can discard it.', points:['Use exact feasible states while small; weighted particles when needed.','Separate random-event likelihoods from strategic-action models.','Show approximation and reconciliation status.'], chapter:4, refs:[5,6,23,29] },
-  { id:'learn', label:'Learn', subtitle:'Policy + value models', glyph:'03', heading:'Learn useful priors, then improve through play.', body:'A board-aware encoder combines geometry, public player features, own cards, belief summaries, and event history. A masked policy proposes legal actions; a value model estimates outcomes against a declared opponent population.', points:['Begin with teacher-generated data and imitation.','Add historical games only after permission and replay checks.','Train through self-play with diverse frozen opponents.'], chapter:7, refs:[7,9,30,31,32] },
-  { id:'search', label:'Search', subtitle:'Plausible future states', glyph:'04', heading:'Spend computation on decisions that matter.', body:'Sample hidden worlds consistent with the observation, propose legal actions, and simulate opponents from their own information. Start with root Monte Carlo evaluation, then compare ISMCTS or POMCP-style planning under an equal time budget.', points:['Search the sequential settlement-and-road draft.','Prevent strategy fusion and opponent information leakage.','Treat trade offers and acceptances as modeled decisions.'], chapter:6, refs:[5,6,28,29] },
-  { id:'evaluate', label:'Evaluate', subtitle:'Frozen tests + uncertainty', glyph:'05', heading:'Make every strength claim reproducible.', body:'Use held-out boards, seat rotation, opponent mixtures, versioned seeds, and independent final evaluation. Track win rate, calibration, latency, invalid actions, and event recovery. Compare each new component through ablations.', points:['Keep two-player and four-player results separate.','Report confidence intervals and all truncations.','Use hidden-card oracle access only as a labeled diagnostic.'], chapter:10, refs:[1,5] }
+  {
+    id: "observe",
+    label: "Observe",
+    subtitle: "Rules + event history",
+    glyph: "01",
+    heading: "A strict boundary around what a player can know.",
+    body: "The simulator owns the full game state. Each agent receives only its board, public status, own private cards, observed history, and legal-action context. A correction is an event, so replay remains deterministic.",
+    points: [
+      "Version the ruleset and event schema.",
+      "Keep private payloads scoped to each player.",
+      "Test indistinguishable worlds for information leakage.",
+    ],
+    chapter: 9,
+    refs: [1, 13, 15],
+  },
+  {
+    id: "believe",
+    label: "Infer",
+    subtitle: "Joint resource beliefs",
+    glyph: "02",
+    heading: "Keep possible hands, with probabilities.",
+    body: "Public production and spending constrain the state. An unseen random theft branches possible hands and creates a correlation between victim and thief. A weighted joint belief preserves this information; independent per-player estimates can discard it.",
+    points: [
+      "Use exact feasible states while small; weighted particles when needed.",
+      "Separate random-event likelihoods from strategic-action models.",
+      "Show approximation and reconciliation status.",
+    ],
+    chapter: 4,
+    refs: [5, 6, 23, 29],
+  },
+  {
+    id: "learn",
+    label: "Learn",
+    subtitle: "Policy + value models",
+    glyph: "03",
+    heading: "Learn useful priors, then improve through play.",
+    body: "A board-aware encoder combines geometry, public player features, own cards, belief summaries, and event history. A masked policy proposes legal actions; a value model estimates outcomes against a declared opponent population.",
+    points: [
+      "Begin with teacher-generated data and imitation.",
+      "Add historical games only after permission and replay checks.",
+      "Train through self-play with diverse frozen opponents.",
+    ],
+    chapter: 7,
+    refs: [7, 9, 30, 31, 32],
+  },
+  {
+    id: "search",
+    label: "Search",
+    subtitle: "Plausible future states",
+    glyph: "04",
+    heading: "Spend computation on decisions that matter.",
+    body: "Sample hidden worlds consistent with the observation, propose legal actions, and simulate opponents from their own information. Start with root Monte Carlo evaluation, then compare ISMCTS or POMCP-style planning under an equal time budget.",
+    points: [
+      "Search the sequential settlement-and-road draft.",
+      "Prevent strategy fusion and opponent information leakage.",
+      "Treat trade offers and acceptances as modeled decisions.",
+    ],
+    chapter: 6,
+    refs: [5, 6, 28, 29],
+  },
+  {
+    id: "evaluate",
+    label: "Evaluate",
+    subtitle: "Frozen tests + uncertainty",
+    glyph: "05",
+    heading: "Make every strength claim reproducible.",
+    body: "Use held-out boards, seat rotation, opponent mixtures, versioned seeds, and independent final evaluation. Track win rate, calibration, latency, invalid actions, and event recovery. Compare each new component through ablations.",
+    points: [
+      "Keep two-player and four-player results separate.",
+      "Report confidence intervals and all truncations.",
+      "Use hidden-card oracle access only as a labeled diagnostic.",
+    ],
+    chapter: 10,
+    refs: [1, 5],
+  },
 ];
 
 export const stages = [
-  { title:'Engine & interfaces', effort:'1–2 weeks', focus:'Make the game trustworthy.', deliverables:['Pin a simulator and four-player ruleset.','Define observations, events, and replay.','Run complete baseline games.'], exit:'Deterministic replays and passing core rules and information checks.', chapter:9 },
-  { title:'Tracker & companion', effort:'2–4 weeks', focus:'Turn observations into useful beliefs.', deliverables:['Enter a board and record events manually.','Display exact and uncertain resource holdings.','Support correction, undo, and replay.'], exit:'Known cases match ground truth; uncertain cases calibrate on simulated histories.', chapter:4 },
-  { title:'Opening & root search', effort:'2–4 weeks', focus:'Test the settlement-placement advantage.', deliverables:['Evaluate the sequential draft and road choices.','Compare production, richer heuristics, and searched openings.','Freeze the continuation policies.'], exit:'A measurable gain over the production baseline on held-out scenarios.', chapter:5 },
-  { title:'Learned policy & value', effort:'4–8 weeks', focus:'Learn beyond the hand-built baseline.', deliverables:['Generate teacher trajectories and train imitation.','Add an event-history encoder and masked action heads.','Run a self-play pilot.'], exit:'Beats agreed frozen baselines without hidden-state leakage.', chapter:7 },
-  { title:'Trading & population', effort:'6–12+ weeks', focus:'Make strength hold across opponents.', deliverables:['Learn structured negotiation and response models.','Refine belief-aware search.','Evaluate diverse opponent populations.'], exit:'Improvements persist across opponent mixtures and all seats.', chapter:8 }
+  {
+    title: "Engine & interfaces",
+    effort: "1–2 weeks",
+    focus: "Make the game trustworthy.",
+    deliverables: [
+      "Pin a simulator and four-player ruleset.",
+      "Define observations, events, and replay.",
+      "Run complete baseline games.",
+    ],
+    exit: "Deterministic replays and passing core rules and information checks.",
+    chapter: 9,
+  },
+  {
+    title: "Tracker & companion",
+    effort: "2–4 weeks",
+    focus: "Turn observations into useful beliefs.",
+    deliverables: [
+      "Enter a board and record events manually.",
+      "Display exact and uncertain resource holdings.",
+      "Support correction, undo, and replay.",
+    ],
+    exit: "Known cases match ground truth; uncertain cases calibrate on simulated histories.",
+    chapter: 4,
+  },
+  {
+    title: "Opening & root search",
+    effort: "2–4 weeks",
+    focus: "Test the settlement-placement advantage.",
+    deliverables: [
+      "Evaluate the sequential draft and road choices.",
+      "Compare production, richer heuristics, and searched openings.",
+      "Freeze the continuation policies.",
+    ],
+    exit: "A measurable gain over the production baseline on held-out scenarios.",
+    chapter: 5,
+  },
+  {
+    title: "Learned policy & value",
+    effort: "4–8 weeks",
+    focus: "Learn beyond the hand-built baseline.",
+    deliverables: [
+      "Generate teacher trajectories and train imitation.",
+      "Add an event-history encoder and masked action heads.",
+      "Run a self-play pilot.",
+    ],
+    exit: "Beats agreed frozen baselines without hidden-state leakage.",
+    chapter: 7,
+  },
+  {
+    title: "Trading & population",
+    effort: "6–12+ weeks",
+    focus: "Make strength hold across opponents.",
+    deliverables: [
+      "Learn structured negotiation and response models.",
+      "Refine belief-aware search.",
+      "Evaluate diverse opponent populations.",
+    ],
+    exit: "Improvements persist across opponent mixtures and all seats.",
+    chapter: 8,
+  },
 ];
