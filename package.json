@@ -1,0 +1,21 @@
+{
+  "name": "catan-ai-lab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An evidence-led research workbench for a four-player Catan AI.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "content": "node scripts/build-content.mjs",
+    "test": "node --test tests/content.test.mjs",
+    "test:browser": "playwright test"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "@playwright/test": "1.63.0",
+    "marked": "18.0.12"
+  }
+}
