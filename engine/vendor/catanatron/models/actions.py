@@ -130,7 +130,7 @@ def year_of_plenty_possibilities(color, freqdeck: List[int]) -> List[Action]:
             to_draw = freqdeck_from_listdeck([first_card, second_card])
             if freqdeck_contains(freqdeck, to_draw):
                 options.add((first_card, second_card))
-            else:  # try allowing player select 1 card only.
+            elif sum(freqdeck) == 1:  # Take two unless only one card remains.
                 if freqdeck_can_draw(freqdeck, 1, first_card):
                     options.add((first_card,))
                 if freqdeck_can_draw(freqdeck, 1, second_card):

@@ -1,0 +1,724 @@
+{
+  "engine_version": "0.1.0",
+  "ruleset": "catan-base-4p-2025-v1",
+  "suite": "four identical observation-only heuristic policies; deterministic seeds; not a playing-strength benchmark",
+  "games": 100,
+  "completed": 100,
+  "truncated": 0,
+  "actions": 38160,
+  "wins_by_color": {
+    "BLUE": 22,
+    "ORANGE": 17,
+    "RED": 24,
+    "WHITE": 37
+  },
+  "elapsed_seconds": 32.012,
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Windows",
+    "processor": "AMD64"
+  },
+  "invariants": "19 cards per resource, 25 development cards, player piece counts; checked after every action",
+  "results": [
+    {
+      "seed": 0,
+      "winner": "WHITE",
+      "actions": 357,
+      "turns": 97,
+      "checksum": "c445837d4be315516dfd25988f178f84b2d97f8151e3238cf01eaaf794597c46"
+    },
+    {
+      "seed": 1,
+      "winner": "BLUE",
+      "actions": 294,
+      "turns": 77,
+      "checksum": "c560dce867ec0992fe4a803a07c4ac598f3351fbe04b2707bd1a7a7e6b4b7398"
+    },
+    {
+      "seed": 2,
+      "winner": "ORANGE",
+      "actions": 412,
+      "turns": 111,
+      "checksum": "5dd0370d772a1de8c5dc2ba10d037be0d06e2f57927ab96986b8a8af3a96072b"
+    },
+    {
+      "seed": 3,
+      "winner": "WHITE",
+      "actions": 583,
+      "turns": 156,
+      "checksum": "4a20a5892d3db4c8c3d280e2ce6dcc4cba746035b13ba955b67e6c11a3d4a0cb"
+    },
+    {
+      "seed": 4,
+      "winner": "WHITE",
+      "actions": 210,
+      "turns": 58,
+      "checksum": "dc4a1bf89c062d6e68b678358dea414f701f73bacee0da27587ed3dbf6b5fed0"
+    },
+    {
+      "seed": 5,
+      "winner": "ORANGE",
+      "actions": 345,
+      "turns": 93,
+      "checksum": "9ea56b70a4bb5029c3b578b56a37154ab5effd26bd48996150bb65f97b267af6"
+    },
+    {
+      "seed": 6,
+      "winner": "BLUE",
+      "actions": 413,
+      "turns": 122,
+      "checksum": "07e68303c453943dcc323865e4a8d78860ec7828f8856c6e95b0acede6bebf64"
+    },
+    {
+      "seed": 7,
+      "winner": "ORANGE",
+      "actions": 313,
+      "turns": 77,
+      "checksum": "723823409138ba080a1f1ef0893d2762398165a1053f46b0845da121f89e8c94"
+    },
+    {
+      "seed": 8,
+      "winner": "WHITE",
+      "actions": 333,
+      "turns": 82,
+      "checksum": "272b73e226e74056d1dea1754e7457b9863e23cca880fc5b0d4296e1c274ca97"
+    },
+    {
+      "seed": 9,
+      "winner": "BLUE",
+      "actions": 210,
+      "turns": 59,
+      "checksum": "f78733220ebeec0bfb7b8bade4089c7c9a280b2e528d96de5d0f163d3f361092"
+    },
+    {
+      "seed": 10,
+      "winner": "WHITE",
+      "actions": 353,
+      "turns": 92,
+      "checksum": "dabf89592f0e4fe85e52458e480c7c62564179afc0347e79aed5da1a5dd79608"
+    },
+    {
+      "seed": 11,
+      "winner": "RED",
+      "actions": 369,
+      "turns": 96,
+      "checksum": "3dc9587523df4e7ed254512d8763739db0c174fbc9c090b3cddc26a2092e9e3c"
+    },
+    {
+      "seed": 12,
+      "winner": "WHITE",
+      "actions": 540,
+      "turns": 145,
+      "checksum": "84596dd8c752ac455dda778cc084f61906f843bcbcac4b381546fe1f45f5cf78"
+    },
+    {
+      "seed": 13,
+      "winner": "BLUE",
+      "actions": 414,
+      "turns": 114,
+      "checksum": "37a0f0ab175dc138f3b4f4dcbd2dd08291b1f7ae3e71fdde485483f5c4a832f9"
+    },
+    {
+      "seed": 14,
+      "winner": "BLUE",
+      "actions": 384,
+      "turns": 112,
+      "checksum": "3734e041b91e0fdde7b096adc05e7a30f35294f1a8f1878cb7ede4620b5adce1"
+    },
+    {
+      "seed": 15,
+      "winner": "ORANGE",
+      "actions": 577,
+      "turns": 155,
+      "checksum": "3fea6e6bc4936c354a81888e88a20c4740b52f97e21cbf729c27ab06e7e6f514"
+    },
+    {
+      "seed": 16,
+      "winner": "WHITE",
+      "actions": 279,
+      "turns": 71,
+      "checksum": "d68aef93b8376bdc3c6e4ece744a3624b38c6f014324cf6286fa197751d2d9b6"
+    },
+    {
+      "seed": 17,
+      "winner": "WHITE",
+      "actions": 368,
+      "turns": 97,
+      "checksum": "8bcb189f7bab01c5f9d3673484a3043d344b4568b6dcefadcdb0ecf779683b72"
+    },
+    {
+      "seed": 18,
+      "winner": "RED",
+      "actions": 378,
+      "turns": 98,
+      "checksum": "d88774ad9fee406b40fa4eb8fe4ac6cf66605cffd94d66de8082ebbe1a4ae587"
+    },
+    {
+      "seed": 19,
+      "winner": "RED",
+      "actions": 206,
+      "turns": 53,
+      "checksum": "1a59445e5025905322c99fd015d959483ac700a773f2af8900c5a3bab49c1812"
+    },
+    {
+      "seed": 20,
+      "winner": "RED",
+      "actions": 411,
+      "turns": 115,
+      "checksum": "df7a6718198ff0282dc70bcc744a5e5f371c26ad8ac1f7540fe700220e35be96"
+    },
+    {
+      "seed": 21,
+      "winner": "RED",
+      "actions": 495,
+      "turns": 132,
+      "checksum": "42573e4052c0dab3e06aff8de610cc8304582e015a384b3531efe4356cc19b0c"
+    },
+    {
+      "seed": 22,
+      "winner": "ORANGE",
+      "actions": 308,
+      "turns": 79,
+      "checksum": "2eead73f9ea399c70345a2a61b6835ef9fc1ae74494a28e51e312ce150d8617e"
+    },
+    {
+      "seed": 23,
+      "winner": "WHITE",
+      "actions": 502,
+      "turns": 127,
+      "checksum": "b9fc8d10c75ec792a109455795e107e5487eed9e9f2b9177b7f4df5d4d975440"
+    },
+    {
+      "seed": 24,
+      "winner": "WHITE",
+      "actions": 494,
+      "turns": 141,
+      "checksum": "73d0ad9bab6c921e33e7b02e7c3948e23d74476dabae1b40b45ed6b1d9adfbbd"
+    },
+    {
+      "seed": 25,
+      "winner": "RED",
+      "actions": 379,
+      "turns": 98,
+      "checksum": "724c2c3c11016ebd7866482d6e32fcafb170f35220677d0a30125901795bdc3d"
+    },
+    {
+      "seed": 26,
+      "winner": "ORANGE",
+      "actions": 404,
+      "turns": 106,
+      "checksum": "527c08530765a286c6e758410db9b66351258d8330c779164f830761c246af41"
+    },
+    {
+      "seed": 27,
+      "winner": "RED",
+      "actions": 387,
+      "turns": 104,
+      "checksum": "19c96add04436eaeb98418b78ffb62bf4dfd377755570b7b4d046cb1bec67a2e"
+    },
+    {
+      "seed": 28,
+      "winner": "BLUE",
+      "actions": 287,
+      "turns": 76,
+      "checksum": "32a48a6545896a0a42f4541aeb9842abf3967680a95f35a50df908b172172433"
+    },
+    {
+      "seed": 29,
+      "winner": "RED",
+      "actions": 331,
+      "turns": 89,
+      "checksum": "2b753d393003665f31c4642edd456a2611593323ba5f7b4336a0e75e133d1ab9"
+    },
+    {
+      "seed": 30,
+      "winner": "RED",
+      "actions": 229,
+      "turns": 63,
+      "checksum": "63f237a764c338ab65ecb3b2e0ec421cb0065d5280274f766f0fa2de0501c60f"
+    },
+    {
+      "seed": 31,
+      "winner": "BLUE",
+      "actions": 307,
+      "turns": 78,
+      "checksum": "f89ad7f71796c45d9ec27e7b37e3543aab0f22f3948a6d21b2d889da35880893"
+    },
+    {
+      "seed": 32,
+      "winner": "WHITE",
+      "actions": 338,
+      "turns": 90,
+      "checksum": "1981e4f85f231eea01b1778746d964f4478b72336ce497de5a5514cd56add057"
+    },
+    {
+      "seed": 33,
+      "winner": "WHITE",
+      "actions": 391,
+      "turns": 100,
+      "checksum": "8b8a256f3595a5ec0a7b143ebd946b2c45b08ff1f8dd2028380b681f569d0d6c"
+    },
+    {
+      "seed": 34,
+      "winner": "RED",
+      "actions": 299,
+      "turns": 79,
+      "checksum": "e3f77bf40379df318110d6ac4f72ee8e396bed71cb197a23fccfa8526d98e302"
+    },
+    {
+      "seed": 35,
+      "winner": "ORANGE",
+      "actions": 332,
+      "turns": 85,
+      "checksum": "9c42edf45717365f20ef7b4c056d99efb92356a9f549ab965fc8e07850e346e3"
+    },
+    {
+      "seed": 36,
+      "winner": "RED",
+      "actions": 382,
+      "turns": 106,
+      "checksum": "45144d2654900949963bca02b7fcce11c9ec44300d6089a29b4ef15a81e6c4d6"
+    },
+    {
+      "seed": 37,
+      "winner": "WHITE",
+      "actions": 429,
+      "turns": 115,
+      "checksum": "18f2923c492450f88c7e8b73338bc67191bf196e0a9064b681469156ec0e72de"
+    },
+    {
+      "seed": 38,
+      "winner": "WHITE",
+      "actions": 440,
+      "turns": 117,
+      "checksum": "11ee68276e200138be1e0207f017a8bc49ebe176f31255f3fb9be6b3780964ce"
+    },
+    {
+      "seed": 39,
+      "winner": "WHITE",
+      "actions": 445,
+      "turns": 114,
+      "checksum": "fd0227cb95cdf418edc8676e76ee0d7b4c905dab264afb8b374d6f7c134d49a8"
+    },
+    {
+      "seed": 40,
+      "winner": "WHITE",
+      "actions": 343,
+      "turns": 97,
+      "checksum": "77a94f61b2adaa652e03964de898849078c594e497e157f7ca487ae767c96c3d"
+    },
+    {
+      "seed": 41,
+      "winner": "WHITE",
+      "actions": 379,
+      "turns": 101,
+      "checksum": "3d1f501e691adecd706b667f219635c2cc4665c3598f92cf78aeb455e0e19ed3"
+    },
+    {
+      "seed": 42,
+      "winner": "WHITE",
+      "actions": 427,
+      "turns": 110,
+      "checksum": "0afe5913c4710f289cc8730c80a67e532a359a2dded15a8c4852b22acba27a7d"
+    },
+    {
+      "seed": 43,
+      "winner": "RED",
+      "actions": 302,
+      "turns": 81,
+      "checksum": "51c40b10aa465d50fb499bd8db55fe6c0e0a6d0715e3906db6f3220a1259f683"
+    },
+    {
+      "seed": 44,
+      "winner": "RED",
+      "actions": 486,
+      "turns": 135,
+      "checksum": "964457e251c1dd9f392f3fbe02c888e9a92fabe995ea5efbd51f4561284840a1"
+    },
+    {
+      "seed": 45,
+      "winner": "RED",
+      "actions": 496,
+      "turns": 136,
+      "checksum": "7b0cb5e94e1cd1cc089711e4a9ee2b2b103f20b10b76d88122e23f958fcfbeab"
+    },
+    {
+      "seed": 46,
+      "winner": "BLUE",
+      "actions": 394,
+      "turns": 106,
+      "checksum": "9a131391483f8c252c8660bce3b8b43d37beff215ef187b77d2251950b84b736"
+    },
+    {
+      "seed": 47,
+      "winner": "ORANGE",
+      "actions": 373,
+      "turns": 101,
+      "checksum": "5e547269c937ea2a0ae93312922b4a2fbbccf8078b9a37ae50c4aee4f95de2b9"
+    },
+    {
+      "seed": 48,
+      "winner": "WHITE",
+      "actions": 327,
+      "turns": 92,
+      "checksum": "88c5ad98be399b0b89a475dda5ec86a84e0fe42b9153a780590969e956c3e902"
+    },
+    {
+      "seed": 49,
+      "winner": "BLUE",
+      "actions": 438,
+      "turns": 122,
+      "checksum": "0e7b4421dae9a192ba02849c55d2fdbe92c8df7ee4fd15574af227a22b3a832f"
+    },
+    {
+      "seed": 50,
+      "winner": "BLUE",
+      "actions": 259,
+      "turns": 70,
+      "checksum": "d6e88c89817d17ea4c24b390c9fd5f24783329bcb7437318ea1c80692c039f05"
+    },
+    {
+      "seed": 51,
+      "winner": "RED",
+      "actions": 422,
+      "turns": 115,
+      "checksum": "a6042ea3b988941a3be4b21ef221655377ba55b8b7799b50786de0053f101bdc"
+    },
+    {
+      "seed": 52,
+      "winner": "WHITE",
+      "actions": 294,
+      "turns": 76,
+      "checksum": "ff720905cb12cf1a11d4a9ed30bc6375f451b62e1aa2113c649db1bc56b7f3e0"
+    },
+    {
+      "seed": 53,
+      "winner": "WHITE",
+      "actions": 285,
+      "turns": 74,
+      "checksum": "5c1982ab364768f3d1455c61a8db299f03d62d069d12b69c441ddad640eb84ad"
+    },
+    {
+      "seed": 54,
+      "winner": "WHITE",
+      "actions": 400,
+      "turns": 106,
+      "checksum": "d5aca1ec4b112d8c45358729b5b8479cea71a1b18da906fa15ba8c17c7329eec"
+    },
+    {
+      "seed": 55,
+      "winner": "RED",
+      "actions": 427,
+      "turns": 117,
+      "checksum": "a11c6ffe46c47e6340e7aada10a6af1d0e98e82d2091dd02832c7a16b070965c"
+    },
+    {
+      "seed": 56,
+      "winner": "BLUE",
+      "actions": 397,
+      "turns": 98,
+      "checksum": "afc0f54f49a76a576777c837572953183ff486d690953e7ea2b389bdddc2c72a"
+    },
+    {
+      "seed": 57,
+      "winner": "BLUE",
+      "actions": 405,
+      "turns": 110,
+      "checksum": "e43e4fac9c0cca6cc0ffad8201b2a486bd0f4bbd74fc0b6d439db4c885bf88f7"
+    },
+    {
+      "seed": 58,
+      "winner": "WHITE",
+      "actions": 488,
+      "turns": 128,
+      "checksum": "b6a0ec7bb9ea2cc0d520d161d18812d3f62cc6e4478a7675350db0efc6fa8dd9"
+    },
+    {
+      "seed": 59,
+      "winner": "ORANGE",
+      "actions": 269,
+      "turns": 76,
+      "checksum": "1b1c21d71615ba80d9c5c03420e3b445a2e7c6073f848e198e995ac957c4d410"
+    },
+    {
+      "seed": 60,
+      "winner": "BLUE",
+      "actions": 345,
+      "turns": 90,
+      "checksum": "9c0fa074d697d02de326291c64137d142be337cc2191a625251d58243c2f0f57"
+    },
+    {
+      "seed": 61,
+      "winner": "RED",
+      "actions": 306,
+      "turns": 74,
+      "checksum": "c06ee2a814cb1ed06380ee80039a74a76f83f671c80256cd5f585a5968a35d26"
+    },
+    {
+      "seed": 62,
+      "winner": "ORANGE",
+      "actions": 495,
+      "turns": 135,
+      "checksum": "99b21635b5e9af01d095cabee915b292a6f51ec98a83e0ea98a83afbe523a1ca"
+    },
+    {
+      "seed": 63,
+      "winner": "WHITE",
+      "actions": 214,
+      "turns": 57,
+      "checksum": "ee3caf69844d69a6fbc8611473d8c56d239a9d73487f4310f45761dcb83694bd"
+    },
+    {
+      "seed": 64,
+      "winner": "BLUE",
+      "actions": 377,
+      "turns": 107,
+      "checksum": "c649262c5eae2450c92bdbb0f35e45050a5aa4aeca4a0e6325cc9c191ba964fb"
+    },
+    {
+      "seed": 65,
+      "winner": "BLUE",
+      "actions": 333,
+      "turns": 94,
+      "checksum": "fb8e3ba3d9a6416eb1ca0aed0b906e08b9d401ef8e3194a1f0a91d92e969f764"
+    },
+    {
+      "seed": 66,
+      "winner": "WHITE",
+      "actions": 495,
+      "turns": 144,
+      "checksum": "2c6a873cc2e37a5db697245196aaddb75d18e101c1a151f73f6d8c24d9a7a5b5"
+    },
+    {
+      "seed": 67,
+      "winner": "RED",
+      "actions": 382,
+      "turns": 109,
+      "checksum": "2338b340a198e675ac34201c63b2d980b807759b6e4863ab60fd9550328887d1"
+    },
+    {
+      "seed": 68,
+      "winner": "WHITE",
+      "actions": 342,
+      "turns": 89,
+      "checksum": "811687e83207bd3485652571d94e75c5349bfbb61a23504bacb7d354e3da5953"
+    },
+    {
+      "seed": 69,
+      "winner": "WHITE",
+      "actions": 618,
+      "turns": 162,
+      "checksum": "6eb7526c777a9224708abcabc91274f5edfedb372f2606c0b8225226bfb0467b"
+    },
+    {
+      "seed": 70,
+      "winner": "BLUE",
+      "actions": 462,
+      "turns": 130,
+      "checksum": "184b6d38503a571ded3cea3499f621a245a023bd90834d95140c42b2b7652694"
+    },
+    {
+      "seed": 71,
+      "winner": "BLUE",
+      "actions": 378,
+      "turns": 104,
+      "checksum": "ec903994c09341d88c941da103f2a57fbca9e14cc240adc84341199474ae4dd9"
+    },
+    {
+      "seed": 72,
+      "winner": "ORANGE",
+      "actions": 267,
+      "turns": 78,
+      "checksum": "3e8e0d6bb7ef2a47b0d0f9954fcbe26ec617fd73b732540b7b7e212edd6de512"
+    },
+    {
+      "seed": 73,
+      "winner": "ORANGE",
+      "actions": 230,
+      "turns": 65,
+      "checksum": "59f72de1f911c1216e007407eadc607436774349bed131662ea6df5486fa67f8"
+    },
+    {
+      "seed": 74,
+      "winner": "BLUE",
+      "actions": 438,
+      "turns": 114,
+      "checksum": "6d01e72772b921c222ffe73a3866acaed1e6eb548d127abc55d08c71fc68aaf8"
+    },
+    {
+      "seed": 75,
+      "winner": "RED",
+      "actions": 246,
+      "turns": 60,
+      "checksum": "47176616b35a183f84b95855d518997fc2a2bfec4fe6ef96780b7732b45b56a7"
+    },
+    {
+      "seed": 76,
+      "winner": "RED",
+      "actions": 452,
+      "turns": 124,
+      "checksum": "0f94e01c51af683426a45ff1adcce2d31549e10d13350a57d0a07df0f8de4b6b"
+    },
+    {
+      "seed": 77,
+      "winner": "ORANGE",
+      "actions": 425,
+      "turns": 121,
+      "checksum": "59816458bf1851c154e2d2180541203a25b5724264b4972415a47292ac6226e2"
+    },
+    {
+      "seed": 78,
+      "winner": "WHITE",
+      "actions": 317,
+      "turns": 87,
+      "checksum": "d5767e38a7d0d8aadb6ff2a02b5ca40e98ac026021999530ff5dde3d214fd32f"
+    },
+    {
+      "seed": 79,
+      "winner": "BLUE",
+      "actions": 393,
+      "turns": 105,
+      "checksum": "ddbe56528fc026d147cb2eb809d9bdf5f53a723a085e925fab60024f38ad81de"
+    },
+    {
+      "seed": 80,
+      "winner": "WHITE",
+      "actions": 437,
+      "turns": 115,
+      "checksum": "1119c5976583ba67df1bb5f6e1353574db79e733784cf45a4de8fb6269afb4f3"
+    },
+    {
+      "seed": 81,
+      "winner": "WHITE",
+      "actions": 329,
+      "turns": 89,
+      "checksum": "31ea95dc2208a626b7ec6b976590cd55fe96b47a42e18cadd1d0b96fa56c39a7"
+    },
+    {
+      "seed": 82,
+      "winner": "RED",
+      "actions": 515,
+      "turns": 144,
+      "checksum": "a49f16b68bab33c76c7c0c0b2dab56e55256b955bb24dcf30d0d8b924e8d06ae"
+    },
+    {
+      "seed": 83,
+      "winner": "WHITE",
+      "actions": 421,
+      "turns": 117,
+      "checksum": "f42a9cb0926d28028fd62ee099edf0efce85e3c538b0624c9905b63bd946ae85"
+    },
+    {
+      "seed": 84,
+      "winner": "ORANGE",
+      "actions": 311,
+      "turns": 93,
+      "checksum": "009aaf8e3042023081c06e8e610bf15a738cd0a0dad61bf5a4270894a5b8d796"
+    },
+    {
+      "seed": 85,
+      "winner": "BLUE",
+      "actions": 474,
+      "turns": 125,
+      "checksum": "1b7214e784e6d4f8a72573ed6b2b63086bcfe837ad08aa2589dc8d00bee3cb04"
+    },
+    {
+      "seed": 86,
+      "winner": "ORANGE",
+      "actions": 278,
+      "turns": 70,
+      "checksum": "ff4ab11fdeb3633639498bf1f779f46081734e9a5bef8a65c8c6fd49a1277bb6"
+    },
+    {
+      "seed": 87,
+      "winner": "RED",
+      "actions": 261,
+      "turns": 71,
+      "checksum": "29d642ae4c47ea466e8554dac1c024410ab23d5bf130f058c508da3ac48b5879"
+    },
+    {
+      "seed": 88,
+      "winner": "RED",
+      "actions": 533,
+      "turns": 146,
+      "checksum": "9cbd43a65cb91f9ee9bc34277be3be2b2de4b1cb8e0d4b465364aedbe06e6d7a"
+    },
+    {
+      "seed": 89,
+      "winner": "BLUE",
+      "actions": 526,
+      "turns": 131,
+      "checksum": "ca61623f8a39a32fd83831b44f1222fe33fd7015fc8a8c5c9513990e11d8c04b"
+    },
+    {
+      "seed": 90,
+      "winner": "WHITE",
+      "actions": 463,
+      "turns": 124,
+      "checksum": "79791baa9fabc459843cea5a746d306b1334f1f530dca4f8675171b5a4b6c123"
+    },
+    {
+      "seed": 91,
+      "winner": "RED",
+      "actions": 431,
+      "turns": 117,
+      "checksum": "03aed237ce5ff6d1436d6c5edfceed1ba20f5ce1eaa92e0d9b9d2362143ff800"
+    },
+    {
+      "seed": 92,
+      "winner": "WHITE",
+      "actions": 311,
+      "turns": 89,
+      "checksum": "15d109775edebad3e06926d27f8075e3022955840a04c50e3f3f002d30662a87"
+    },
+    {
+      "seed": 93,
+      "winner": "WHITE",
+      "actions": 467,
+      "turns": 125,
+      "checksum": "fb9fc1331b2cf39252612f631909eb537f2c5ea21ad7bbeddd460cc8cd81b1aa"
+    },
+    {
+      "seed": 94,
+      "winner": "WHITE",
+      "actions": 595,
+      "turns": 135,
+      "checksum": "cf15ee7d7975cbb5cc76d5736386c42ba8909a8b67beef74906380b56bfa27b0"
+    },
+    {
+      "seed": 95,
+      "winner": "WHITE",
+      "actions": 492,
+      "turns": 126,
+      "checksum": "2325b1c14cb629377daed842d24e01a2b7e683493aac3e5b9a99e526b1f7e890"
+    },
+    {
+      "seed": 96,
+      "winner": "BLUE",
+      "actions": 382,
+      "turns": 98,
+      "checksum": "081f4a68135d3e8b08e037170949c586339e621f5d9b2f9f3e15b67551542a15"
+    },
+    {
+      "seed": 97,
+      "winner": "ORANGE",
+      "actions": 262,
+      "turns": 75,
+      "checksum": "f04f67c81dafaea65336f6080fe5d14c19be36f4f2b0d6b02e7fed971de8198d"
+    },
+    {
+      "seed": 98,
+      "winner": "WHITE",
+      "actions": 386,
+      "turns": 106,
+      "checksum": "487e26862cbd6d5d4e7eb3d25a774299ee8ce99949db1b9e1337b7bc8104d5ba"
+    },
+    {
+      "seed": 99,
+      "winner": "ORANGE",
+      "actions": 232,
+      "turns": 60,
+      "checksum": "ff3ace97530b2083be43812645c340a3d39e27d06b94c2d7fa4d88647a9b39a1"
+    }
+  ]
+}

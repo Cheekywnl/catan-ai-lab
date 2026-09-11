@@ -50,7 +50,7 @@ def test_year_of_plenty_possible_actions_full_resource_bank():
 def test_year_of_plenty_possible_actions_not_enough_cards():
     bank_resource_freqdeck = [0, 0, 0, 0, 2]
     actions = year_of_plenty_possibilities(Color.RED, bank_resource_freqdeck)
-    assert len(actions) == 2  # one ORE, or 2 OREs.
+    assert len(actions) == 1  # Both available ORE cards must be taken.
 
 
 def test_monopoly_possible_actions():

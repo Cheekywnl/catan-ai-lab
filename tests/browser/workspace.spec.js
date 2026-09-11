@@ -15,7 +15,10 @@ test("overview, all chapters, source citations, and direct-link reloads", async 
   await expect(
     page.getByRole("heading", { name: "A smarter way to play." }),
   ).toBeVisible();
-  await page.getByRole("link", { name: "Explore the blueprint" }).click();
+  await expect(
+    page.getByRole("link", { name: "Open the playable engine" }),
+  ).toHaveAttribute("href", "#engine");
+  await page.goto("/#research/1");
   await expect(page.locator(".research-article h1")).toContainText(
     "Recommendation",
   );

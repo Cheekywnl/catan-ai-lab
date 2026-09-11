@@ -1,34 +1,59 @@
 # Catan Research Lab
 
-A private, interactive review site for the research and implementation blueprint of a four-player Catan AI: a full-game bot, a game companion, and a research workbench powered by one shared decision engine.
+A playable four-player Catan engine, card-belief tracker, opening-search prototype, and source-backed AI research workspace. The same Python engine runs natively and in a browser worker. Open the private website at [Play & simulate](https://catan-research-lab-cheekywnl.founders622811.chatgpt.site/#engine).
 
-## Status
+## Implemented
 
-The research review website is implemented. The report is a source-backed assessment as of 11 September 2026. It contains published findings and proposed engineering choices; no trained bot, reproduced strength benchmark, or proof of game-theoretic optimality is claimed. The belief lab is a working exact-probability explainer, not a full game tracker.
+- Legal full games with setup, production, robber/discards, building, development cards, ports, player trades, awards, and victory.
+- Interactive SVG board, legal-action selection, manual trading, bot simulation, viewpoints, undo, and deterministic replay import/export.
+- Joint resource beliefs with explicit exact, modeled, sampled, and conservative-bound states.
+- Observation-only heuristic policy and Monte Carlo evaluation of remaining opening settlement drafts.
+- Native simulation and observation/action/outcome JSONL export for future training.
+- Twelve research chapters, 37 sources, project comparison, architecture, roadmap, search, and an exact theft-probability explainer.
 
-The workspace includes the complete chapter reader, global search, searchable project comparisons, a filterable evidence register, interactive architecture, the correlated-hand explainer, and the staged implementation roadmap. Every chapter is directly linkable, and the original report can be downloaded on desktop or mobile. All website assets, including fonts, are served locally; no external service is required to use the workspace once served.
+Engine 0.1 is a tested foundation. **No trained model, full-game MCTS, competitive-strength result, or game-theoretic optimality is claimed.** See [implementation and limitations](research/implementation.md), the [research report](research/catan-ai-research.md), and [engine provenance](engine/UPSTREAM.md).
 
-## Research
+## Run locally
 
-The complete report is in [research/catan-ai-research.md](research/catan-ai-research.md). It includes 12 chapters and 37 sources, covering prior agents, probabilistic card tracking, settlement evaluation, search, reinforcement learning, historical data, trading, architecture, testing, and implementation.
+Requires Node.js 22. Static assets, including the Python runtime, are committed, so running the website requires no native Python installation.
 
-## Local development
+```sh
+npm ci
+npm start
+```
 
-Requires Node.js 22 or later. Run `npm ci`, then `npm start`, and open the printed local URL. The website is served from `dist/`; static assets are deliberately tracked so the reviewed site can be reproduced from a commit.
+Open `http://127.0.0.1:4173/#engine`. All runtime assets and fonts are self-hosted. Research pages load without starting Python; the engine initializes when opened.
 
-## Editing and verification
+## Simulate and develop the engine
 
-- Edit the canonical report in `research/catan-ai-research.md`, then run `npm run content` to rebuild the reader data and download. Commit both the original and generated files.
-- Edit the curated project, architecture, and roadmap views in `dist/catalog.js`. Their citations reference the same numbered evidence register.
-- Edit interaction code in `dist/app.js`; exact theft probabilities live in `dist/lab-math.js`.
-- Run `npm test` for content completeness, citation integrity, resource conservation, and exact probability checks.
-- Run `npx playwright install chromium`, then `npm run test:browser` for desktop/mobile flows, downloads, keyboard focus, responsive layouts, and automated accessibility checks. The test runner starts a local server when needed.
-- With the local server running, `node scripts/capture-review.mjs` writes visual-review screenshots to the ignored `test-results/review/` folder.
+Tested with Python 3.12. Create and activate a virtual environment, then:
 
-GitHub Actions repeats content regeneration and both test suites on pushes and pull requests. Generated data must match the committed research. Browser checks use Chromium desktop and mobile emulation; they do not certify all browsers or replace manual accessibility review.
+```sh
+pip install -r engine/requirements.txt
+python -m pytest -q
+python -m engine.simulate --games 100 --output research/engine-validation.json
+python -m engine.simulate --games 5 --trajectories work/teacher.jsonl
+python scripts/build-engine.py
+```
 
-## Publishing
+`engine/session.py` owns transitions, observations, events, replay, and invariants. `engine/policy.py` consumes player observations only. `engine/beliefs.py` updates correlated resource possibilities. `engine/vendor/catanatron` is the pinned and locally corrected rules core. Build the browser bundle after changing any engine source.
 
-The GitHub repository is private. The website uses an owner-private Sites deployment, configured by `.openai/hosting.json`. A reviewed commit is pushed to both repositories and its static `dist/` output is packaged for publication. Source credentials are temporary and never committed. A GitHub push runs tests; it does not itself publish the website.
+The committed [validation run](research/engine-validation.json) completed 100/100 seeded heuristic games with conservation checks after every action. The 126-test Python suite includes inherited and local regressions. These establish tested behavior, not a proof that every rule edge case is correct.
 
-This is an independent research project, unaffiliated with CATAN or any online Catan platform. Third-party repositories and papers retain their own terms and licenses. No third-party agent source code or game dataset is bundled. DM Sans and Manrope font files retain their SIL Open Font License notices in `dist/fonts/`.
+## Website checks and editing
+
+```sh
+npm test
+npx playwright install chromium
+npm run test:browser
+```
+
+Browser checks exercise gameplay, exact native/browser replay agreement, research flows, keyboard navigation, mobile layout, and automated accessibility. GitHub Actions repeats these checks and Python tests, regenerates engine and report artifacts, and rejects stale generated output.
+
+Edit the canonical report in `research/catan-ai-research.md`, then run `npm run content`. The implementation log is separate so original research remains a dated snapshot. UI files live in `dist/`; `engine-ui.js` and `engine.css` implement the playable workspace. `catalog.js` holds curated project, architecture, and roadmap entries. Source archives are reproducibly generated by `scripts/build-engine.py`.
+
+## Publishing and licenses
+
+GitHub and the Sites deployment are private. `.openai/hosting.json` selects the existing website. Reviewed source is pushed to both repositories, then the exact commit's static `dist/` directory is packaged and privately published. GitHub pushes run CI; they do not deploy the site by themselves.
+
+Catanatron and Catan Lab engine additions are GPL-3.0-or-later, with corresponding source and notices in `dist/engine-source.zip` and [engine/LICENSE](engine/LICENSE). NetworkX is BSD-3-Clause. Pyodide, CPython, and fonts retain their own notices; see [runtime notices](dist/THIRD_PARTY.md). This independent project is unaffiliated with CATAN or online Catan platforms. No proprietary artwork or historical game dataset is bundled.

@@ -250,6 +250,7 @@ export const components = [
 export const stages = [
   {
     title: "Engine & interfaces",
+    status: "Implemented v0.1",
     effort: "1–2 weeks",
     focus: "Make the game trustworthy.",
     deliverables: [
@@ -262,6 +263,7 @@ export const stages = [
   },
   {
     title: "Tracker & companion",
+    status: "In-engine tracker live",
     effort: "2–4 weeks",
     focus: "Turn observations into useful beliefs.",
     deliverables: [
@@ -274,6 +276,7 @@ export const stages = [
   },
   {
     title: "Opening & root search",
+    status: "Draft prototype live",
     effort: "2–4 weeks",
     focus: "Test the settlement-placement advantage.",
     deliverables: [
@@ -286,6 +289,7 @@ export const stages = [
   },
   {
     title: "Learned policy & value",
+    status: "Planned",
     effort: "4–8 weeks",
     focus: "Learn beyond the hand-built baseline.",
     deliverables: [
@@ -298,6 +302,7 @@ export const stages = [
   },
   {
     title: "Trading & population",
+    status: "Planned",
     effort: "6–12+ weeks",
     focus: "Make strength hold across opponents.",
     deliverables: [
