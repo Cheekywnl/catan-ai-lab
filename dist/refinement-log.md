@@ -1,5 +1,7 @@
 # Five-hour refinement window
 
+**PAUSED BY USER — 12 September 2026, 02:01 UTC.** The user ended the work window early. The heartbeat is paused and all tournament workers are stopped. Do not act on the historical queue or deadline below until the user asks to resume. Engine 0.4.0 is retained. See [the final progress report and resume checkpoint](progress-2026-09-12.md).
+
 Requested 11 September 2026, 23:58 UTC. Stop starting experiments at **12 September 2026, 04:58 UTC** and finish the bounded release/report. Thread heartbeat `refine-catan-engine-for-five-hours` checks every 15 minutes; pause it after the final report. Its final permitted check is just after the deadline to allow wrap-up.
 
 ## Starting point
@@ -75,3 +77,11 @@ The 20-game corrected-search batch remains active from its immutable source snap
 - All24 browser checks pass after fixing desktop overflow in the engine's growing research-link row;2 intended mobile skips and6content tests. The captured Monopoly fixture now agrees between displayed suggestion and actual bot action on desktop/mobile. Native suite210 passed.
 - Fixed secondary Tactical-v4 protocols before outcomes:800 games seeds6700–6899 versus three strategic-v2 opponents,4workers;400 games seeds6900–6999 versus three original-v1 opponents,2workers. All seats, corrected rules, resource tracking, max4000 actions, immutable source copies. Directories `../../work/experiments/tactical-v4-v2-6700` and `../../work/experiments/tactical-v4-original-6900`. Keep these populations separate from the frozen-v3 result.
 - The0.3.2 budget12 search trial is complete:12/100wins versus29/100 for its matched Tactical-v3 control,0errors/truncations. Paired whole-board difference−17pp,interval−26to−8pp. This search underperformed on this batch. Do not attribute the change from the earlier21% result to the sampler because boards also differ. Report `search12-v032-comparison.json`. Investigate finite-sample selection noise and continuation-model mismatch; preserve the fast Tactical default.
+
+## User-requested pause — 02:01 UTC
+
+The secondary batches completed: Tactical v4 won **223/800 games against three strategic-v2 opponents (27.875%; interval 26–29.75%)** and **205/400 against three original-v1 opponents (51.25%; interval 46.25–56%)**. Both have zero errors/truncations. Results are published separately as `strength-v4-v2.json` and `strength-v4-original.json`.
+
+The user stopped the work window early. The heartbeat is paused and all remaining search workers have stopped. The budget-48 trial retains62 completed games,15 wins,0 recorded errors/truncations;38 planned outcomes remain unknown. Its portable checkpoint contains the immutable source, manifest, recorded games/replays and diagnostics. See `search48-v031-paused.json` and `progress-2026-09-12.md`; do not interpret the incomplete trial as final strength evidence.
+
+The shared-world/shared-dice search idea remains a research proposal. No new engine implementation started before the stop. Resume only when requested, using the saved handoff and frozen checkpoint. Current engine0.4.0 and the Tactical-v4 default are unchanged.

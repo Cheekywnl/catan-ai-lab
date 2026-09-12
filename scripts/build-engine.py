@@ -77,8 +77,17 @@ for source, destination in [
     ("research/tactical-v4-protocol.md", "dist/tactical-v4-protocol.md"),
     ("research/strength-v4.json", "dist/strength-v4.json"),
     ("research/search12-v032-comparison.json", "dist/search12-v032-comparison.json"),
+    ("research/strength-v4-v2.json", "dist/strength-v4-v2.json"),
+    ("research/strength-v4-original.json", "dist/strength-v4-original.json"),
+    ("research/search48-v031-paused.json", "dist/search48-v031-paused.json"),
+    ("research/progress-2026-09-12.md", "dist/progress-2026-09-12.md"),
 ]:
     shutil.copyfile(root / source, root / destination)
+(root / "dist/checkpoints").mkdir(exist_ok=True)
+shutil.copyfile(
+    root / "research/checkpoints/search48-v031-5500.zip",
+    root / "dist/checkpoints/search48-v031-5500.zip",
+)
 print(
     f'Built {len(files)} source files; engine bundle {archive.stat().st_size:,} bytes; Pyodide {metadata["pyodide"]}.'
 )

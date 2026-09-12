@@ -19,3 +19,7 @@ All 800 games completed without errors or truncations. Tactical v4 won 215 (26.8
 ## Secondary opponent populations — fixed before their outcomes
 
 To check performance against earlier baselines, run two separate fresh batches with the unchanged Tactical v4 policy and corrected rules:800 games on seeds 6700–6899 against three strategic-v2 opponents (four workers), and400 games on seeds 6900–6999 against three original-v1 opponents (two workers). Both use all four seats, actual resource tracking and max4000 actions. Report each population separately, including failures and whole-board intervals. These are additional measurements, not pooled confirmation of the v3 comparison.
+
+## Secondary results and pause
+
+Both fixed batches completed with zero errors/truncations:223/800 wins against strategic-v2 (27.875%; board interval26–29.75%), and205/400 against original-v1 (51.25%; interval46.25–56%). Full results: [v2](strength-v4-v2.json) and [v1](strength-v4-original.json). The user paused further work at02:01UTC; the policy and these completed results are retained.
