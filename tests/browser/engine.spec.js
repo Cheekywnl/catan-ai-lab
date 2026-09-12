@@ -27,6 +27,7 @@ test("the live engine places, searches, undoes and runs a game to completion", a
       outside.push(r.url());
   });
   await ready(page);
+  await expect(page.locator("#bot-policy")).toHaveValue("tactical");
   await expect(page.locator("#engine-status")).toContainText(
     "0 moves recorded",
   );
@@ -84,6 +85,9 @@ test("native Python replays import identically in browser Python; bad replays ar
     { timeout: 30000 },
   );
   const downloadPromise = page.waitForEvent("download");
+  await expect(page.locator(".legacy-rules")).toContainText(
+    "Historical replay",
+  );
   await page
     .getByRole("button", { name: "Export replay", exact: false })
     .click();

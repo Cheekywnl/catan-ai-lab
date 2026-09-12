@@ -11,6 +11,8 @@ Local core changes for ruleset `catan-base-4p-2025-v1`:
 - The sole player affected by a resource shortage receives the remaining supply, as specified in the 2025 rulebook. With multiple recipients the deficient resource is not paid.
 - Year of Plenty takes two cards when available; a one-card draw is offered only when one card remains in the entire supply. The 2025 card instruction says to take two, not up to two.
 
+Ruleset `catan-base-4p-2025-v2` additionally fixes road endpoint counting, road traversal through opponent buildings, tied or unclaimed road awards, and removal of points when an award becomes unclaimed. `engine/road_rules.py` computes an exact longest edge trail and rebuilds the small public road caches. The original core branches are retained only for checksum-compatible historical replay execution. New boards default to revision 2; board copies and serialization preserve the revision. See the [official Longest Road FAQ](https://www.catan.com/faq/basegame).
+
 Rule source: [CATAN 2025 rulebook](https://www.catan.com/sites/default/files/2025-03/CN3081%20CATAN%E2%80%93The%20Game%20Rulebook%20secure%20%281%29.pdf).
 
 The package includes a 2025-style base board with the official spiral token placement, four players, 10 victory points, ordinary dice, robber/discards, domestic and maritime trades, all development cards, Longest Road, and Largest Army. Expansions and tournament variants are not enabled. Correctness is tested, not formally proved.

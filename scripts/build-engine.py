@@ -10,7 +10,7 @@ import networkx
 
 root = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(root))
-from engine import ENGINE_VERSION
+from engine import ENGINE_VERSION, RULESET
 
 target = root / "dist/runtime"
 target.mkdir(parents=True, exist_ok=True)
@@ -50,7 +50,7 @@ with zipfile.ZipFile(
         z.writestr(info, content)
 metadata = {
     "engine_version": ENGINE_VERSION,
-    "ruleset": "catan-base-4p-2025-v1",
+    "ruleset": RULESET,
     "upstream_revision": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
     "networkx": networkx.__version__,
     "pyodide": json.loads((root / "node_modules/pyodide/package.json").read_text())[
@@ -64,6 +64,8 @@ for source, destination in [
     ("research/implementation.md", "dist/implementation.md"),
     ("research/strength-v2.json", "dist/strength-v2.json"),
     ("research/solver-mathematics.md", "dist/solver-mathematics.md"),
+    ("research/refinement-log.md", "dist/refinement-log.md"),
+    ("research/strength-v3.json", "dist/strength-v3.json"),
 ]:
     shutil.copyfile(root / source, root / destination)
 print(

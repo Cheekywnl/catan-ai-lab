@@ -27,6 +27,17 @@ def maintain_longest_road(state: State, previous_road_color, road_color, road_le
         key = player_key(state, color)
         state.player_state[f"{key}_LONGEST_ROAD_LENGTH"] = length
 
+    if state.board.rules_revision >= 2:
+        if previous_road_color == road_color:
+            return
+        for color, delta in ((previous_road_color, -2), (road_color, 2)):
+            if color is not None:
+                key = player_key(state, color)
+                state.player_state[f"{key}_HAS_ROAD"] = delta > 0
+                state.player_state[f"{key}_VICTORY_POINTS"] += delta
+                state.player_state[f"{key}_ACTUAL_VICTORY_POINTS"] += delta
+        return
+
     # If road_color is not set or is the same as before, do nothing.
     if road_color is None or (previous_road_color == road_color):
         return

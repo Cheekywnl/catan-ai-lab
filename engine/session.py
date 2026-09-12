@@ -6,7 +6,7 @@ import json
 import math
 from enum import Enum
 
-from engine import ENGINE_VERSION, RULESET, REPLAY_VERSIONS
+from engine import ENGINE_VERSION, RULESET, REPLAY_VERSIONS, REPLAY_RULESETS
 from engine.beliefs import ResourceBelief
 from engine.policy import rank_actions, draft_search
 from catanatron.game import Game
@@ -78,12 +78,15 @@ def action_label(action):
 
 
 class Session:
-    def __init__(self, seed=2026, track_beliefs=True):
+    def __init__(self, seed=2026, track_beliefs=True, ruleset=RULESET):
         if type(seed) is not int or not 0 <= seed < 2**32:
             raise ValueError("Seed must be a whole number from 0 to 4294967295.")
         self.seed = seed
         self.replay_version = ENGINE_VERSION
+        if ruleset not in REPLAY_RULESETS:
+            raise ValueError("Unsupported ruleset.")
         self.game = Game([SimplePlayer(color) for color in Color], seed=seed)
+        self.game.state.board.rules_revision = 2 if ruleset == RULESET else 1
         self.intents = []
         self.events = []
         self.chain = "0" * 64
@@ -237,7 +240,7 @@ class Session:
         }
         out = {
             "engine_version": ENGINE_VERSION,
-            "ruleset": RULESET,
+            "ruleset": REPLAY_RULESETS[self.game.state.board.rules_revision - 1],
             "revision": len(self.intents),
             "viewer": viewer.value,
             "actor": state.current_color().value,
@@ -434,6 +437,10 @@ class Session:
                 from engine.strategy import rank_actions as strategic_rank
 
                 ranked = strategic_rank(observation)
+            elif policy == "tactical":
+                from engine.tactics import rank_actions as tactical_rank
+
+                ranked = tactical_rank(observation)
             elif policy == "baseline":
                 ranked = rank_actions(observation)
             else:
@@ -483,7 +490,7 @@ class Session:
         return {
             "format": "catan-lab-replay-v1",
             "engine_version": self.replay_version,
-            "ruleset": RULESET,
+            "ruleset": REPLAY_RULESETS[self.game.state.board.rules_revision - 1],
             "scope": "research-replay-includes-hidden-information",
             "seed": self.seed,
             "intents": copy.deepcopy(self.intents),
@@ -495,7 +502,7 @@ class Session:
         if (
             not isinstance(replay, dict)
             or replay.get("format") != "catan-lab-replay-v1"
-            or replay.get("ruleset") != RULESET
+            or replay.get("ruleset") not in REPLAY_RULESETS
             or replay.get("engine_version") not in REPLAY_VERSIONS
         ):
             raise ValueError("Unsupported replay format, engine version, or ruleset.")
@@ -504,7 +511,9 @@ class Session:
             or len(replay["intents"]) > 20000
         ):
             raise ValueError("Replay must contain at most 20,000 actions.")
-        session = cls(replay["seed"], track_beliefs=track_beliefs)
+        session = cls(
+            replay["seed"], track_beliefs=track_beliefs, ruleset=replay["ruleset"]
+        )
         session.replay_version = replay["engine_version"]
         for value in replay["intents"]:
             session.execute(decode_action(value))
@@ -517,7 +526,11 @@ class Session:
     def undo(self):
         if not self.intents:
             return self
-        fresh = Session(self.seed, track_beliefs=self.track_beliefs)
+        fresh = Session(
+            self.seed,
+            track_beliefs=self.track_beliefs,
+            ruleset=REPLAY_RULESETS[self.game.state.board.rules_revision - 1],
+        )
         fresh.replay_version = self.replay_version
         for intent in self.intents[:-1]:
             fresh.execute(decode_action(intent))
@@ -544,7 +557,7 @@ def dispatch(message, progress=None):
         _session.auto(
             request.get("count", 1),
             request.get("stop_at_viewer"),
-            request.get("policy", "strategic"),
+            request.get("policy", "tactical"),
         )
     elif command == "offer":
         _session.offer(request["give"], request["receive"], request["revision"])
@@ -582,6 +595,7 @@ def dispatch(message, progress=None):
         raise ValueError("Unknown engine command.")
     result = _session.observation(viewer)
     from engine.strategy import rank_actions as strategic_rank, analyze
+    from engine.tactics import rank_actions as tactical_rank
     from engine.planning import development_beliefs
 
     result["analysis"] = analyze(result)
@@ -592,6 +606,8 @@ def dispatch(message, progress=None):
     result["opening"] = opening_report(result)
     result["dice_exposure"] = dice_exposure(result)
     result["recommendations"] = (
-        rank_actions if request.get("policy") == "baseline" else strategic_rank
+        rank_actions
+        if request.get("policy") == "baseline"
+        else strategic_rank if request.get("policy") == "strategic" else tactical_rank
     )(result)[:8]
     return json.dumps(result)

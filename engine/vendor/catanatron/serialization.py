@@ -127,6 +127,11 @@ def map_from_json(doc) -> CatanMap:
 # ===== board =====
 def board_to_json(board: Board):
     return {
+        **(
+            {"rules_revision": board.rules_revision}
+            if board.rules_revision >= 2
+            else {}
+        ),
         "buildings": [[nid, c.value, bt] for nid, (c, bt) in board.buildings.items()],
         "roads": [[list(e), c.value] for e, c in board.roads.items()],
         "robber_coordinate": list(board.robber_coordinate),
@@ -143,6 +148,7 @@ def board_to_json(board: Board):
 
 def board_from_json(doc, catan_map: CatanMap) -> Board:
     board = Board(catan_map, initialize=False)
+    board.rules_revision = doc.get("rules_revision", 1)
     board.map = catan_map
     board.buildings = {nid: (Color[c], bt) for nid, c, bt in doc["buildings"]}
     board.roads = {tuple(e): Color[c] for e, c in doc["roads"]}

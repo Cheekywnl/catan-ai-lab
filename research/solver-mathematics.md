@@ -81,3 +81,9 @@ The final strategic policy won **85/200 games (42.5%)** against three frozen cop
 This result measures the fast strategic policy, **not** the search policy. It is not a human or external-agent benchmark. An earlier exploratory policy was tested on different boards; its result is not substituted for the final policy's evidence.
 
 Remaining work includes opponent-population training, deeper information-set search, posterior calibration against held-out histories, search-budget ablations, and tests against strong external agents. No neural model, deep reinforcement-learning run, exploitability bound, or Nash-equilibrium certificate is claimed.
+
+## Engine 0.3 amendment
+
+The root candidate screen now includes the tactical policy: it calculates immediate building points, exact public road-trail lengths and award transfers, and Largest Army wins. Guaranteed wins receive priority before simulation; all opponent continuations still use the frozen strategic-v2 model. New games use corrected road-rule revision 2. Historical replay simulations retain their original rule revision and are labeled accordingly.
+
+Both belief updates and hidden-world sampling condition resource inventories on the finite supply of 19 cards per resource. Worlds that exceed this supply are impossible and receive zero weight. If all particles are eliminated, the existing conservative-bound fallback remains explicitly approximate. These changes fix an observed negative-bank simulation failure; they do not establish a game-theoretic equilibrium.

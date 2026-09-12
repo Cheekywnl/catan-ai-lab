@@ -2,12 +2,15 @@
 
 A playable four-player Catan engine with hidden-card beliefs, turn-aware opening economics, continuation search, and winning forecasts. The same Python engine runs natively and in a browser worker. Open [Play & simulate](https://catan-research-lab-cheekywnl.founders622811.chatgpt.site/#engine).
 
+Engine 0.3's Tactical v3 won **222/800 games (27.75%)** against three frozen strategic-v2 opponents on fresh seat-balanced boards, with no errors or truncations; the board-bootstrap 95% interval is **26.125–29.50%**. See [results](research/strength-v3.json).
+
 ## Implemented
 
 - Legal full games with setup, production, robber/discards, building, development cards, ports, player trades, awards, and victory.
 - Interactive SVG board, legal-action selection, manual trading, bot simulation, viewpoints, undo, and deterministic replay import/export.
 - Joint resource beliefs with explicit exact, modeled, sampled, and conservative-bound states.
 - Strategic policy with resource plans, reachable road destinations, and port conversion economics.
+- Tactical v3 checks immediate building and award wins, with corrected road endpoints, blocking, and award ties.
 - Exact opening pips, dice coverage, starting cards, and snake-draft order shown in the interface.
 - Belief-aware root Monte Carlo search through legal continuations, including full-game attempts.
 - Winning forecasts with sampling intervals; fixed-board resource probabilities before the next turn; exchangeable-model development-card estimates.
@@ -16,7 +19,7 @@ A playable four-player Catan engine with hidden-card beliefs, turn-aware opening
 
 Engine 0.2's fast strategic policy won **85/200 games (42.5%)** against three original bots on 50 held-out boards across all seats; the board-bootstrap 95% interval is 35–50%. This measures that policy against our baseline, not human or equilibrium strength. **No neural training, full information-set tree, or GTO guarantee is claimed.** See [solver mathematics](research/solver-mathematics.md), [implementation](research/implementation.md), [research](research/catan-ai-research.md), and [provenance](engine/UPSTREAM.md).
 
-Use **Analyze this decision** to compare moves. Select **Win objective** for full-game attempts, or **Estimate win chances** for a forecast conditional on simulated opponents. Autoplay supports the fast strategic bot, the frozen baseline, and an experimental slower win-search policy. Short-horizon scores are labeled as heuristic values, not probabilities.
+Use **Analyze this decision** to compare moves. Select **Win objective** for full-game attempts, or **Estimate win chances** for a forecast conditional on simulated opponents. Autoplay defaults to Tactical v3, with frozen strategic-v2, the original baseline, and slower win-search also available. Short-horizon scores are labeled as heuristic values, not probabilities. See the [refinement log](research/refinement-log.md) for the five-hour experiment window and current results.
 
 ## Run locally
 
@@ -39,10 +42,13 @@ python -m pytest -q
 python -m engine.simulate --games 100 --output research/engine-validation.json
 python -m engine.simulate --games 5 --trajectories work/teacher.jsonl
 python -m engine.evaluate --boards 50 --seed 2000 --output research/strength-v2.json
+python -m engine.arena --challenger tactical --opponents strategic --boards 200 --seed 4200 --workers 4 --track-beliefs --output work/experiments/tactical-v3
 python scripts/build-engine.py
 ```
 
-`engine/session.py` owns transitions, observations, events, replay, and invariants. `engine/policy.py` preserves the v1 baseline; `strategy.py` and `opening.py` implement v2. `planning.py` reconstructs sampled worlds and searches continuations; `forecast.py` computes dice exposure and winning forecasts. `beliefs.py` updates correlated resource possibilities. `engine/vendor/catanatron` is the pinned rules core. Build the browser bundle after changing engine source. Version 0.1 replay files remain compatible.
+`engine/session.py` owns transitions, observations, events, replay, and invariants. `policy.py`, `strategy.py`, and `opening.py` preserve the v1/v2 policies. `tactics.py` adds immediate-win checks; `road_rules.py` handles corrected road trails and awards. `planning.py` reconstructs sampled worlds and searches continuations; `forecast.py` computes dice exposure and winning forecasts. `beliefs.py` updates correlated resource possibilities and finite-supply constraints. `engine/vendor/catanatron` is the pinned rules core with documented patches. Build the browser bundle after changing engine source. Version 0.1/0.2 replays remain compatible using their original road-rule revision; new games use corrected revision 2.
+
+The arena executes an immutable source copy in each experiment directory and records a manifest, incremental results, replays, and progress. Rerunning an identical command resumes completed games; changed settings/source are rejected. To resume an older experiment after editing the checkout, run its copied `engine.arena` from that experiment's `source` directory with `--worker-snapshot` and the original arguments. Do not launch duplicate processes for the same directory. Experiments with errors or unfinished games report censoring bounds rather than pretending those games were losses.
 
 The [historical validation run](research/engine-validation.json) completed 100/100 baseline games; the [v2 evaluation](research/strength-v2.json) records 200 completed opponent games with policy hashes, seeds, seats, and replay checksums. The Python suite includes rules, information boundaries, replay, probability, and search regressions. These establish tested behavior, not a proof of rule completeness or optimality.
 

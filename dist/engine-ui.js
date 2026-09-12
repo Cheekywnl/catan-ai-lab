@@ -46,7 +46,7 @@ let worker,
   snapshot,
   viewer = "RED",
   seed = 42,
-  policy = "strategic";
+  policy = "tactical";
 const pending = new Map();
 let statusListener = () => {};
 function call(command, args = {}) {
@@ -183,13 +183,13 @@ export function mountEngine(root) {
     search = null,
     plan = null,
     forecast = null;
-  root.innerHTML = `<div class="page-heading engine-heading"><div><div class="eyebrow">ENGINE 0.2 · FOUR-PLAYER BASE CATAN</div><h1>Play. Inspect. Simulate.</h1><p class="lede">Resource planning, hidden-world search, and turn-by-turn winning forecasts.</p></div><span class="pill green">Strategic policy + search</span></div><div class="engine-toolbar"><div class="field"><label for="game-seed">Game seed</label><input id="game-seed" type="number" min="0" max="4294967295" step="1" value="${seed}"></div><button class="button" id="new-game">New game</button><div class="field"><label for="game-viewer">View as</label><select id="game-viewer">${Object.keys(
+  root.innerHTML = `<div class="page-heading engine-heading"><div><div class="eyebrow">ENGINE 0.3 · FOUR-PLAYER BASE CATAN</div><h1>Play. Inspect. Simulate.</h1><p class="lede">Resource planning, hidden-world search, and turn-by-turn winning forecasts.</p></div><span class="pill green">Tactical policy + search</span></div><div class="engine-toolbar"><div class="field"><label for="game-seed">Game seed</label><input id="game-seed" type="number" min="0" max="4294967295" step="1" value="${seed}"></div><button class="button" id="new-game">New game</button><div class="field"><label for="game-viewer">View as</label><select id="game-viewer">${Object.keys(
     colors,
   )
     .map((c) => `<option ${c === viewer ? "selected" : ""}>${c}</option>`)
     .join(
       "",
-    )}</select></div><div class="field"><label for="bot-policy">Bot policy</label><select id="bot-policy"><option value="strategic">Strategic v2</option><option value="baseline">Original baseline</option><option value="search">Win search · experimental / slow</option></select></div><button class="button" id="undo-game">Undo move</button><button class="button" id="export-game">Export replay ↓</button><label class="button import-replay">Import replay<input id="import-game" type="file" accept=".json,application/json" aria-label="Import replay file"></label></div><p class="engine-status" role="status" id="engine-status">Loading the game engine…</p><div id="engine-position"><div class="engine-loading"><span class="loading-orbit" aria-hidden="true">⬡</span><h2>Preparing the board</h2><p>The engine runs on your device. The first load downloads the Python runtime.</p></div></div><section class="card engine-validation"><span class="eyebrow">VALIDATION · ENGINE 0.2</span><h2>Built to be inspected.</h2><p>The final strategic policy won 85 of 200 games (42.5%) against three copies of the original bot, across all four seats on 50 held-out boards. The board-bootstrap 95% interval is 35–50%. This measures strength against our original bot, not humans or GTO. The rules, sampling, probability, and replay tests run in GitHub CI.</p><div class="detail-links"><a href="strength-v2.json" download>Download opponent benchmark ↓</a><a href="solver-mathematics.md" target="_blank" rel="noopener noreferrer">Math & solver assumptions ↗</a><a href="implementation.md" target="_blank" rel="noopener noreferrer">Implementation & limitations ↗</a><a href="https://github.com/Cheekywnl/catan-ai-lab" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div></section><div class="engine-footnote"><a href="engine-source.zip" download>Python engine source ↓</a><a href="THIRD_PARTY.md" target="_blank" rel="noopener noreferrer">Runtime & license notices ↗</a><span>Research sandbox · Replay exports include hidden information.</span></div>`;
+    )}</select></div><div class="field"><label for="bot-policy">Bot policy</label><select id="bot-policy"><option value="tactical">Tactical v3</option><option value="strategic">Frozen strategic v2</option><option value="baseline">Original baseline</option><option value="search">Win search · experimental / slow</option></select></div><button class="button" id="undo-game">Undo move</button><button class="button" id="export-game">Export replay ↓</button><label class="button import-replay">Import replay<input id="import-game" type="file" accept=".json,application/json" aria-label="Import replay file"></label></div><p class="engine-status" role="status" id="engine-status">Loading the game engine…</p><div id="engine-position"><div class="engine-loading"><span class="loading-orbit" aria-hidden="true">⬡</span><h2>Preparing the board</h2><p>The engine runs on your device. The first load downloads the Python runtime.</p></div></div><section class="card engine-validation"><span class="eyebrow">VALIDATION · ENGINE 0.3</span><h2>Built to be inspected.</h2><p>Tactical v3 won 222 of 800 games (27.75%) against three frozen strategic-v2 players on 200 fresh boards across all four seats. All games completed without errors. The board-bootstrap 95% interval is 26.13–29.50%, compared with the 25% equal-policy reference. This is evidence against this opponent population, not a GTO or human-strength result. New games also use corrected road blocking and award ties, and sampled hands respect the finite bank.</p><div class="detail-links"><a href="refinement-log.md" target="_blank" rel="noopener noreferrer">Refinement log ↗</a><a href="strength-v3.json" download>Current opponent benchmark ↓</a><a href="strength-v2.json" download>Historical v2 benchmark ↓</a><a href="solver-mathematics.md" target="_blank" rel="noopener noreferrer">Math & solver assumptions ↗</a><a href="implementation.md" target="_blank" rel="noopener noreferrer">Implementation & limitations ↗</a><a href="https://github.com/Cheekywnl/catan-ai-lab" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a></div></section><div class="engine-footnote"><a href="engine-source.zip" download>Python engine source ↓</a><a href="THIRD_PARTY.md" target="_blank" rel="noopener noreferrer">Runtime & license notices ↗</a><span>Research sandbox · Replay exports include hidden information.</span></div>`;
   const $ = (sel) => root.querySelector(sel);
   const status = (text) => {
     if (!disposed) $("#engine-status").textContent = text;
@@ -285,6 +285,12 @@ export function mountEngine(root) {
         insights(s, selected, plan, forecast) +
         "</div>",
     );
+    if (s.ruleset.endsWith("-v1")) {
+      $("#engine-position").insertAdjacentHTML(
+        "afterbegin",
+        '<p class="notice legacy-rules">Historical replay: this game preserves its original road rules. Start a new game to use the corrected rules and tactical win checks.</p>',
+      );
+    }
     bindPlanned();
     $("#plan-move").onclick = async () => {
       const depth = $("#search-depth").value;

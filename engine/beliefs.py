@@ -82,6 +82,11 @@ class ResourceBelief:
                 own = self.colors.index(observer) * 5
                 if candidate[own : own + 5] != list(own_hand):
                     continue
+                if any(
+                    sum(candidate[i * 5 + r] for i in range(len(self.colors))) > 19
+                    for r in range(5)
+                ):
+                    continue
                 if kind in ("OFFER_TRADE", "ACCEPT_TRADE"):
                     need = (
                         event["value"][:5]

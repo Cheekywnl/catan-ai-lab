@@ -75,6 +75,10 @@ def test_joint_sampling_retains_correlated_hands_and_capacity():
     s = Session(42)
     o = s.observation("RED", simulation=True)
     colors = [p["color"] for p in o["players"]]
+    o["viewer"] = colors[0]
+    o["own_hand"] = [0] * 5
+    for i, player in enumerate(o["players"]):
+        player["resource_count"] = 1 if i in (1, 2) else 0
     a = [0] * 20
     b = [0] * 20
     a[5] = 1

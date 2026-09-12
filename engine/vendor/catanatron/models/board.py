@@ -55,6 +55,7 @@ class Board:
     """
 
     def __init__(self, catan_map=None, initialize=True):
+        self.rules_revision = 2
         self.buildable_subgraph: Any = None
         self.buildable_edges_cache = {}
         self.player_port_resources_cache = {}
@@ -107,6 +108,14 @@ class Board:
         self.buildings[node_id] = (color, SETTLEMENT)
 
         previous_road_color = self.road_color
+        if self.rules_revision >= 2:
+            from engine.road_rules import refresh_networks
+
+            refresh_networks(self)
+            self.board_buildable_ids.discard(node_id)
+            for neighbor in STATIC_GRAPH.neighbors(node_id):
+                self.board_buildable_ids.discard(neighbor)
+            return previous_road_color, self.road_color, self.road_lengths
         if initial_build_phase:
             self.connected_components[color].append({node_id})
         else:
@@ -197,6 +206,13 @@ class Board:
 
         self.roads[edge] = color
         self.roads[inverted_edge] = color
+
+        if self.rules_revision >= 2:
+            from engine.road_rules import refresh_networks
+
+            previous_road_color = self.road_color
+            refresh_networks(self)
+            return previous_road_color, self.road_color, self.road_lengths
 
         # Find connected components corresponding to edge nodes (buildings).
         a, b = edge
@@ -303,6 +319,7 @@ class Board:
 
     def copy(self):
         board = Board(self.map, initialize=False)
+        board.rules_revision = self.rules_revision
         board.map = self.map  # reuse since its immutable
         board.buildings = self.buildings.copy()
         board.roads = self.roads.copy()
@@ -353,6 +370,22 @@ class Board:
 
 
 def longest_acyclic_path(board: Board, node_set: Set[int], color: Color):
+    if board.rules_revision >= 2:
+        from engine.road_rules import longest_trail
+
+        edges = tuple(
+            sorted(
+                {
+                    tuple(sorted(e))
+                    for e, c in board.roads.items()
+                    if c == color and any(n in node_set for n in e)
+                }
+            )
+        )
+        blocked = tuple(
+            sorted(n for n, (c, _) in board.buildings.items() if c != color)
+        )
+        return list(longest_trail(edges, blocked))
     paths = []
     for start_node in node_set:
         # do DFS when reach leaf node, stop and add to paths

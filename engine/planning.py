@@ -117,7 +117,24 @@ def development_beliefs(o):
 
 def sample_hands(o, rng):
     colors = [p["color"] for p in o["players"]]
-    worlds = o.get("joint_belief", [])
+    totals = {p["color"]: p["resource_count"] for p in o["players"]}
+    own_index = colors.index(o["viewer"])
+    worlds = [
+        w
+        for w in o.get("joint_belief", [])
+        if len(w["hands"]) == len(colors) * 5
+        and w["weight"] > 0
+        and all(n >= 0 for n in w["hands"])
+        and w["hands"][own_index * 5 : own_index * 5 + 5] == list(o["own_hand"])
+        and all(
+            sum(w["hands"][i * 5 : i * 5 + 5]) == totals[c]
+            for i, c in enumerate(colors)
+        )
+        and all(
+            sum(w["hands"][i * 5 + r] for i in range(len(colors))) <= 19
+            for r in range(5)
+        )
+    ]
     if worlds:
         world = rng.choices(worlds, [w["weight"] for w in worlds])[0]["hands"]
         return {c: list(world[i * 5 : i * 5 + 5]) for i, c in enumerate(colors)}
@@ -185,6 +202,8 @@ def sample_game(o, rng):
     state.friendly_robber = False
     state.board = board_from_json(public["board"], map_from_json(public["map"]))
     state.resource_freqdeck = [19 - sum(h[r] for h in hands.values()) for r in range(5)]
+    if any(n < 0 for n in state.resource_freqdeck):
+        raise ValueError("Sample violates the finite resource supply.")
     state.development_listdeck = deck
     state.player_state = {}
     for i, p in enumerate(o["players"]):
@@ -290,7 +309,9 @@ def search(o, budget=32, horizon=64, max_candidates=6, search_seed=1701, progres
     budget = max(4, min(256, int(budget)))
     horizon = max(4, min(6000, int(horizon)))
     max_candidates = max(2, min(12, int(max_candidates)))
-    rankings = rank_actions(o)
+    from engine.tactics import rank_actions as tactical_rank
+
+    rankings = tactical_rank(o)
     candidates = rankings[:max_candidates]
     # Preserve diverse action types when the root has many similar trades/builds.
     if not o["initial"]:

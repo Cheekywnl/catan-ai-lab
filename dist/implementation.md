@@ -1,5 +1,19 @@
 # Catan Lab engine — implementation log
 
+## Engine 0.3 — refinement window, 12 September 2026
+
+Repeated play found two correctness defects and missed immediate wins. New games now use `catan-base-4p-2025-v2`: a road ending at an opponent's settlement counts toward its length, while traversal stops at that settlement. Road awards retain an eligible incumbent on ties, transfer to a unique eligible leader, and become unclaimed when nobody qualifies. Losing an unclaimed award removes its two points. These cases follow the [official CATAN FAQ](https://www.catan.com/faq/basegame).
+
+The new tactical policy layers exact public-board award calculations over the frozen v2 economy. It prioritizes immediate wins from settlements, cities, Longest Road, and Largest Army. Root search includes this tactical screening; its continuation opponents still use strategic-v2. Sampled resource worlds now enforce the 19-card supply for every resource, fixing a captured search failure caused by a negative sampled bank.
+
+Historical 0.1/0.2 replays retain their original road rules, checksums, and exports. They are explicitly marked in the interface. New games and their sampled continuations use the corrected rules. The new rules do not rewrite historical benchmark claims.
+
+The suite now passes 176 native tests, including the captured failing replay, finite-supply sampling, road endpoint/loop/branch cases, award ties and removal, guaranteed army wins, and tactical predictions compared with legal actions in complete games. The tournament runner saves settings, normalized source hashes, periodic progress, results, and replays. It executes a frozen source snapshot, so later edits cannot change an experiment in progress.
+
+An additional 400 games under the previous rules completed without real-game errors: strategic-v2 won 176 (44%) against three original bots; the board-bootstrap interval is 38.75–49.25%. The initial search tournament was stopped after discovering a sampler error: eight recorded games, seven completed, one error. Its incomplete results are not a strength estimate. Current experiments and results are recorded in [refinement-log.md](refinement-log.md) and [strength-v3.json](strength-v3.json).
+
+Tactical v3 completed its fresh 800-game validation against three frozen strategic-v2 players: **222 wins (27.75%)**, board-bootstrap interval **26.125–29.50%**, zero errors or truncations. All players used corrected rule revision 2. The 25% equal-policy reference lies below this interval. The change is retained on this evidence and the immediate-win regressions; this does not measure search strength or human performance.
+
 ## Engine 0.2 — 12 September 2026
 
 The new strategic policy evaluates resource plans, reachable road destinations, exact opening pips and dice coverage, second-settlement cards, actual port conversion rates, and snake-draft order. The browser exposes an opening audit, resource plans, turn-order exposure, and development-card probabilities.

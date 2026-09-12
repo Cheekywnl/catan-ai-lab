@@ -1,0 +1,1668 @@
+{
+  "format": "catan-lab-replay-v1",
+  "engine_version": "0.2.0",
+  "ruleset": "catan-base-4p-2025-v1",
+  "scope": "research-replay-includes-hidden-information",
+  "seed": 3000,
+  "intents": [
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "BLUE",
+      "value": 15
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        4,
+        15
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "WHITE",
+      "value": 8
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "WHITE",
+      "value": [
+        8,
+        9
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "RED",
+      "value": 10
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "RED",
+      "value": [
+        10,
+        11
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "ORANGE",
+      "value": 19
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "ORANGE",
+      "value": [
+        19,
+        46
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "ORANGE",
+      "value": 23
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "ORANGE",
+      "value": [
+        6,
+        23
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "RED",
+      "value": 13
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "RED",
+      "value": [
+        12,
+        13
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "WHITE",
+      "value": 0
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "WHITE",
+      "value": [
+        0,
+        1
+      ]
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "BLUE",
+      "value": 3
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        2,
+        3
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "BLUE",
+      "value": [
+        [
+          1,
+          -2,
+          1
+        ],
+        "RED"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "RED",
+      "value": [
+        11,
+        32
+      ]
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "BLUE",
+      "value": [
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WHEAT"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "WHITE",
+      "value": [
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WHEAT"
+      ]
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "RED",
+      "value": [
+        31,
+        32
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "ORANGE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "ORANGE",
+      "value": [
+        46,
+        48
+      ]
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "ORANGE",
+      "value": [
+        "ORE",
+        "ORE",
+        "ORE",
+        "ORE",
+        "BRICK"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "PLAY_ROAD_BUILDING",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        15,
+        17
+      ]
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        17,
+        39
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          0,
+          2,
+          -2
+        ],
+        "ORANGE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          0,
+          2,
+          -2
+        ],
+        "ORANGE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "WHITE",
+      "value": [
+        8,
+        27
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "RED",
+      "value": [
+        [
+          1,
+          0,
+          -1
+        ],
+        "ORANGE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "ORANGE",
+      "value": [
+        [
+          1,
+          -2,
+          1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "PLAY_ROAD_BUILDING",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        17,
+        18
+      ]
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "BLUE",
+      "value": [
+        16,
+        18
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "PLAY_YEAR_OF_PLENTY",
+      "color": "RED",
+      "value": [
+        "ORE",
+        "ORE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUILD_SETTLEMENT",
+      "color": "RED",
+      "value": 32
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          0,
+          -2,
+          2
+        ],
+        "RED"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUILD_ROAD",
+      "color": "RED",
+      "value": [
+        30,
+        31
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "PLAY_YEAR_OF_PLENTY",
+      "color": "ORANGE",
+      "value": [
+        "BRICK",
+        "WHEAT"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "ORANGE",
+      "value": 19
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "BLUE",
+      "value": 15
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "RED",
+      "value": 10
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "BLUE",
+      "value": 3
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "RED",
+      "value": [
+        "BRICK",
+        "BRICK",
+        "BRICK",
+        "BRICK",
+        "ORE"
+      ]
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "ORANGE",
+      "value": [
+        "SHEEP",
+        "SHEEP",
+        "SHEEP",
+        "SHEEP",
+        "BRICK"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "BLUE",
+      "value": [
+        [
+          1,
+          -2,
+          1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "WHITE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "BRICK"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "BRICK"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "BLUE",
+      "value": [
+        [
+          0,
+          1,
+          -1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "RED",
+      "value": [
+        "WOOD",
+        "WOOD",
+        null,
+        null,
+        "ORE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "BLUE",
+      "value": [
+        [
+          1,
+          -2,
+          1
+        ],
+        "RED"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "WHITE",
+      "value": 8
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "WHITE",
+      "value": [
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "ORE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "RED",
+      "value": [
+        "BRICK",
+        "BRICK",
+        "BRICK",
+        "BRICK",
+        "ORE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "ORANGE",
+      "value": "ORE"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "ORANGE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "BLUE"
+      ]
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "ORANGE",
+      "value": 23
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "WOOD"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          0,
+          2,
+          -2
+        ],
+        "ORANGE"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "RED",
+      "value": [
+        [
+          1,
+          0,
+          -1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "RED",
+      "value": 13
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "MARITIME_TRADE",
+      "color": "WHITE",
+      "value": [
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "WOOD",
+        "ORE"
+      ]
+    },
+    {
+      "type": "BUILD_CITY",
+      "color": "WHITE",
+      "value": 0
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "ORE"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "BLUE",
+      "value": "SHEEP"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "RED",
+      "value": [
+        [
+          0,
+          1,
+          -1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "BUY_DEVELOPMENT_CARD",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "BLUE",
+      "value": null
+    },
+    {
+      "type": "ROLL",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "RED",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "RED",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "RED",
+      "value": "WHEAT"
+    },
+    {
+      "type": "DISCARD_RESOURCE",
+      "color": "RED",
+      "value": "WHEAT"
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "WHITE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "RED"
+      ]
+    },
+    {
+      "type": "END_TURN",
+      "color": "WHITE",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "RED",
+      "value": [
+        [
+          1,
+          0,
+          -1
+        ],
+        "WHITE"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "END_TURN",
+      "color": "RED",
+      "value": null
+    },
+    {
+      "type": "PLAY_KNIGHT_CARD",
+      "color": "ORANGE",
+      "value": null
+    },
+    {
+      "type": "MOVE_ROBBER",
+      "color": "ORANGE",
+      "value": [
+        [
+          -1,
+          0,
+          1
+        ],
+        "RED"
+      ]
+    },
+    {
+      "type": "ROLL",
+      "color": "ORANGE",
+      "value": null
+    }
+  ],
+  "checksum": "53a3330dde71c96f3f27903f209c8b0727cc1645216830c6f8a3b06d0e5dad2c"
+}
