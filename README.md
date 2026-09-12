@@ -8,6 +8,8 @@ Engine 0.3.1 accelerates equivalent full-game continuations: **3.77× aggregate 
 
 ## Implemented
 
+Engine 0.3.2 conditions hidden development cards on public completed turns and purchase ages. It fixes seven contradictory positions found in a 40-game replay audit and exposes hidden VP ranges in the website. All 203 native tests pass; [audit and provenance](research/development-history-v032.json).
+
 - Legal full games with setup, production, robber/discards, building, development cards, ports, player trades, awards, and victory.
 - Interactive SVG board, legal-action selection, manual trading, bot simulation, viewpoints, undo, and deterministic replay import/export.
 - Joint resource beliefs with explicit exact, modeled, sampled, and conservative-bound states.

@@ -4,7 +4,7 @@ The only entry point takes a JSON-serializable player observation. Real hands,
 real deck order, and the game's seed/random state are never accepted.
 """
 
-from collections import Counter, defaultdict
+from collections import defaultdict
 import copy
 import math
 import random
@@ -13,107 +13,13 @@ import time
 from engine.policy import RESOURCES
 from engine.strategy import position_value
 from engine.fast_policy import choose_action
-from catanatron.models.decks import starting_devcard_bank
+from engine.development import development_beliefs, sample_development
 from catanatron.models.enums import DEVELOPMENT_CARDS, ActionPrompt
 from catanatron.models.player import Color, SimplePlayer
 from catanatron.game import Game
 from catanatron.state import State, PLAYER_INITIAL_STATE
 from catanatron.models.actions import generate_playable_actions
 from catanatron.serialization import map_from_json, board_from_json
-
-
-def development_beliefs(o):
-    pool = Counter(starting_devcard_bank())
-    for p in o["players"]:
-        pool.subtract(p["played_development"])
-    pool.subtract(o["own_development"])
-    if min(pool.values()) < 0:
-        raise ValueError("Inconsistent development-card observations.")
-    total = sum(pool.values())
-    hands = {}
-    for p in o["players"]:
-        if p["color"] == o["viewer"]:
-            continue
-        n = p["development_count"]
-        hands[p["color"]] = {
-            card: {
-                "expected": n * count / total if total else 0.0,
-                "probability_at_least_one": (
-                    1 - math.comb(total - count, n) / math.comb(total, n)
-                    if total and n <= total - count
-                    else float(n > 0 and count > 0)
-                ),
-            }
-            for card, count in pool.items()
-        }
-    # Nonterminal turn owners cannot already hold enough hidden VP cards to win.
-    owner = next(p for p in o["players"] if p["color"] == o["turn_owner"])
-    if not o["initial"] and not o["winner"] and owner["color"] != o["viewer"]:
-        n_owner = owner["development_count"]
-        vp = pool["VICTORY_POINT"]
-        limit = 9 - owner["public_points"]
-        if limit < min(vp, n_owner):
-
-            def choose(n, k):
-                return math.comb(n, k) if 0 <= k <= n else 0
-
-            weights = {
-                j: choose(vp, j) * choose(total - vp, n_owner - j)
-                for j in range(max(0, limit + 1))
-            }
-            mass = sum(weights.values())
-            if not mass:
-                raise ValueError(
-                    "Development-card model contradicts the observed nonterminal game."
-                )
-            for p in o["players"]:
-                if p["color"] == o["viewer"]:
-                    continue
-                for card, count in pool.items():
-                    expected = present = 0.0
-                    for j, w in weights.items():
-                        if not w:
-                            continue
-                        if card == "VICTORY_POINT":
-                            counts = {j: 1.0}
-                        else:
-                            draw = n_owner - j
-                            den = choose(total - vp, draw)
-                            counts = {
-                                x: choose(count, x)
-                                * choose(total - vp - count, draw - x)
-                                / den
-                                for x in range(min(count, draw) + 1)
-                            }
-                        for held, probability in counts.items():
-                            weight = w / mass * probability
-                            if p["color"] == owner["color"]:
-                                expected += weight * held
-                                present += weight * (held > 0)
-                            else:
-                                size = total - n_owner
-                                remaining = count - held
-                                n = p["development_count"]
-                                expected += weight * n * remaining / size if size else 0
-                                present += (
-                                    weight
-                                    * (
-                                        1
-                                        - choose(size - remaining, n) / choose(size, n)
-                                    )
-                                    if n
-                                    else 0
-                                )
-                    hands[p["color"]][card] = {
-                        "expected": expected,
-                        "probability_at_least_one": max(0.0, min(1.0, present)),
-                    }
-    return {
-        "status": "exchangeable-pool-model",
-        "unknown_pool": dict(pool),
-        "hands": hands,
-        "assumption": "Unknown cards are exchangeable after known plays and your own cards. The model also conditions on the turn owner not already having enough hidden points to win. Strategic retention is not modeled.",
-    }
 
 
 def sample_hands(o, rng):
@@ -184,16 +90,7 @@ def sample_game(o, rng):
     public = o["simulation"]
     colors = tuple(Color(p["color"]) for p in o["players"])
     hands = sample_hands(o, rng)
-    pool = development_beliefs(o)["unknown_pool"]
-    deck = list(Counter(pool).elements())
-    rng.shuffle(deck)
-    dev = {o["viewer"]: dict(o["own_development"])}
-    for p in o["players"]:
-        if p["color"] == o["viewer"]:
-            continue
-        count = p["development_count"]
-        dev[p["color"]] = dict(Counter(deck[:count]))
-        del deck[:count]
+    dev, sampled_new, deck = sample_development(o, rng)
     state = State([], initialize=False)
     state.random = random.Random(rng.getrandbits(64))
     state.players = [SimplePlayer(c) for c in colors]
@@ -227,16 +124,7 @@ def sample_game(o, rng):
         )
         values["HAS_ROLLED"] = p["has_rolled"]
         values["HAS_PLAYED_DEVELOPMENT_CARD_IN_TURN"] = p["has_played_development"]
-        new_cards = (
-            Counter(
-                rng.sample(
-                    list(Counter(dev[color]).elements()),
-                    p["development_bought_this_turn"],
-                )
-            )
-            if not own
-            else Counter()
-        )
+        new_cards = sampled_new.get(color, {})
         for r, n in zip(RESOURCES, hands[color]):
             values[r + "_IN_HAND"] = n
         for card in DEVELOPMENT_CARDS:
@@ -425,7 +313,7 @@ def search(o, budget=32, horizon=64, max_candidates=6, search_seed=1701, progres
         "objective": "Terminal win/loss or a bounded position score at the horizon. Scores are not calibrated win probabilities. Standard errors are descriptive under adaptive sampling.",
         "assumptions": [
             "Resource worlds follow the observation tracker; when absent, a constrained count sampler supplies approximate hands.",
-            "Unknown development cards use an exchangeable remaining-pool model.",
+            "Unknown development cards use a joint exchangeable model conditioned on public completed turns and purchase ages.",
             "Continuation players use their own sampled observations with the strategic heuristic; no player sees opponents’ sampled hands.",
             "Search screens candidate actions and truncates at the chosen horizon; it is not equilibrium solving.",
         ],

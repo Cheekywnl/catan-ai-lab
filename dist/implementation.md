@@ -1,5 +1,17 @@
 # Catan Lab engine — implementation log
 
+## Engine 0.3.2 — public history constrains hidden development cards
+
+An offline audit found seven positions across four of 40 recorded games where the old model assigned positive hidden victory-point probability to an opponent who had just ended a turn on nine visible points. The first case reported 66.67%, although that card was publicly ruled out. These are reused diagnostic games, not new strength evidence.
+
+The session now records visible points at each player's latest completed turn. A joint development-card model uses that information, the current turn's purchases, and the observed game outcome to restrict possible card placements. It samples old and new cards together: a player who loses Longest Road can buy a new victory point on their next turn, and the inference does not accidentally make another newly bought development card playable. All hands and the remaining deck conserve the known card supply.
+
+The website shows each opponent's possible hidden VP range alongside its probabilities. The same conditioned worlds feed search and winning forecasts. Probabilities are exact within this constrained exchangeable-card model; they are not a complete posterior over strategic card retention or all historical actions. Full-game search and its opponent model remain approximate.
+
+The same 40 replays now produce zero identified contradictions over 3,828 completed turns, and all replay checksums remain identical. All 203 native tests pass, including a captured replay, exhaustive labeled-slot enumeration, conditional card-age frequencies, terminal outcomes, undo, hidden-information independence, and support checks for true hidden VP counts through six complete games. All 22 browser tests pass, with two desktop-only checks intentionally skipped on mobile, and six content tests pass. The audit and source hashes are in [development-history-v032.json](development-history-v032.json); reproduce it with `scripts/audit-development-history.py` against a directory of replay files.
+
+The completed **0.3.1 budget-12 trial won 21/100 games**, with no errors/truncations, versus **26/100** for the matched Tactical control. The paired board-bootstrap interval for the difference is **−13 to +3 percentage points**. This does not demonstrate a search improvement. Full paired results and source manifests: [search12-v031-comparison.json](search12-v031-comparison.json). The budget-48 trial continues from its original snapshot. These trials do not measure the new development sampler. New 0.3.2 budget-12 and matched Tactical-control batches use fresh seeds 6200–6224, 100 games each, against three frozen strategic-v2 opponents, tracking on, horizon 1600, four initial candidates. Settings are fixed before outcomes and both run immutable source copies.
+
 ## Engine 0.3.1 — faster equivalent continuations
 
 The resource-affordability estimate is a monotone piecewise-linear function. The optimized adapter solves its crossing analytically, then verifies the same 120/512-roll grid and 1e-9 tolerance used by the frozen policy. A bounded cache avoids repeated identical calculations. Forced decisions skip ranking. The reference policy modules remain unchanged; the adapter binds their functions to separate globals instead of mutating them or maintaining another scoring implementation.

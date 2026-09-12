@@ -69,6 +69,8 @@ for source, destination in [
     ("research/speed-v3.json", "dist/speed-v3.json"),
     ("research/strength-v3-original.json", "dist/strength-v3-original.json"),
     ("research/search-repair-v3.json", "dist/search-repair-v3.json"),
+    ("research/development-history-v032.json", "dist/development-history-v032.json"),
+    ("research/search12-v031-comparison.json", "dist/search12-v031-comparison.json"),
 ]:
     shutil.copyfile(root / source, root / destination)
 print(

@@ -178,3 +178,34 @@ test("engine controls and populated board remain accessible and fit small screen
     await page.evaluate(() => document.documentElement.scrollWidth),
   ).toBeLessThanOrEqual(await page.evaluate(() => innerWidth + 1));
 });
+
+test("public completed turns constrain development cards after replay import", async ({
+  page,
+}) => {
+  await ready(page);
+  const data = JSON.parse(
+    await readFile(
+      new URL("../fixtures/development-history-repro.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  await page.getByLabel("Import replay file").setInputFiles({
+    name: "history.json",
+    mimeType: "application/json",
+    buffer: Buffer.from(JSON.stringify(data.replay)),
+  });
+  await expect(page.locator("#engine-status")).toContainText(
+    "439 moves recorded",
+    { timeout: 30000 },
+  );
+  await page.getByLabel("View as", { exact: true }).selectOption(data.viewer);
+  await page.locator(".development-model summary").click();
+  const red = page
+    .locator(".development-model tbody tr")
+    .filter({ has: page.getByRole("rowheader", { name: "Red", exact: true }) });
+  await expect(red.locator("td").nth(1)).toHaveText("0.0%");
+  await expect(red.locator("td").nth(3)).toHaveText("0–0");
+  await expect(page.locator(".development-model")).toContainText(
+    "completed turns",
+  );
+});

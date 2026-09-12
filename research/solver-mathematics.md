@@ -1,6 +1,6 @@
 # Catan solver: mathematics, objective, and limits
 
-12 September 2026 · Engine 0.2 · Four-player base game.
+12 September 2026 · Updated through engine 0.3.2 · Four-player base game.
 
 The target is to choose the move with the highest probability that the acting player wins, given what that player has observed. The engine now supports full-game Monte Carlo comparisons, exact dice-exposure calculations, hidden-card sampling, and explicit opening economics. These are useful components of a solver. They do not establish a game-theoretic equilibrium.
 
@@ -91,3 +91,15 @@ Both belief updates and hidden-world sampling condition resource inventories on 
 ### Equivalent acceleration in 0.3.1
 
 For balances `b_r(t) = hand_r + production_r * t - cost_r`, affordability tests `sum(max(b_r,0)/rate_r) - sum(max(-b_r,0)) >= -1e-9`. Each balance crosses zero at most once; each segment therefore has a constant slope. The optimized adapter locates the crossing through these breakpoints, then verifies the smallest feasible point on the reference's 120/512-roll grid. The 120-roll cap and zero-time test remain unchanged. This speeds up the existing approximation; it does not turn the mean-flow estimate into a stochastic expected stopping time. Caching uses only the four input vectors, and forced actions bypass ranking. Detailed equivalence tests and timing are recorded in `speed-v3.json`.
+
+## Public nonwin information and development cards (0.3.2)
+
+The [official CATAN FAQ](https://www.catan.com/faq/basegame) says victory-point cards count toward winning on the player's own turn. Therefore, in a nonterminal game, a player who ended their latest turn with p visible points then had at most 9-p hidden VP cards. VP cards cannot subsequently be spent or stolen. New purchases may add new VP cards; losing an award does not retroactively change that prior bound.
+
+Let player i hold n_i unknown cards, B_i newly bought this turn and O_i=n_i-B_i older cards. Let L_i=9-p_i be the historical old-VP cap, or leave it unrestricted without a completed-turn record. For a proposed total j_i hidden VP cards, the placement weight is
+
+`w_i(j_i) = sum_k C(O_i, j_i-k) C(B_i, k)`, summing only feasible k with `j_i-k <= L_i`.
+
+The current nonterminal turn owner additionally satisfies `j_i <= 9-current_visible_points`. A publicly declared winner requires enough total VP instead. With V remaining unknown VP cards and D deck positions, each joint allocation has weight `C(D, V-sum(j_i)) * product(w_i(j_i))`. Normalize over feasible allocations. There are at most five VP cards, so exact enumeration is small. Marginal expected VP and presence probabilities follow directly; non-VP card types use hypergeometric marginals conditional on each j_i. Sampling first chooses the joint allocation, then new-card VP counts k with their conditional weights, then fills non-VP slots and the deck.
+
+This is exact counting under the stated exchangeability model and these public constraints. It does not reconstruct the entire strategic action history or model selective retention of Knights, Monopoly, or other card types. Card-age assignments must be conditioned jointly; sampling ages independently could invent playable cards. Replays reconstruct public turn records from legal actions, without changing historical event checksums.

@@ -89,6 +89,7 @@ class Session:
         self.game.state.board.rules_revision = 2 if ruleset == RULESET else 1
         self.intents = []
         self.events = []
+        self.last_completed_turn_public_points = {}
         self.chain = "0" * 64
         self.track_beliefs = track_beliefs
         self.trackers = (
@@ -215,6 +216,9 @@ class Session:
                     p[f"{key}_HAS_PLAYED_DEVELOPMENT_CARD_IN_TURN"]
                 ),
                 "development_bought_this_turn": bought[color],
+                "last_completed_turn_public_points": getattr(
+                    self, "last_completed_turn_public_points", {}
+                ).get(color.value),
             }
             if color == viewer:
                 row["own_points"] = p[f"{key}_ACTUAL_VICTORY_POINTS"]
@@ -329,7 +333,14 @@ class Session:
             color.value: get_player_freqdeck(state, color) for color in state.colors
         }
         intent = action_value(action)
+        ending_points = (
+            state.player_state[player_key(state, action.color) + "_VICTORY_POINTS"]
+            if action.action_type == ActionType.END_TURN
+            else None
+        )
         record = self.game.execute(action)
+        if ending_points is not None:
+            self.last_completed_turn_public_points[action.color.value] = ending_points
         self.intents.append(intent)
         event = {
             "sequence": len(self.intents),

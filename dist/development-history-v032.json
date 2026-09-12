@@ -1,0 +1,497 @@
+{
+  "after": {
+    "engine_version": "0.3.2",
+    "source_sha256": {
+      "__init__.py": "44d105b675f541e2750741fa560edc76bc15fd72c8fd04a59e0c9cb0f44e8d41",
+      "arena.py": "2cd6c4dc54c3383c4bbcbcd48e0aaba9809ce041286451474bbcfaa280185299",
+      "beliefs.py": "e493c3fa13794011b6a389946655b14bd05cd891d14edfd25a07954cfb750f95",
+      "development.py": "f556940588a5a8a2aa6a4477cf174f353d8d8db6b4866e9426372f4a8edf316e",
+      "evaluate.py": "a839865ef11505f2d9cce41df6a9cfd2ab91aa341c17b0fbdb0dee0551f568f2",
+      "fast_policy.py": "28071c9ee011860d3eabc0d1bd63b88b691c6aa402ed626eec46b764c4198f04",
+      "forecast.py": "6deaa62f4c91ba89c4336d5aa00f7c0032ea72e488b13ae627d62fc565fafa1b",
+      "opening.py": "9f26dd9e1dd3eab2250ed20934aab45d3c94f8bf29b9fd736439877af6f33aae",
+      "planning.py": "c21fe3160690d0b5bd937ee475095263ca6a9a85b1c144ca7b1aa998618c60c2",
+      "policy.py": "b1f4217e377fe75c2918bed8cba24c31e5161900fe3e06d328acc16fff971d3e",
+      "road_rules.py": "5780d9049f874f21db2547ece368b8c0dad6bf846285c47fa9727066b8237768",
+      "session.py": "fed3c0d763ce17c724813dcd4435ace6a6b76e1c8de60ddc56be96b09efe5779",
+      "simulate.py": "9340e6312112d201d8b23ec54171c78e37fa41b0c39c232f55fdea153afd671f",
+      "strategy.py": "6496b870b3afeb2b3a2048122cf3ba4db61c9c9a869798964fabde3a542766de",
+      "tactics.py": "ca2047115475638c2f85b8434e57dcb09188597e5153c1deb0a9c3d377fdc24c",
+      "upstream_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_tests/test_actions.py": "0e0fddaf846710c0cc77a28e0687912c1ff3301342a2bae7c5402fcb6f83cd40",
+      "upstream_tests/test_board.py": "2bb25635cab248c4d7f51d3482ee379922b77b4bc3c6fa67ba8c113977542212",
+      "upstream_tests/test_coordinate_system.py": "28e2dce58742726af9b0b4c756b61ca3a71c76cafaec2b59fa18fad7bc57db01",
+      "upstream_tests/test_decks.py": "dfc357f96b2cd2d0cd1b46df1ed9405a34531f818ad5850b88f28a2a9adacd50",
+      "upstream_tests/test_map.py": "150a013ab84e667817a3535501055ce6dd66890f7bd2e4ef0a7e9f78fc8aa644",
+      "upstream_tests/test_spiral.py": "9ce6a990aac902b7fbcda50b7b0e7666e78bc67723f4a147920a8ffe7475477e",
+      "upstream_tests/utils.py": "ec84e1c5578562c21532a8dd7016a7027e0ad14cf0c7998103d906861273390f",
+      "vendor/catanatron/__init__.py": "2aae879795428d7abef04defce240972579e839d53cdc5a757e9a56e4434ce9f",
+      "vendor/catanatron/apply_action.py": "968cce56069ef3569db88f326ca5b9db079241d97d27e8d18ad3d917d5decb05",
+      "vendor/catanatron/features.py": "f6ec7fd7f30f740a75c978c9a8166512c6514052a79802992216dbd812553746",
+      "vendor/catanatron/game.py": "353efe2dccad40bced76f92a09e03675d3291f385d94a446fa7764a6e2f6690c",
+      "vendor/catanatron/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "vendor/catanatron/models/actions.py": "b615856345dd2e76eabcdc04b4c9f3c779ca007ed60902bb195a7b0801aafdae",
+      "vendor/catanatron/models/board.py": "72b28f7e9986eadb5769c4fbba8550f2907d88ddb68774295b76aab6e8433a00",
+      "vendor/catanatron/models/coordinate_system.py": "e6ea07137a8f842476f5690c1a0b512fc74d11396bdd9e17d9cf941472f57c42",
+      "vendor/catanatron/models/decks.py": "cdb92c55ef0b52448f3970915f2bcf132749ece942aaca3701843ebc66ba0e1a",
+      "vendor/catanatron/models/enums.py": "17942f2dec8a4f5b491aa95de70fe00450a5580ef7c35308a5c494fc1f0035d6",
+      "vendor/catanatron/models/map.py": "b54a025f76a8d4e76f55ced0b134a024d744ec5207b92887882b01a9722245ee",
+      "vendor/catanatron/models/player.py": "e8424a32832e72dc12537a2f9072414b991c58ff248d5879e0b223bfb0ddf0f1",
+      "vendor/catanatron/models/spiral.py": "b29d3ab7aa601ee19b16a4e76e5e54dce3e3a2fa5a45f7abdcc2770e32dc04e0",
+      "vendor/catanatron/models/tiles.py": "a836cc85718fcaf4820c6228f36d34f90e103c8ff2148f10248e129c017951c8",
+      "vendor/catanatron/observer.py": "bca7b18d5b9bea5dc3494fe8ce74606b2de8cbfb91994b950d80811382a9455d",
+      "vendor/catanatron/params.py": "d98af18595610338f738819ca62d61b404a6288cfd603f674f83e4d9668999f0",
+      "vendor/catanatron/protocol.py": "d293f6a24c43bb220b1b4f5b1d6aa6ac48a2262b24b3b20bd7b29db071eb18b0",
+      "vendor/catanatron/registry.py": "1e8732f456e444be764d2ba6f83d0d87e90fbfff9ba379014b50cd0f46e27b29",
+      "vendor/catanatron/serialization.py": "8958ed2308dcc90e29e2e793de80ace208175836e98279a2f385353ae048fb68",
+      "vendor/catanatron/sources.py": "c9c56c9782bb63d6a4e880393d3b9da9c9e0ba4206727f4f5f538d1f1b8119cf",
+      "vendor/catanatron/state.py": "37cef3bfa81c86d38a464e880e29dab1fb992188c6229e82013eeb3b05ef64a4",
+      "vendor/catanatron/state_functions.py": "181275c4aea6229ef46a0aeced94b04cc3b2948a85f19add6dd0a09de70cd1e2",
+      "vendor/catanatron/utils.py": "4ba80e5087154e24e292ad86b90d10778206db94b20535f0fc1a620141483e8b"
+    },
+    "replays": 40,
+    "completed_turns": 3828,
+    "contradictory_position_count": 0,
+    "distinct_games": 0,
+    "cases": [],
+    "verified_replays": [
+      {
+        "replay": "4500-0.json",
+        "checksum": "21551146595fc884eb50696e11c06b8b4ffcd3898cef8fe71150eccafe43de82"
+      },
+      {
+        "replay": "4500-1.json",
+        "checksum": "f1aa506572f264c84f6beaeb315079387bfa001339211aa53e65670cb0f434d2"
+      },
+      {
+        "replay": "4500-2.json",
+        "checksum": "e6a2eb2960919e55a0a4d1079bed711b8ba656116ccc3bccc977cb836930a7e9"
+      },
+      {
+        "replay": "4500-3.json",
+        "checksum": "bff3572faa4a69134df623d79b55ed1706a00aa15033c73b3422fa75679836fe"
+      },
+      {
+        "replay": "4501-0.json",
+        "checksum": "5bed274f57357dc61e447d7965e4eb9cbf0839aa87e2e8b1ddf2e78bc51d5e7a"
+      },
+      {
+        "replay": "4501-1.json",
+        "checksum": "15f54cc37557fdb8a14c0ea7b364c575d78c1c25479ddce6db523a8449ea4abd"
+      },
+      {
+        "replay": "4501-2.json",
+        "checksum": "76b9e11c3a5335a9de8cd38960b8d145e8a69416c819d72edd165569afcbf506"
+      },
+      {
+        "replay": "4501-3.json",
+        "checksum": "532f6c2d7cf4721741dd8e068fba7ac36171960728ebe06830a8bb29f1f183a2"
+      },
+      {
+        "replay": "4502-0.json",
+        "checksum": "a0286841bf477614db45d52033d8df2bf732b8081b57ce3842550dad11e4127e"
+      },
+      {
+        "replay": "4502-1.json",
+        "checksum": "b24271844ef9d73782d9488e75faaafe562bf82681e79377fc46d5aa2a8e5c0a"
+      },
+      {
+        "replay": "4502-2.json",
+        "checksum": "1537d5aaf4a4d7bffeedb3b3c4b6320c41dbc4e0dfb75be29bafc5d3236b5525"
+      },
+      {
+        "replay": "4502-3.json",
+        "checksum": "d0e17c2914bdc3866ecd11d55a796ee07c88d720e506e3fdcda6377275431cf2"
+      },
+      {
+        "replay": "4503-0.json",
+        "checksum": "95015d9f9e14eabea91fa6c79d89c581e04324442d3eb5b5c602541e18a945e6"
+      },
+      {
+        "replay": "4503-1.json",
+        "checksum": "103a8e794e15f57d0255213022dc7ff64ad14c2728bda9c4e0998acce46450ca"
+      },
+      {
+        "replay": "4503-2.json",
+        "checksum": "98538d61e970721cc26f22dfc4fa39cae4f3a070c4dab3a303f874da753a960a"
+      },
+      {
+        "replay": "4503-3.json",
+        "checksum": "3558671821f6a95467f99ddaaf77cff8e97ad30829e9fce418253ba604a8baba"
+      },
+      {
+        "replay": "4504-0.json",
+        "checksum": "7bef9552b3fe17df5c53647b9724337ccdf55b647c35cf41e7a2dacfaaba40a5"
+      },
+      {
+        "replay": "4504-1.json",
+        "checksum": "becb6e4d40ffad14cb1f1a4ee20c7e7fe89e689dc97af14502d3d7438cc7c328"
+      },
+      {
+        "replay": "4504-2.json",
+        "checksum": "063682e327958ced28fd054ef27bcaf00ae3b4d897e72cd950cb66abef8cb60a"
+      },
+      {
+        "replay": "4504-3.json",
+        "checksum": "a7d811efa21615e3b0a08385a0db0e5c3cc407657f7815fe0ff364e182501c50"
+      },
+      {
+        "replay": "4505-0.json",
+        "checksum": "c4865f4d8a512d933141c1ef74b4153b9c6f5700b2bd96d380fc2b7e8f73e7ff"
+      },
+      {
+        "replay": "4505-1.json",
+        "checksum": "48df24786f213d76e49049e8e608e2e6ce2e6505fdcf42764c2a73f1e57c525f"
+      },
+      {
+        "replay": "4505-2.json",
+        "checksum": "d79716a34b7477520da9264e63a469f403656f951ff58fdc5e48bb34764945b0"
+      },
+      {
+        "replay": "4505-3.json",
+        "checksum": "2e8a8f025132044af38e2e66c32af5c9c14ad6c1488dcbf0b68a72920d0ea0db"
+      },
+      {
+        "replay": "4506-0.json",
+        "checksum": "d61619fa24e52b84fe6e400f5115f32945c917b36c95f921e04a817bfa30c144"
+      },
+      {
+        "replay": "4506-1.json",
+        "checksum": "5beecb48c61479b7df9a9e4b17ced3f463e7657b0ba1b288f15794c1da8bded4"
+      },
+      {
+        "replay": "4506-2.json",
+        "checksum": "c8fb350ec7ec14b4197f79ef96e63ceea309b48974d299ff26bd5557d4329fcf"
+      },
+      {
+        "replay": "4506-3.json",
+        "checksum": "fe1e54998c87cb2b9e996fff07ceb7bd8c2d59dddfddea2a52e7050720e07e44"
+      },
+      {
+        "replay": "4507-0.json",
+        "checksum": "2c565c59a611c990f6ff8f74ce0345bc89668f7a89675e51d6da3f7ad53db438"
+      },
+      {
+        "replay": "4507-1.json",
+        "checksum": "ec820bbc007c13aba3db440ff284263fc7f931b9ce209ba7ff3f96298571abf8"
+      },
+      {
+        "replay": "4507-2.json",
+        "checksum": "5cf0d850e3e9df1137def7c64e7775b6e9de9cf25921ee402a845fdae871ca9b"
+      },
+      {
+        "replay": "4507-3.json",
+        "checksum": "3e1f08d030b08fd4c64e115c8b3dca7d4b816a7c19ccab42fcb3ce4021256859"
+      },
+      {
+        "replay": "4508-0.json",
+        "checksum": "333fbe2f84df987ce2cc979cbc2992b2053279b1c5bdc65d6bebf723f23ef2ca"
+      },
+      {
+        "replay": "4508-1.json",
+        "checksum": "61070cc010f9c2aa5c4c8dc2b572d9830265d32d31a215d229740d23a49d85fb"
+      },
+      {
+        "replay": "4508-2.json",
+        "checksum": "079329fb000f4a5fae43be098bc583957965522a6a201fa0523400b6fe9516cc"
+      },
+      {
+        "replay": "4508-3.json",
+        "checksum": "a71e44aff6d4b5570841f3f8fec3526aab1cb4969bbeed80151f84d3063190a3"
+      },
+      {
+        "replay": "4509-0.json",
+        "checksum": "fc62cf3bb4d75e8aa0d9c1038c4723c73281a9c37302c6305f4e04ffc46446b0"
+      },
+      {
+        "replay": "4509-1.json",
+        "checksum": "c958d68b97ce1ea9fa28d273e5e6dd2d2322af1ea61f43c1382e8146070fba60"
+      },
+      {
+        "replay": "4509-2.json",
+        "checksum": "4ee7f557192b781960c8362b3bf5657c42d38cf25d35058dc952d973a81db655"
+      },
+      {
+        "replay": "4509-3.json",
+        "checksum": "659fa4f1f4c10e09978ea156b9a0cbb7a4c1d8d8c0b1c43c58992f6e6e1df601"
+      }
+    ],
+    "interpretation": "Offline diagnosis on previously evaluated boards, not new strength evidence. Cases share games and are not independent. Hidden cards are used only in offline assertions; all model inputs come from the observation."
+  },
+  "scope": "Correctness audit on reused replay boards; not a strength estimate.",
+  "before": {
+    "engine_version": "0.3.1",
+    "source_sha256": {
+      "__init__.py": "94a336aca19a84d8e30d0cee782aa1927ea02f00bf8498a0b2d38b69f9b76c4e",
+      "arena.py": "2cd6c4dc54c3383c4bbcbcd48e0aaba9809ce041286451474bbcfaa280185299",
+      "beliefs.py": "e493c3fa13794011b6a389946655b14bd05cd891d14edfd25a07954cfb750f95",
+      "evaluate.py": "a839865ef11505f2d9cce41df6a9cfd2ab91aa341c17b0fbdb0dee0551f568f2",
+      "fast_policy.py": "28071c9ee011860d3eabc0d1bd63b88b691c6aa402ed626eec46b764c4198f04",
+      "forecast.py": "6deaa62f4c91ba89c4336d5aa00f7c0032ea72e488b13ae627d62fc565fafa1b",
+      "opening.py": "9f26dd9e1dd3eab2250ed20934aab45d3c94f8bf29b9fd736439877af6f33aae",
+      "planning.py": "abcdc7971be07791f0c8d6fc22c49b0aad81e664b350b646feb212898264861f",
+      "policy.py": "b1f4217e377fe75c2918bed8cba24c31e5161900fe3e06d328acc16fff971d3e",
+      "road_rules.py": "5780d9049f874f21db2547ece368b8c0dad6bf846285c47fa9727066b8237768",
+      "session.py": "f3e2ebbe33132e116621cde91fa2bc168c54f8dfb2e9f5892242a0794e386443",
+      "simulate.py": "9340e6312112d201d8b23ec54171c78e37fa41b0c39c232f55fdea153afd671f",
+      "strategy.py": "6496b870b3afeb2b3a2048122cf3ba4db61c9c9a869798964fabde3a542766de",
+      "tactics.py": "ca2047115475638c2f85b8434e57dcb09188597e5153c1deb0a9c3d377fdc24c",
+      "upstream_tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "upstream_tests/test_actions.py": "0e0fddaf846710c0cc77a28e0687912c1ff3301342a2bae7c5402fcb6f83cd40",
+      "upstream_tests/test_board.py": "2bb25635cab248c4d7f51d3482ee379922b77b4bc3c6fa67ba8c113977542212",
+      "upstream_tests/test_coordinate_system.py": "28e2dce58742726af9b0b4c756b61ca3a71c76cafaec2b59fa18fad7bc57db01",
+      "upstream_tests/test_decks.py": "dfc357f96b2cd2d0cd1b46df1ed9405a34531f818ad5850b88f28a2a9adacd50",
+      "upstream_tests/test_map.py": "150a013ab84e667817a3535501055ce6dd66890f7bd2e4ef0a7e9f78fc8aa644",
+      "upstream_tests/test_spiral.py": "9ce6a990aac902b7fbcda50b7b0e7666e78bc67723f4a147920a8ffe7475477e",
+      "upstream_tests/utils.py": "ec84e1c5578562c21532a8dd7016a7027e0ad14cf0c7998103d906861273390f",
+      "vendor/catanatron/__init__.py": "2aae879795428d7abef04defce240972579e839d53cdc5a757e9a56e4434ce9f",
+      "vendor/catanatron/apply_action.py": "968cce56069ef3569db88f326ca5b9db079241d97d27e8d18ad3d917d5decb05",
+      "vendor/catanatron/features.py": "f6ec7fd7f30f740a75c978c9a8166512c6514052a79802992216dbd812553746",
+      "vendor/catanatron/game.py": "353efe2dccad40bced76f92a09e03675d3291f385d94a446fa7764a6e2f6690c",
+      "vendor/catanatron/models/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "vendor/catanatron/models/actions.py": "b615856345dd2e76eabcdc04b4c9f3c779ca007ed60902bb195a7b0801aafdae",
+      "vendor/catanatron/models/board.py": "72b28f7e9986eadb5769c4fbba8550f2907d88ddb68774295b76aab6e8433a00",
+      "vendor/catanatron/models/coordinate_system.py": "e6ea07137a8f842476f5690c1a0b512fc74d11396bdd9e17d9cf941472f57c42",
+      "vendor/catanatron/models/decks.py": "cdb92c55ef0b52448f3970915f2bcf132749ece942aaca3701843ebc66ba0e1a",
+      "vendor/catanatron/models/enums.py": "17942f2dec8a4f5b491aa95de70fe00450a5580ef7c35308a5c494fc1f0035d6",
+      "vendor/catanatron/models/map.py": "b54a025f76a8d4e76f55ced0b134a024d744ec5207b92887882b01a9722245ee",
+      "vendor/catanatron/models/player.py": "e8424a32832e72dc12537a2f9072414b991c58ff248d5879e0b223bfb0ddf0f1",
+      "vendor/catanatron/models/spiral.py": "b29d3ab7aa601ee19b16a4e76e5e54dce3e3a2fa5a45f7abdcc2770e32dc04e0",
+      "vendor/catanatron/models/tiles.py": "a836cc85718fcaf4820c6228f36d34f90e103c8ff2148f10248e129c017951c8",
+      "vendor/catanatron/observer.py": "bca7b18d5b9bea5dc3494fe8ce74606b2de8cbfb91994b950d80811382a9455d",
+      "vendor/catanatron/params.py": "d98af18595610338f738819ca62d61b404a6288cfd603f674f83e4d9668999f0",
+      "vendor/catanatron/protocol.py": "d293f6a24c43bb220b1b4f5b1d6aa6ac48a2262b24b3b20bd7b29db071eb18b0",
+      "vendor/catanatron/registry.py": "1e8732f456e444be764d2ba6f83d0d87e90fbfff9ba379014b50cd0f46e27b29",
+      "vendor/catanatron/serialization.py": "8958ed2308dcc90e29e2e793de80ace208175836e98279a2f385353ae048fb68",
+      "vendor/catanatron/sources.py": "c9c56c9782bb63d6a4e880393d3b9da9c9e0ba4206727f4f5f538d1f1b8119cf",
+      "vendor/catanatron/state.py": "37cef3bfa81c86d38a464e880e29dab1fb992188c6229e82013eeb3b05ef64a4",
+      "vendor/catanatron/state_functions.py": "181275c4aea6229ef46a0aeced94b04cc3b2948a85f19add6dd0a09de70cd1e2",
+      "vendor/catanatron/utils.py": "4ba80e5087154e24e292ad86b90d10778206db94b20535f0fc1a620141483e8b"
+    },
+    "replays": 40,
+    "completed_turns": 3828,
+    "contradictory_position_count": 7,
+    "distinct_games": 4,
+    "cases": [
+      {
+        "replay": "4500-3.json",
+        "revision": 439,
+        "viewer": "ORANGE",
+        "player": "RED",
+        "development_count": 1,
+        "impossible_vp_probability": 0.6666666666666667
+      },
+      {
+        "replay": "4501-2.json",
+        "revision": 373,
+        "viewer": "WHITE",
+        "player": "RED",
+        "development_count": 1,
+        "impossible_vp_probability": 0.41666666666666663
+      },
+      {
+        "replay": "4501-2.json",
+        "revision": 407,
+        "viewer": "WHITE",
+        "player": "RED",
+        "development_count": 1,
+        "impossible_vp_probability": 0.5
+      },
+      {
+        "replay": "4505-0.json",
+        "revision": 336,
+        "viewer": "WHITE",
+        "player": "BLUE",
+        "development_count": 2,
+        "impossible_vp_probability": 0.6818181818181819
+      },
+      {
+        "replay": "4505-0.json",
+        "revision": 354,
+        "viewer": "WHITE",
+        "player": "BLUE",
+        "development_count": 2,
+        "impossible_vp_probability": 0.7777777777777778
+      },
+      {
+        "replay": "4505-0.json",
+        "revision": 369,
+        "viewer": "WHITE",
+        "player": "BLUE",
+        "development_count": 1,
+        "impossible_vp_probability": 0.625
+      },
+      {
+        "replay": "4509-3.json",
+        "revision": 331,
+        "viewer": "ORANGE",
+        "player": "RED",
+        "development_count": 1,
+        "impossible_vp_probability": 0.30000000000000004
+      }
+    ],
+    "verified_replays": [
+      {
+        "replay": "4500-0.json",
+        "checksum": "21551146595fc884eb50696e11c06b8b4ffcd3898cef8fe71150eccafe43de82"
+      },
+      {
+        "replay": "4500-1.json",
+        "checksum": "f1aa506572f264c84f6beaeb315079387bfa001339211aa53e65670cb0f434d2"
+      },
+      {
+        "replay": "4500-2.json",
+        "checksum": "e6a2eb2960919e55a0a4d1079bed711b8ba656116ccc3bccc977cb836930a7e9"
+      },
+      {
+        "replay": "4500-3.json",
+        "checksum": "bff3572faa4a69134df623d79b55ed1706a00aa15033c73b3422fa75679836fe"
+      },
+      {
+        "replay": "4501-0.json",
+        "checksum": "5bed274f57357dc61e447d7965e4eb9cbf0839aa87e2e8b1ddf2e78bc51d5e7a"
+      },
+      {
+        "replay": "4501-1.json",
+        "checksum": "15f54cc37557fdb8a14c0ea7b364c575d78c1c25479ddce6db523a8449ea4abd"
+      },
+      {
+        "replay": "4501-2.json",
+        "checksum": "76b9e11c3a5335a9de8cd38960b8d145e8a69416c819d72edd165569afcbf506"
+      },
+      {
+        "replay": "4501-3.json",
+        "checksum": "532f6c2d7cf4721741dd8e068fba7ac36171960728ebe06830a8bb29f1f183a2"
+      },
+      {
+        "replay": "4502-0.json",
+        "checksum": "a0286841bf477614db45d52033d8df2bf732b8081b57ce3842550dad11e4127e"
+      },
+      {
+        "replay": "4502-1.json",
+        "checksum": "b24271844ef9d73782d9488e75faaafe562bf82681e79377fc46d5aa2a8e5c0a"
+      },
+      {
+        "replay": "4502-2.json",
+        "checksum": "1537d5aaf4a4d7bffeedb3b3c4b6320c41dbc4e0dfb75be29bafc5d3236b5525"
+      },
+      {
+        "replay": "4502-3.json",
+        "checksum": "d0e17c2914bdc3866ecd11d55a796ee07c88d720e506e3fdcda6377275431cf2"
+      },
+      {
+        "replay": "4503-0.json",
+        "checksum": "95015d9f9e14eabea91fa6c79d89c581e04324442d3eb5b5c602541e18a945e6"
+      },
+      {
+        "replay": "4503-1.json",
+        "checksum": "103a8e794e15f57d0255213022dc7ff64ad14c2728bda9c4e0998acce46450ca"
+      },
+      {
+        "replay": "4503-2.json",
+        "checksum": "98538d61e970721cc26f22dfc4fa39cae4f3a070c4dab3a303f874da753a960a"
+      },
+      {
+        "replay": "4503-3.json",
+        "checksum": "3558671821f6a95467f99ddaaf77cff8e97ad30829e9fce418253ba604a8baba"
+      },
+      {
+        "replay": "4504-0.json",
+        "checksum": "7bef9552b3fe17df5c53647b9724337ccdf55b647c35cf41e7a2dacfaaba40a5"
+      },
+      {
+        "replay": "4504-1.json",
+        "checksum": "becb6e4d40ffad14cb1f1a4ee20c7e7fe89e689dc97af14502d3d7438cc7c328"
+      },
+      {
+        "replay": "4504-2.json",
+        "checksum": "063682e327958ced28fd054ef27bcaf00ae3b4d897e72cd950cb66abef8cb60a"
+      },
+      {
+        "replay": "4504-3.json",
+        "checksum": "a7d811efa21615e3b0a08385a0db0e5c3cc407657f7815fe0ff364e182501c50"
+      },
+      {
+        "replay": "4505-0.json",
+        "checksum": "c4865f4d8a512d933141c1ef74b4153b9c6f5700b2bd96d380fc2b7e8f73e7ff"
+      },
+      {
+        "replay": "4505-1.json",
+        "checksum": "48df24786f213d76e49049e8e608e2e6ce2e6505fdcf42764c2a73f1e57c525f"
+      },
+      {
+        "replay": "4505-2.json",
+        "checksum": "d79716a34b7477520da9264e63a469f403656f951ff58fdc5e48bb34764945b0"
+      },
+      {
+        "replay": "4505-3.json",
+        "checksum": "2e8a8f025132044af38e2e66c32af5c9c14ad6c1488dcbf0b68a72920d0ea0db"
+      },
+      {
+        "replay": "4506-0.json",
+        "checksum": "d61619fa24e52b84fe6e400f5115f32945c917b36c95f921e04a817bfa30c144"
+      },
+      {
+        "replay": "4506-1.json",
+        "checksum": "5beecb48c61479b7df9a9e4b17ced3f463e7657b0ba1b288f15794c1da8bded4"
+      },
+      {
+        "replay": "4506-2.json",
+        "checksum": "c8fb350ec7ec14b4197f79ef96e63ceea309b48974d299ff26bd5557d4329fcf"
+      },
+      {
+        "replay": "4506-3.json",
+        "checksum": "fe1e54998c87cb2b9e996fff07ceb7bd8c2d59dddfddea2a52e7050720e07e44"
+      },
+      {
+        "replay": "4507-0.json",
+        "checksum": "2c565c59a611c990f6ff8f74ce0345bc89668f7a89675e51d6da3f7ad53db438"
+      },
+      {
+        "replay": "4507-1.json",
+        "checksum": "ec820bbc007c13aba3db440ff284263fc7f931b9ce209ba7ff3f96298571abf8"
+      },
+      {
+        "replay": "4507-2.json",
+        "checksum": "5cf0d850e3e9df1137def7c64e7775b6e9de9cf25921ee402a845fdae871ca9b"
+      },
+      {
+        "replay": "4507-3.json",
+        "checksum": "3e1f08d030b08fd4c64e115c8b3dca7d4b816a7c19ccab42fcb3ce4021256859"
+      },
+      {
+        "replay": "4508-0.json",
+        "checksum": "333fbe2f84df987ce2cc979cbc2992b2053279b1c5bdc65d6bebf723f23ef2ca"
+      },
+      {
+        "replay": "4508-1.json",
+        "checksum": "61070cc010f9c2aa5c4c8dc2b572d9830265d32d31a215d229740d23a49d85fb"
+      },
+      {
+        "replay": "4508-2.json",
+        "checksum": "079329fb000f4a5fae43be098bc583957965522a6a201fa0523400b6fe9516cc"
+      },
+      {
+        "replay": "4508-3.json",
+        "checksum": "a71e44aff6d4b5570841f3f8fec3526aab1cb4969bbeed80151f84d3063190a3"
+      },
+      {
+        "replay": "4509-0.json",
+        "checksum": "fc62cf3bb4d75e8aa0d9c1038c4723c73281a9c37302c6305f4e04ffc46446b0"
+      },
+      {
+        "replay": "4509-1.json",
+        "checksum": "c958d68b97ce1ea9fa28d273e5e6dd2d2322af1ea61f43c1382e8146070fba60"
+      },
+      {
+        "replay": "4509-2.json",
+        "checksum": "4ee7f557192b781960c8362b3bf5657c42d38cf25d35058dc952d973a81db655"
+      },
+      {
+        "replay": "4509-3.json",
+        "checksum": "659fa4f1f4c10e09978ea156b9a0cbb7a4c1d8d8c0b1c43c58992f6e6e1df601"
+      }
+    ],
+    "interpretation": "Offline diagnosis on previously evaluated boards, not new strength evidence. Cases share games and are not independent. Hidden cards are used only in offline assertions; all model inputs come from the observation."
+  }
+}
