@@ -2,7 +2,7 @@
 
 from engine import RULESET
 from engine.road_rules import longest_trail, award_owner as road_owner
-from engine.strategy import rank_actions as base_rank
+from engine.fast_policy import rank_actions as base_rank
 
 
 def longest_road(edges, blocked):

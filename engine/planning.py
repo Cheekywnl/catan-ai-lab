@@ -11,7 +11,8 @@ import random
 import time
 
 from engine.policy import RESOURCES
-from engine.strategy import rank_actions, position_value
+from engine.strategy import position_value
+from engine.fast_policy import choose_action
 from catanatron.models.decks import starting_devcard_bank
 from catanatron.models.enums import DEVELOPMENT_CARDS, ActionPrompt
 from catanatron.models.player import Color, SimplePlayer
@@ -373,8 +374,7 @@ def search(o, budget=32, horizon=64, max_candidates=6, search_seed=1701, progres
                 break
             actor = game.state.current_color().value
             view = sim.observation(actor, False, False, compact=True)
-            choices = rank_actions(view)
-            game.execute(decode_action(choices[0]))
+            game.execute(decode_action(choose_action(view)))
             transitions += 1
         winner = game.winning_color()
         value = (

@@ -69,7 +69,7 @@ def dice_exposure(o):
 def forecast(o, samples=12, horizon=1600, progress=None):
     from engine.planning import sample_game
     from engine.session import Session, decode_action
-    from engine.strategy import rank_actions
+    from engine.fast_policy import choose_action
 
     samples = max(4, min(128, int(samples)))
     horizon = max(1, min(6000, int(horizon)))
@@ -101,7 +101,7 @@ def forecast(o, samples=12, horizon=1600, progress=None):
             observation = sim.observation(
                 game.state.current_color().value, False, False, compact=True
             )
-            game.execute(decode_action(rank_actions(observation)[0]))
+            game.execute(decode_action(choose_action(observation)))
             transitions += 1
         winner = game.winning_color()
         if winner:

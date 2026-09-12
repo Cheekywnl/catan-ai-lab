@@ -24,7 +24,7 @@ jobs:
       - run: python -m pytest -q
       - run: python scripts/build-engine.py
       - name: Check tested Python bundle is committed
-        run: git diff --exit-code -- dist/engine-source.zip dist/engine-build.json dist/engine-validation.json dist/implementation.md dist/strength-v2.json dist/solver-mathematics.md dist/refinement-log.md dist/strength-v3.json
+        run: git diff --exit-code -- dist/engine-source.zip dist/engine-build.json dist/engine-validation.json dist/implementation.md dist/strength-v2.json dist/solver-mathematics.md dist/refinement-log.md dist/strength-v3.json dist/speed-v3.json dist/strength-v3-original.json dist/search-repair-v3.json
       - run: npm run content
       - name: Check generated content is committed
         run: git diff --exit-code -- dist/content.json dist/catan-ai-research.md

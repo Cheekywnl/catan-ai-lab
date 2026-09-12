@@ -1,5 +1,19 @@
 # Catan Lab engine — implementation log
 
+## Engine 0.3.1 — faster equivalent continuations
+
+The resource-affordability estimate is a monotone piecewise-linear function. The optimized adapter solves its crossing analytically, then verifies the same 120/512-roll grid and 1e-9 tolerance used by the frozen policy. A bounded cache avoids repeated identical calculations. Forced decisions skip ranking. The reference policy modules remain unchanged; the adapter binds their functions to separate globals instead of mutating them or maintaining another scoring implementation.
+
+Across six fixed positions, alternating reference/optimized run order and clearing the cache before each run, full-game search was **3.77× faster in aggregate** (median **3.85×**, individual range **2.46–4.09×**). All candidate scores, choices, sample counts, and simulated transitions matched exactly after excluding elapsed time. This is a local runtime measurement, not a playing-strength claim. Reproduce it with `python scripts/benchmark-search.py`; full timings and hashes are in [speed-v3.json](speed-v3.json).
+
+All **188 native tests** pass. New cases compare 10,000 varied resource states, grid-boundary cases, every ranked action through eight complete games, and fixed-seed search outputs. Browser validation covers the Python adapter running in the deployed runtime.
+
+The corrected search reproduction batch completed **20/20 games**, with **7 wins**, no errors, and 11,520 terminal continuations. These debugging seeds give a wide 15–60% board-bootstrap interval and do not establish search strength. Tactical v3 separately completed **400/400 fresh games against three original v1 bots**, winning **193 (48.25%)**, interval **43.25–53.50%**, under corrected rules. These are separate opponent populations and must not be combined with its 27.75% result against strategic-v2.
+
+Two fresh, preregistered search-budget batches now compare 12 versus 48 requested continuations per decision on seeds 5500–5524, all four seats, against three strategic-v2 opponents. Both use the same corrected rules, resource tracking, horizon 1600, and four initial candidates. Outcomes will be compared by board, with failures and runtime retained. No budget is promoted before those results are reviewed.
+
+A Tactical v3 control was added on the same boards before the search arms finished. It completed 100 games with 26 wins and no errors or truncations. The matched comparison will be reported when both search arms complete. The release passed 20 browser tests and six content checks; two desktop-only browser checks are intentionally skipped on mobile.
+
 ## Engine 0.3 — refinement window, 12 September 2026
 
 Repeated play found two correctness defects and missed immediate wins. New games now use `catan-base-4p-2025-v2`: a road ending at an opponent's settlement counts toward its length, while traversal stops at that settlement. Road awards retain an eligible incumbent on ties, transfer to a unique eligible leader, and become unclaimed when nobody qualifies. Losing an unclaimed award removes its two points. These cases follow the [official CATAN FAQ](https://www.catan.com/faq/basegame).
