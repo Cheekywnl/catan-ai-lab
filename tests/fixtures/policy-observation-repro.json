@@ -1,0 +1,1162 @@
+{
+  "replay": {
+    "format": "catan-lab-replay-v1",
+    "engine_version": "0.3.0",
+    "ruleset": "catan-base-4p-2025-v2",
+    "scope": "research-replay-includes-hidden-information",
+    "seed": 4500,
+    "intents": [
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "WHITE",
+        "value": 23
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "WHITE",
+        "value": [
+          6,
+          23
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "BLUE",
+        "value": 1
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "BLUE",
+        "value": [
+          1,
+          2
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "RED",
+        "value": 18
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          17,
+          18
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "ORANGE",
+        "value": 9
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          2,
+          9
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "ORANGE",
+        "value": 15
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          4,
+          15
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "RED",
+        "value": 7
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          7,
+          8
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "BLUE",
+        "value": 21
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "BLUE",
+        "value": [
+          16,
+          21
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "WHITE",
+        "value": 5
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "WHITE",
+        "value": [
+          4,
+          5
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "WHITE",
+        "value": [
+          3,
+          4
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "BLUE",
+        "value": [
+          [
+            -1,
+            1,
+            0
+          ],
+          "ORANGE"
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "RED",
+        "value": [
+          [
+            1,
+            0,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          8,
+          27
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "BLUE",
+        "value": [
+          [
+            -1,
+            1,
+            0
+          ],
+          "ORANGE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "BLUE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "BLUE",
+        "value": [
+          2,
+          3
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "PLAY_ROAD_BUILDING",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          26,
+          27
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          25,
+          26
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "ORANGE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          8,
+          9
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "BLUE",
+        "value": [
+          "WOOD",
+          "WOOD",
+          "WOOD",
+          "WOOD",
+          "ORE"
+        ]
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "RED",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WOOD"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          27,
+          28
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "ORANGE",
+        "value": [
+          "SHEEP",
+          "SHEEP",
+          "SHEEP",
+          "SHEEP",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          14,
+          15
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "WHITE",
+        "value": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "WHITE",
+        "value": [
+          [
+            1,
+            -1,
+            0
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "BLUE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          28,
+          29
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "ORANGE",
+        "value": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          13,
+          14
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "ORANGE",
+        "value": [
+          [
+            1,
+            0,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "ORANGE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          12,
+          13
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "WHITE",
+        "value": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          10,
+          29
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "ORANGE",
+        "value": [
+          [
+            1,
+            0,
+            -1
+          ],
+          "WHITE"
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "WHITE",
+        "value": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          "RED"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "ORANGE",
+        "value": [
+          "SHEEP",
+          "SHEEP",
+          "SHEEP",
+          "SHEEP",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          11,
+          12
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "WHITE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_SETTLEMENT",
+        "color": "WHITE",
+        "value": 3
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "RED",
+        "value": [
+          10,
+          11
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "ORANGE",
+        "value": [
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "WHEAT",
+          "BRICK"
+        ]
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "ORANGE",
+        "value": [
+          13,
+          34
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "BLUE",
+        "value": [
+          [
+            -1,
+            1,
+            0
+          ],
+          "ORANGE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "BLUE",
+        "value": [
+          "WOOD",
+          "WOOD",
+          "WOOD",
+          "WOOD",
+          "ORE"
+        ]
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "BLUE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "MARITIME_TRADE",
+        "color": "RED",
+        "value": [
+          "BRICK",
+          "BRICK",
+          "BRICK",
+          "BRICK",
+          "SHEEP"
+        ]
+      },
+      {
+        "type": "BUY_DEVELOPMENT_CARD",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "RED",
+        "value": null
+      },
+      {
+        "type": "PLAY_KNIGHT_CARD",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "MOVE_ROBBER",
+        "color": "ORANGE",
+        "value": [
+          [
+            -1,
+            2,
+            -1
+          ],
+          "BLUE"
+        ]
+      },
+      {
+        "type": "ROLL",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "END_TURN",
+        "color": "ORANGE",
+        "value": null
+      },
+      {
+        "type": "ROLL",
+        "color": "WHITE",
+        "value": null
+      },
+      {
+        "type": "BUILD_ROAD",
+        "color": "WHITE",
+        "value": [
+          0,
+          5
+        ]
+      },
+      {
+        "type": "END_TURN",
+        "color": "WHITE",
+        "value": null
+      }
+    ],
+    "checksum": "9fbc0e506ac00b38103ebfbfa594287ffbaf0274f037e5014bf4d9f841ed9347"
+  },
+  "viewer": "BLUE",
+  "case": {
+    "replay": "4500-0.json",
+    "revision": 177,
+    "viewer": "BLUE",
+    "tracker_status": "exact",
+    "autoplay": {
+      "type": "PLAY_MONOPOLY",
+      "color": "BLUE",
+      "value": "WOOD",
+      "id": 4,
+      "label": "Monopoly: wood",
+      "score": 12.95131,
+      "reason": "Estimate available cards from observed beliefs, or public production when beliefs are unavailable.",
+      "tactical": {
+        "points_gained": 0,
+        "wins_now": false,
+        "award_gained": null,
+        "road_award_removed_from": null
+      }
+    },
+    "displayed_suggestion": {
+      "type": "PLAY_MONOPOLY",
+      "color": "BLUE",
+      "value": "WHEAT",
+      "id": 3,
+      "label": "Monopoly: wheat",
+      "score": 27.0,
+      "reason": "Estimate available cards from observed beliefs, or public production when beliefs are unavailable.",
+      "tactical": {
+        "points_gained": 0,
+        "wins_now": false,
+        "award_gained": null,
+        "road_award_removed_from": null
+      }
+    }
+  }
+}

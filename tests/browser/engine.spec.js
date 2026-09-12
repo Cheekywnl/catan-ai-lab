@@ -209,3 +209,54 @@ test("public completed turns constrain development cards after replay import", a
     "completed turns",
   );
 });
+
+test("autoplay follows tracked Monopoly suggestions while frozen v3 remains reproducible", async ({
+  page,
+}) => {
+  await ready(page);
+  const data = JSON.parse(
+    await readFile(
+      new URL("../fixtures/policy-observation-repro.json", import.meta.url),
+      "utf8",
+    ),
+  );
+  await page
+    .getByLabel("Import replay file")
+    .setInputFiles({
+      name: "cards.json",
+      mimeType: "application/json",
+      buffer: Buffer.from(JSON.stringify(data.replay)),
+    });
+  await expect(page.locator("#engine-status")).toContainText(
+    "177 moves recorded",
+    { timeout: 30000 },
+  );
+  await page.getByLabel("View as", { exact: true }).selectOption(data.viewer);
+  await page
+    .getByLabel("Bot policy", { exact: true })
+    .selectOption("tactical_v3");
+  await expect(page.locator(".recommendation strong").first()).toHaveText(
+    "Monopoly: wood",
+  );
+  await page.getByLabel("Bot policy", { exact: true }).selectOption("tactical");
+  await expect(page.locator(".recommendation strong").first()).toHaveText(
+    "Monopoly: wheat",
+  );
+  await page
+    .getByRole("button", { name: "Bot: next move", exact: true })
+    .click();
+  await expect(page.locator("#engine-status")).toContainText(
+    "178 moves recorded",
+  );
+  const downloading = page.waitForEvent("download");
+  await page
+    .getByRole("button", { name: "Export replay", exact: false })
+    .click();
+  const file = await downloading;
+  const replay = JSON.parse(await readFile(await file.path(), "utf8"));
+  expect(replay.intents.at(-1)).toEqual({
+    type: "PLAY_MONOPOLY",
+    color: data.viewer,
+    value: "WHEAT",
+  });
+});

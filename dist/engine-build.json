@@ -1,8 +1,8 @@
 {
-  "engine_version": "0.3.2",
+  "engine_version": "0.4.0",
   "ruleset": "catan-base-4p-2025-v2",
   "upstream_revision": "ecf931181b9a65bb4116a2153fb78c16f1438e00",
   "networkx": "3.5",
   "pyodide": "314.0.6",
-  "source_sha256": "c95cac59605585f2ff2799f30ddd27a793b1272508556279f4162932febcfc82"
+  "source_sha256": "f35e3b2428f2c27766280b612f68fa6f77185d9d97cccd9d3821eb2b0a4e417d"
 }

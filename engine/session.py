@@ -419,6 +419,15 @@ class Session:
             revision,
         )
 
+    def policy_observation(self, actor, policy):
+        """The current tactical policy uses tracked cards; frozen policies do not."""
+        return self.observation(
+            actor,
+            include_history=False,
+            include_belief=policy == "tactical",
+            compact=True,
+        )
+
     def auto(self, count=1, stop_at_viewer=None, policy="baseline"):
         count = max(1, min(200, int(count)))
         if policy == "search":
@@ -429,9 +438,7 @@ class Session:
             actor = self.game.state.current_color().value
             if stop_at_viewer == actor:
                 break
-            observation = self.observation(
-                actor, include_history=False, include_belief=False, compact=True
-            )
+            observation = self.policy_observation(actor, policy)
             if policy == "search":
                 if len(observation["legal_actions"]) == 1:
                     ranked = observation["legal_actions"]
@@ -448,7 +455,7 @@ class Session:
                 from engine.strategy import rank_actions as strategic_rank
 
                 ranked = strategic_rank(observation)
-            elif policy == "tactical":
+            elif policy in ("tactical", "tactical_v3"):
                 from engine.tactics import rank_actions as tactical_rank
 
                 ranked = tactical_rank(observation)
@@ -616,9 +623,15 @@ def dispatch(message, progress=None):
 
     result["opening"] = opening_report(result)
     result["dice_exposure"] = dice_exposure(result)
+    policy = request.get("policy", "tactical")
+    recommendation_view = (
+        {k: v for k, v in result.items() if k not in ("belief", "joint_belief")}
+        if policy in ("baseline", "strategic", "tactical_v3")
+        else result
+    )
     result["recommendations"] = (
         rank_actions
-        if request.get("policy") == "baseline"
-        else strategic_rank if request.get("policy") == "strategic" else tactical_rank
-    )(result)[:8]
+        if policy == "baseline"
+        else strategic_rank if policy == "strategic" else tactical_rank
+    )(recommendation_view)[:8]
     return json.dumps(result)

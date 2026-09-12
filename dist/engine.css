@@ -52,6 +52,11 @@
   margin: 14px 0 18px;
   color: #47613b;
 }
+.engine-validation .detail-links {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 12px 20px;
+}
 .engine-loading {
   padding: 70px 30px;
   background: #e9eee3;

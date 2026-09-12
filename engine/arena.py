@@ -53,14 +53,14 @@ def atomic_json(path, value):
 
 def select(session, policy, config):
     actor = session.game.state.current_color().value
-    view = session.observation(actor, False, False, compact=True)
+    view = session.policy_observation(actor, policy)
     if len(view["legal_actions"]) == 1:
         return view["legal_actions"][0], None
     if policy == "baseline":
         return baseline(view)[0], None
     if policy == "strategic":
         return strategic(view)[0], None
-    if policy == "tactical":
+    if policy in ("tactical", "tactical_v3"):
         from engine.tactics import rank_actions
 
         return rank_actions(view)[0], None
@@ -292,12 +292,12 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument(
         "--challenger",
-        choices=("baseline", "strategic", "tactical", "search"),
+        choices=("baseline", "strategic", "tactical", "tactical_v3", "search"),
         default="search",
     )
     p.add_argument(
         "--opponents",
-        choices=("baseline", "strategic", "tactical", "search"),
+        choices=("baseline", "strategic", "tactical", "tactical_v3", "search"),
         default="strategic",
     )
     p.add_argument("--boards", type=int, default=5)

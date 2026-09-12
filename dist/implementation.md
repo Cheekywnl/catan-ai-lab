@@ -1,5 +1,17 @@
 # Catan Lab engine — implementation log
 
+## Engine 0.4 — tracked resources reach autoplay
+
+The current Tactical v4 policy now uses the same observed resource beliefs in the displayed recommendation, autoplay and arena. An audit of 40 recorded games found 43 disagreements in 77 Monopoly decisions because autoplay had dropped the resource summary. At the captured exact-tracker position, it chose wood while the displayed suggestion correctly identified eight available wheat cards. After the fix, autoplay takes those eight wheat and all 77 decisions agree with the display. No scoring weights changed. Frozen Tactical v3 remains selectable as `tactical_v3`; the original and strategic-v2 policies also retain their previous observation inputs. Unavailable trackers retain the production-based fallback.
+
+All 210 native tests pass. The source, captured replay and before/after audit are published in [policy-observation-v4.json](policy-observation-v4.json). The 800-game held-out comparison against three frozen Tactical-v3 opponents completed under its [fixed protocol](tactical-v4-protocol.md): **215 wins (26.875%)**, no errors or truncations, whole-board bootstrap interval **25.25–28.50%**. The 25% equal-policy reference is below that interval. This supports a modest improvement against that specific opponent population; it does not establish human or equilibrium strength. Full results and source hashes: [strength-v4.json](strength-v4.json).
+
+Browser checks cover the selected frozen/current policies and a replay where the bot must follow the tracked wheat recommendation. All 24 browser checks pass after correcting a four-pixel desktop overflow in the expanded research-link row; two desktop-only cases are intentionally skipped on mobile. The focused desktop/mobile reflow checks were rerun after the CSS fix. Six content checks pass.
+
+The independent [root-search audit](root-search-audit.md) completed 132 repeated search calls and 2,752 separate reference continuations over 11 eligible fixed positions. It found substantial recommendation variation and score optimism; it does not establish a search strength gain. The existing search remains experimental, and its older tournament snapshots are unchanged.
+
+The second small-budget search batch is complete: engine 0.3.2 search won **12/100 games**, versus **29/100** for its matched Tactical-v3 control, both against three strategic-v2 opponents on seeds 6200–6224. No games errored or truncated. The paired board-bootstrap difference is **−17 percentage points**, interval **−26 to −8**. It underperformed this control on this batch. The first search batch used a different sampler and different boards, so the two cannot isolate the sampler's effect. Full results: [search12-v032-comparison.json](search12-v032-comparison.json). Tactical v4 remains the default; more compute and model-based winning scores do not by themselves establish better play.
+
 ## Engine 0.3.2 — public history constrains hidden development cards
 
 An offline audit found seven positions across four of 40 recorded games where the old model assigned positive hidden victory-point probability to an opponent who had just ended a turn on nine visible points. The first case reported 66.67%, although that card was publicly ruled out. These are reused diagnostic games, not new strength evidence.

@@ -71,6 +71,12 @@ for source, destination in [
     ("research/search-repair-v3.json", "dist/search-repair-v3.json"),
     ("research/development-history-v032.json", "dist/development-history-v032.json"),
     ("research/search12-v031-comparison.json", "dist/search12-v031-comparison.json"),
+    ("research/policy-observation-v4.json", "dist/policy-observation-v4.json"),
+    ("research/root-variance-v032.json", "dist/root-variance-v032.json"),
+    ("research/root-search-audit.md", "dist/root-search-audit.md"),
+    ("research/tactical-v4-protocol.md", "dist/tactical-v4-protocol.md"),
+    ("research/strength-v4.json", "dist/strength-v4.json"),
+    ("research/search12-v032-comparison.json", "dist/search12-v032-comparison.json"),
 ]:
     shutil.copyfile(root / source, root / destination)
 print(

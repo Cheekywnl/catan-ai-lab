@@ -2,6 +2,8 @@
 
 A playable four-player Catan engine with hidden-card beliefs, turn-aware opening economics, continuation search, and winning forecasts. The same Python engine runs natively and in a browser worker. Open [Play & simulate](https://catan-research-lab-cheekywnl.founders622811.chatgpt.site/#engine).
 
+Engine 0.4's current Tactical v4 policy consistently uses tracked resource cards in displayed suggestions and autoplay. It won **215/800 games (26.875%)** against three frozen Tactical-v3 opponents on fresh seat-balanced boards, with no errors/truncations; whole-board bootstrap interval **25.25–28.50%**. This is a modest gain against that population. [Results](research/strength-v4.json), [information-use audit](research/policy-observation-v4.json), [search-repeatability audit](research/root-search-audit.md). All 210 native tests and 24 browser checks pass. Old policies remain selectable; search remains experimental.
+
 Engine 0.3's Tactical v3 won **222/800 games (27.75%)** against three frozen strategic-v2 opponents on fresh seat-balanced boards, with no errors or truncations; the board-bootstrap 95% interval is **26.125–29.50%**. See [results](research/strength-v3.json).
 
 Engine 0.3.1 accelerates equivalent full-game continuations: **3.77× aggregate local speedup** across six fixed positions, with identical search results. It also records a second opponent test: Tactical v3 won **193/400 (48.25%)** against original v1 bots under corrected rules. See [timings](research/speed-v3.json) and [opponent results](research/strength-v3-original.json). Larger search-budget trials are in progress.
